@@ -10,10 +10,8 @@ function __construct(){
 function existe_email($email){
       $data = $this->db->query("select * from usuario ");
 
-      print_r ($data->result());
-   echo "llego";die;
-   $this->db->select('email_usuario');
-   $this->db->where('email_usuario', $email);
+   $this->db->select('email');
+   $this->db->where('email', $email);
    $query = $this->db->get('usuario');
    if ($query->num_rows() > 0){
       return 1;

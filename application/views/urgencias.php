@@ -21,9 +21,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Custom styles for this template -->
   </head>
-<script>
-
-</script>
+  <script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_yourskypename_1">
+ <script type="text/javascript">
+ Skype.ui({
+ "name": "call",
+ "element": "SkypeButton_Call_yourskypename_1",
+ "participants": ["vamper4"],
+ "imageSize": 32
+ });
+ </script>
+</div>
   <body class="text-center">
 
     <a href="<?php echo base_url()?>index.php/llamada/contador"><button class="btn btn-lg btn-success btn-block">Llamar</button></a>
