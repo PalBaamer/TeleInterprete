@@ -42,8 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
   <body class="text-center">
   <div id="formUsuario"  class=" form-signin d-block">
-  <form id="" class="form-signin ">
-      <!--img class="mb-4" src=/src/Comunicados.png" alt="" width="72" height="72"-->
+  <form id="" class="form-signin " action="<?php echo base_url()?>index.php/login/acceso" method="POST">
+      <img class="mb-4" src="<?php echo base_url()?>application/src/Comunicados.png" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
       <label for="inputEmail" class="sr-only">Email </label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email"  >
@@ -56,6 +56,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button>
     </form>
-    <a href="http://127.0.0.1/www/teleinterprete/index.php/loginInterprete"><button class="btn btn-lg btn-primary btn-block">Soy Interprete</button></a></div>
+    <a href="<?php echo base_url()?>index.php/loginInterprete"><button class="btn btn-lg btn-primary btn-block">Soy Interprete</button></a></div>
   </body>
 </html>

@@ -57,7 +57,7 @@ function hideLogin() {
       <button class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button>
      
     </form>
-    <a href="http://127.0.0.1/www/teleinterprete/index.php/login"><button class="btn btn-lg btn-primary btn-block">Soy Usuario</button></a>
+    <a href="<?php echo base_url()?>index.php/login"><button class="btn btn-lg btn-primary btn-block">Soy Usuario</button></a>
 </div>
   </body>
 </html>
