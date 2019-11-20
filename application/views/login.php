@@ -42,6 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
   <body class="text-center">
   <div id="formUsuario"  class=" form-signin d-block">
+  <img class="mb-4" src="<?php echo base_url()?>application/src/Comunicados.png" alt="" width="72" height="72">
+      
   <form id="" class="form-signin " action="<?php echo base_url()?>index.php/login/acceso" method="POST">
       <img class="mb-4" src="<?php echo base_url()?>application/src/Comunicados.png" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
