@@ -6,12 +6,12 @@ class MenuAdmin extends CI_Controller {
 	public function index(){
         $this->load->view('estilo');
         $this->load->view('cabecera');
-		$this->load->view('pidecita');
+		$this->load->view('menuAdmin');
 	}
 	public function alta_empresa(){
         $listaEmpresas = array();
 		$this->load->model('empresa_modelo');
-        $listaEmpresas= $this->empresa_modelo->mostrarEmpresasDisponibles();
+        $listaEmpresas= $this->empresa_modelo->alta_empresa();
         $datos['listaEmpresas'] = $listaEmpresas;
         $this->load->view('estilo');
         $this->load->view('cabecera');

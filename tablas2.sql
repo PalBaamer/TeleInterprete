@@ -17,6 +17,18 @@ CREATE TABLE empresa (
 
 -- --------------------------------------------------------
 --
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE categoria (
+  id_categoria int(11) AUTO_INCREMENT,
+  nombre varchar(50),
+   PRIMARY KEY (id_categoria)
+);
+
+
+-- --------------------------------------------------------
+--
 -- Estructura de tabla para la tabla `servicio`
 --
 
@@ -24,23 +36,13 @@ CREATE TABLE servicio (
   id_servicio int(3) AUTO_INCREMENT,
   id_empresa int(3) default null,
   nombre VARCHAR(40) NOT NULL,
-  tipo VARCHAR(40) NULL ,
+  id_categoria int(11),
   centro VARCHAR(40) NOT NULL,
   PRIMARY KEY (id_servicio),
-CONSTRAINT FK_servicio_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
+ CONSTRAINT FK_servicio_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa),
+ CONSTRAINT FK_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
 
---
--- Estructura de tabla para la tabla `SERVIOnOMBRE`
---
-
-CREATE TABLE nombreServicio (
-  id_nomServicio int(11) AUTO_INCREMENT,
-  id_servicio int(3) default null,
-  nombre varchar(50),
-   PRIMARY KEY (id_nomServicio),
-   CONSTRAINT FK_servicio_nombre FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
-);
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,8 @@ CREATE TABLE interprete (
   telefono varchar(9) DEFAULT NULL,
   email varchar(50) NOT NULL,
   contrasena varchar(20) NOT NULL,
+  urgencias boolean DEFAULT FALSE,
+  categoria int(2) NOT NULL DEFAULT 1,
   nCC int(20) DEFAULT NULL,
   PRIMARY KEY (id_interprete)
 );
@@ -68,7 +72,7 @@ CREATE TABLE interprete (
 --
 
 CREATE TABLE usuario (
-  id_usuario int(11) AUTO_INCREMENT,
+  id_usuario int(3) AUTO_INCREMENT,
   nombre varchar(20) NOT NULL,
   apellido varchar(15)DEFAULT NULL,
   apellido2 varchar(15) DEFAULT NULL,
@@ -86,13 +90,19 @@ CREATE TABLE usuario (
 -- Estructura de tabla para la tabla `administrador`
 --
 
-CREATE TABLE administrador (
-  id_admin int(11) NOT NULL,
-  categoria int(11) NOT NULL,
-  nombre int(11) NOT NULL,
-  email datetime NOT NULL,
-  contrasena datetime NOT NULL,
-  PRIMARY KEY (id_admin)
+CREATE TABLE citas (
+  id_citas int(10)AUTO_INCREMENT,
+  id_usuario int(3),
+  id_interprete int(3),
+  id_servicio int(3),
+  dia DATE,
+  hora_inicio TIME,
+  hora_fin TIME DEFAULT '00:00:00',
+  PRIMARY KEY (id_citas),
+  CONSTRAINT FK_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  CONSTRAINT FK_interprete FOREIGN KEY (id_interprete) REFERENCES interprete(id_interprete),
+  CONSTRAINT FK_servicio FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
+  
 );
 -- --------------------------------------------------------
 
