@@ -1,5 +1,5 @@
 <?php
-class Usuario_modelo extends CI_Model {
+class Interprete_modelo extends CI_Model {
 function __construct(){
    parent::__construct();
    $this->load->database();
@@ -8,28 +8,28 @@ function __construct(){
 
 //mysql:host=localhost;dbname=teleinterprete
 function existe_email($email){
-      $data = $this->db->query("select * from usuario ");
+      $data = $this->db->query("select * from interprete ");
 
    $this->db->select('email');
    $this->db->where('email', $email);
-   $query = $this->db->get('usuario');
+   $query = $this->db->get('interprete');
    if ($query->num_rows() > 0){
       return 1;
    }
    return 0;
 }
 
-function usuario_login($mail, $pswd){
-   $data = $this->db->query('select * from usuario where email="'.$mail.'" and contrasena="'.$pswd .'"');
-  if ($data->num_rows() > 0){
+function interprete_login($mail, $pswd){
+    $data = $this->db->query('select * from interprete where email="'.$mail.'" and contrasena="'.$pswd .'"');
+   if ($data->num_rows() > 0){
 
-     return $data->row();
-  }
-  return null;
+      return $data->row();
+   }
+   return null;
 }
 
 function inserta_usuario($datos = array()){
-   if(!$this->_required(array("email_usuario","clave"), $datos)){
+   if(!$this->_required(array("email","clave"), $datos)){
       return FALSE;
    }
    //clave, encripto

@@ -7,7 +7,11 @@ class MenuAdmin extends CI_Controller {
         $this->load->view('estilo');
         $this->load->view('cabecera');
 		$this->load->view('menuAdmin');
-	}
+		$this->load->helper('array');
+		$this->load->helper('url');
+    }
+    
+    
 	public function alta_empresa(){
         $listaEmpresas = array();
 		$this->load->model('empresa_modelo');
