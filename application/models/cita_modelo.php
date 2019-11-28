@@ -1,5 +1,5 @@
 <?php
-class Categoria_modelo extends CI_Model {
+class Cita_modelo extends CI_Model {
     function __construct(){
    parent::__construct();
    $this->load->database();
@@ -13,5 +13,7 @@ class Categoria_modelo extends CI_Model {
        }
        return null;
      }
+
+     
 }
 ?>

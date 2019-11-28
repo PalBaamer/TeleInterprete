@@ -9,7 +9,7 @@ class Servicio_modelo extends CI_Model {
         $data = $this->db->query('select * from servicio');
        if ($data->num_rows() > 0){
      
-          return $data->row();
+        return $data->result_array();
        }
        return null;
      }

@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <!-- Custom styles for this template -->
 </head>
 <script>
@@ -28,58 +28,54 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body class="text-center">
 
-    <form id="" class="form-signin " action="<?php echo base_url() ?>index.php/cita/grabarCita" method="POST">
+
+    <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita" method="POST">
         <img class="mb-4" src="<?php echo base_url() ?>application/src/Comunicados.png" alt="" width="72" height="72">
 
-        <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categoria
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <?php 
-                    foreach ($listaCategorias as $categoria => $valor) {
-                        echo '<li class="dropdown-item">"' . $valor . '"</li>';
-                    } 
-                ?>
-            </div>
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Servicios
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <?php
-                foreach($listaServicios as $servicio => $valor){
-                    echo '<li class="dropdown-item">"'.$valor.'"</li>';
-                ?>
-
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
             </div>
 
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hora
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <?php
-                foreach($listaServicios as $servicio => $valor){
-                    echo '<li class="dropdown-item">"'.$valor.'"</li>';
+            <select class="custom-select" name='categoria'>
+                <?php
+                foreach ($listaCategorias as $categoria => $valor) {
+                    echo '<option class="dropdown-item" value="' . $valor['id_categoria'] . '">' . $valor['nombre'] . '</option>';
+                }
                 ?>
+            </select>
 
-            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Centro</label>
+                </div>
+                <select class="custom-select" name='centro'>
+                    <?php
+                    foreach ($listaServicios as $servicio => $valor) {
+                        echo '<option class="dropdown-item" value="' . $valor['id_servicio'] . '">' . $valor['centro'] . ' , ' . $valor['especialidad'] . '</option>';
+                    }
+                    ?>
+
+                </select>
 
 
-        </div>
-        </div>
+                <input type="date" name="fecha"></input>
 
-        <label for="inputPassword" class="sr-only">Contraseña</label>
-        <input type="password" id="inputPassword" class="form-control" name="inputPassword" placeholder="Contraseña">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Recuerdame
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+
+                <select name='hora'>
+                    <?php for ($i = 0; $i < 24; $i++) {
+                        echo '<option class="dropdown-item" value="' . $i . '">' . $i . ' : 00h </option>';
+                    }
+                    ?>
+                </select>
+
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">siguiente</button>
     </form>
 
 
 </body>
 
 </html>
+
+3

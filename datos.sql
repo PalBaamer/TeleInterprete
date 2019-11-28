@@ -78,6 +78,12 @@ INSERT INTO servicio VALUES(3,3,'Gran vía, 56');
 INSERT INTO servicio VALUES(1,1,'Gran vía, 56');
 INSERT INTO servicio VALUES(1,1,'Gran vía, 56');
 
-INSERT INTO interprete VALUES(1,'Paloma','Baameiro','Ruiz','05315823V','general romero',689456123,'baameiro.r.paloma@gmail.com','interprete1',0,1,01234567891011234567);
+INSERT INTO citas VALUES(1,1,);
 
 
+INSERT INTO interprete VALUES(1,'Paloma','Baameiro','Ruiz','05315823V','general romero',689456123,'baameiro.r.paloma@gmail.com','interprete1',0,0,01234567891011234567);
+
+INSERT INTO interprete VALUES(2,'David','Monty','Python','03525668V','general romero',689456123,'david@gmail.com','interprete2',1,1,01234567891011234567);
+
+INSERT INTO usuario VALUES(1,'Puri','Garcia','Ahumado','54786231G','Plaza Castilla3',64598712,'puri@gmail.com','usuario1');
+INSERT INTO usuario VALUES(2,'Esperanza','Petrov','Menendez','54786231G','Plaza Castilla3',64598712,'espe@gmail.com','usuario2');

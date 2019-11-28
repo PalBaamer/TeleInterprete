@@ -1,113 +1,83 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-		<title>Menu_Usuario</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-		<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
+  <title>Menu_Usuario</title>
 
-		<!-- Bootstrap core CSS 
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
+
+  <!-- Bootstrap core CSS 
 	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.bundle.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<style>/*
-.grid-container {
-  display: grid;
-  justify-content: space-between;
-  grid-template-columns: px 50px 50px; Make the grid smaller than the container
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-  grid-gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
-  padding: 20px 0;
-}*/
-
-</style>
-	</head>
+  <style>
+ 
+  </style>
+</head>
 <script>
 
 </script>
 
-	<body class="text-center">
-  <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown link
-  </a>
+<body class="text-center">
+<form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/buscarEmpresa" method="POST">
+      <h1 class="h3 mb-3 font-weight-normal">Busca la empresa</h1>
+      <select class="custom-select" name='empresa'>
+                    <?php
+                    foreach ($datos as $empresa => $valor) {
+                        echo '<option class="dropdown-item" value="' . $valor['id_empresa'] . '">' . $valor['nombre'] . '</option>';
+                    }
+                    ?>
+      </select>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
 
-  <div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
 
-        </div>
-  </div>
-  <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Action</button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="<?php echo base_url()?>index.php/cita/pideCita">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-      </div>       
-      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >buscar</button>
+     
+</form>
+<a class="" href="<?php echo base_url()?>index.php/menuAdmin/modificarEmpresa">modificar</a></br><br>
+<a class="" href="<?php echo base_url()?>index.php/menuAdmin/alta_empresa">insertar</a></br><br>
 
-  <div class="grid-container">
-      <div>
-              <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Empresas</h5><div class="btn-group">
- 
-                  </div>
-              </div>
-      </div>
-      </div>  
+
+<form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/menuAdmin/eliminar_empresa">
+      <!--img class="mb-4" src=/src/Comunicados.png" alt="" width="72" height="72"-->
+      <h1 class="h3 mb-3 font-weight-normal">inserta la empresa </h1>
+      <label for="inputIDBorrar" class="sr-only">ID </label>
+      <input type="text" id="inputIDBorrar" class="form-control" name="inputIDBorrar" placeholder="ID"  >
       
-      <div class="toggler">
-                        <div id="effect" class="ui-widget-content ui-corner-all">
-                            
-                                    <div class="card" >
-                                          <div id="effect" class="ui-widget-content ui-corner-all">
-                                            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                                                <button id="button" class="ui-state-default ui-corner-all">Empresas</button>
-                                          </div>
-                                  </div>
-                        </div>
-            </div>
-      </div>
-            <div class="toggler">
-                        <div id="effect" class="ui-widget-content ui-corner-all">
-                            
-                                    <div class="card" >
-                                          <div id="effect" class="ui-widget-content ui-corner-all">
-                                            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                                                <button id="button" class="ui-state-default ui-corner-all">Interpretes</button>
-                                          </div>
-                                  </div>
-                        </div>
-            </div>
-  </div>
-	</body>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >eliminar</button>
+     
+    </form>
+
+
+<a class="" href="<?php echo base_url()?>index.php/menuAdmin/facturaEmpresa">generar factura</a></br>
+
+<!-- 
+<form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita" method="POST">
+<div class="dropdown-menu">
+  
+  <a class="dropdown-item" href="#">insertar</a>
+  <a class="dropdown-item" href="#">Something else here</a>
+</div>
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Action</a>
+  <a class="dropdown-item" href="#">Another action</a>
+  <a class="dropdown-item" href="#">Something else here</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">Separated link</a>
+</div>
+</form> -->
+
+</body>
+
 </html>

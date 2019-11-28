@@ -38,5 +38,16 @@ function inserta_usuario($datos = array()){
    $this->db->insert('usuario', $datos);
    return $this->db->insert_id();
 }
+
+function interpretes_disponibles($dia, $hora_inic){
+   $data = $this->db->query('select * from interprete where not in(select id_interprete from servicios where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'"');
+   echo 'select * from interprete where not in(select id_interprete from servicios where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'"';
+   if ($data->num_rows() > 0){
+     var_dump($data);
+     die;
+      return $data->result_array();
+   }
+   return null;
+}
 }
 ?>
