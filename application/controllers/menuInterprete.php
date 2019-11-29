@@ -9,8 +9,18 @@ class MenuInterprete extends CI_Controller {
 		$this->load->view('menuInterprete');
 		$this->load->helper('array');
 		$this->load->helper('url');
+		$this->load->helper('helper');
+
+
+
 	}
 	public function acceso(){
+
+	}
+
+
+	public function historial(){
+	
 
 	}
 }
