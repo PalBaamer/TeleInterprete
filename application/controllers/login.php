@@ -10,19 +10,46 @@ class Login extends CI_Controller {
 		$this->load->helper('url');
 		
 	}
-	public function acceso(){
+	public function validarUsuario(){
+		$this->load->helper('cookie');
 		$this->load->helper('array');
 		$this->load->helper('url');
 		
 		$arrayData = array(
 			'inputEmail' => $this->input->post('inputEmail'), 
 			'inputPassword'=>$this->input->post('inputPassword'));
-			var_dump($arrayData);
-			var_dump($_POST);
-			die;
-		$mail='paloma';
+			$mail = $this->input->post('inputEmail');
+			$pswd = $this->input->post('inputPassword');
 		$this->load->model('usuario_modelo');
-		$this->usuario_modelo->existe_email($mail);
+		
+		
+		
+		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
+		if($usuario ==null){
+			$arrayData = array(
+				'error' => "El usuario no existe");
+			$this->load->view('login');
+			
+		}else{
+			$cookie = array(
+				'name'   => 'datosSesion',
+				'value'  =>0,                            
+				'expire' => '12000',                                                                                   
+				'secure' => TRUE
+				);
+				$this->input->set_cookie($cookie);
+			
+				$this->load->view('estilo');
+				$this->load->view('cabecera');
+				$this->load->view('menuUsuario');
+				$this->load->helper('array');
+				$this->load->helper('url');
+			
+
+			
+			
+
+		}
 	}
 }
 ?>
