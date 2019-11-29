@@ -1,18 +1,15 @@
-<style>
-    position: relative;
-		  box-sizing: border-box;
-          color: "red";
-		  height: auto;
-		  padding: 10px;
-		  font-size: 16px;
-          </style>
-          <body>
-<div >
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction() {
+  alert("Error en la contraseña y/o usuario");
+}
+</script>
+</head>
 
-echo 'Error la contraseña y/o usuario no son correctas';
+<body onload="myFunction()">
 
+</body>
 
-?>
-</div> 
- </body>
+</html>

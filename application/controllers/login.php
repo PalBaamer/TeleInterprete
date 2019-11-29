@@ -26,18 +26,16 @@ class Login extends CI_Controller {
 
 
 	if($mail == null || $pswd==null){
+		$this->load->library('javascript');
 		$this->load->view('estilo');
-				$this->load->view('login');
-				$this->load->view('campoNull');
-			}else{
+		$this->load->view('login');
+		$this->load->view('campoNull');
+	}else{
 				$this->load->model('usuario_modelo');
 		
 		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
-		var_dump($usuario);
-		die;
-			}
+		
 
- /*
 		if($usuario ==null){
 			$arrayData = array(
 				'error' => "El usuario no existe");
@@ -66,7 +64,7 @@ class Login extends CI_Controller {
 
 		}
 	}
-*/
+
 			}
 	
 }
