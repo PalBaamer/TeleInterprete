@@ -21,7 +21,7 @@ CREATE TABLE empresa (
 --
 
 CREATE TABLE categoria (
-  id_categoria int(11) AUTO_INCREMENT,
+  id_categoria int(3) AUTO_INCREMENT,
   nombre varchar(50),
    PRIMARY KEY (id_categoria)
 );
@@ -34,16 +34,28 @@ CREATE TABLE categoria (
 
 CREATE TABLE servicio (
   id_servicio int(3) AUTO_INCREMENT,
-  id_empresa int(3) default null,
-  nombre VARCHAR(40) NOT NULL,
-  id_categoria int(11),
-  centro VARCHAR(40) NOT NULL,
+  categoria String(50),
+  nombre varchar(50),
+  direccion VARCHAR(40) NOT NULL,
   PRIMARY KEY (id_servicio),
- CONSTRAINT FK_servicio_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa),
  CONSTRAINT FK_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
 
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empresa_tiene_servicios`
+--
+
+CREATE TABLE empresa_tiene_servicios (
+	id_empresa int(3),
+	id_servicio int(3),
+	PRIMARY KEY (id_empresa ,id_servicio),
+	CONSTRAINT FK_empresa_multi FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa),
+	CONSTRAINT FK_servicio_multi FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
+
+);
 -- --------------------------------------------------------
 
 --
@@ -65,6 +77,31 @@ CREATE TABLE interprete (
   nCC int(20) DEFAULT NULL,
   PRIMARY KEY (id_interprete)
 );
+
+-- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `disponibilidad`
+--
+CREATE TABLE disponibilidad (
+	id_disponibilidad int(2)AUTO_INCREMENT,
+	horario String(5),
+	dias_semana String(3),
+	PRIMARY KEY(id_disponibilidad)
+	
+);
+
+
+-- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `disponibilidad`
+--
+CREATE TABLE interprete_tiene_disponibilidad (
+	id_disponibilidad int(2),
+	id_interprete int(3),
+	PRIMARY KEY(id_disponibilidad, id_interprete)
+	
+);
+
 
 -- --------------------------------------------------------
 --
@@ -90,7 +127,7 @@ CREATE TABLE usuario (
 -- Estructura de tabla para la tabla `administrador`
 --
 
-CREATE TABLE citas (
+CREATE TABLE cita (
   id_citas int(10)AUTO_INCREMENT,
   id_usuario int(3),
   id_interprete int(3),
@@ -98,6 +135,7 @@ CREATE TABLE citas (
   dia DATE,
   hora_inicio TIME,
   hora_fin TIME DEFAULT '00:00:00',
+  total int(8)DEFAULT 0,
   PRIMARY KEY (id_citas),
   CONSTRAINT FK_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   CONSTRAINT FK_interprete FOREIGN KEY (id_interprete) REFERENCES interprete(id_interprete),
