@@ -6,7 +6,7 @@ function __construct(){
 }
 
 
-//mysql:host=localhost;dbname=teleinterprete
+/*mysql:host=localhost;dbname=teleinterprete
 function existe_email($email){
       $data = $this->db->query("select * from usuario ");
 
@@ -17,7 +17,7 @@ function existe_email($email){
       return 1;
    }
    return 0;
-}
+}*/
 
 function usuario_login($mail, $pswd){
    $data = $this->db->query('select * from usuario where email="'.$mail.'" and contrasena="'.$pswd .'"');

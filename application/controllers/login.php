@@ -11,24 +11,39 @@ class Login extends CI_Controller {
 		
 	}
 	public function validarUsuario(){
+	/*	$this->load->view('estilo');
 		$this->load->helper('cookie');
 		$this->load->helper('array');
 		$this->load->helper('url');
+		$this->load->view('login');*/
 		
-		$arrayData = array(
+		/*$arrayData = array(
 			'inputEmail' => $this->input->post('inputEmail'), 
 			'inputPassword'=>$this->input->post('inputPassword'));
+		*/
 			$mail = $this->input->post('inputEmail');
 			$pswd = $this->input->post('inputPassword');
-		$this->load->model('usuario_modelo');
+
 		
-		
+
+	if($mail == null || $pswd==null){
+		$this->load->view('estilo');
+				$this->load->view('login');
+				$this->load->view('campoNull');
+			}else{
+				$this->load->model('usuario_modelo');
 		
 		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
+		
+		
+			}
+ /*
 		if($usuario ==null){
 			$arrayData = array(
 				'error' => "El usuario no existe");
+			$this->load->view('estilo');
 			$this->load->view('login');
+			$this->load->view('errorLogin');
 			
 		}else{
 			$cookie = array(
@@ -51,5 +66,8 @@ class Login extends CI_Controller {
 
 		}
 	}
+*/
+			}
+	
 }
 ?>
