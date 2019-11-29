@@ -53,13 +53,13 @@ INSERT INTO provincias VALUES(08,'Barcelona');
 INSERT INTO provincias VALUES(09,'Burgos');
 
 
-INSERT INTO empresa VALUES(1,'312748X','Telefonica',null,28001,28,'Madrid','MJ',6987563241);
+INSERT INTO empresa VALUES(1,'312748X','Telefonica',null,28001,'Madrid',28,'MJ',6987563241);
 
-INSERT INTO empresa VALUES(2,'04417456P','CEACC',null,01026,15,'Galicia' ,'Pepe',6987563241);
+INSERT INTO empresa VALUES(2,'04417456P','CEACC',null,01026,'Galicia',15 ,'Pepe',6987563241);
 
-INSERT INTO empresa VALUES(3,'654783M','Ayto.Madrid',null,28001,28,'Madrid','Manuela',6987563241);
+INSERT INTO empresa VALUES(3,'654783M','Ayto.Madrid',null,28001,'Madrid',28,'Manuela',6987563241);
 
-INSERT INTO empresa VALUES(4,'66985120Q','Vithas',null,28056,28,'Madrid','Jesus',6987563241);
+INSERT INTO empresa VALUES(4,'66985120Q','Vithas',null,28056,'Madrid',28,'Jesus',6987563241);
 
 
 INSERT INTO categoria VALUES(1,'ATENCIÓN AL CLIENTE');

@@ -1,3 +1,15 @@
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `provincias`
+--
+
+CREATE TABLE provincias (
+  id_provincias int(11) NOT NULL AUTO_INCREMENT,
+  nombre varchar(50),
+   PRIMARY KEY (id_provincias)
+);
+
 
 -- Estructura de tabla para la tabla `empresa`
 --
@@ -6,13 +18,14 @@ CREATE TABLE empresa (
   id_empresa int(3) AUTO_INCREMENT,
   cif varchar(12)NOT NULL,
   nombre varchar(20) NOT NULL,
-  direccion varchar(40) NULL,
+  direccion varchar(100) NULL,
   cp int(5)NOT NULL,
-  provincia int(9)  NULL,
   ciudad varchar(30) NULL,
+  provincia int(9)  NULL,
   personal_contacto varchar(20) NOT NULL,
   telefono_contacto int(9) NOT NULL,
-  PRIMARY KEY (id_empresa)
+  PRIMARY KEY (id_empresa),
+  CONSTRAINT FK_provincias FOREIGN KEY (provincia) REFERENCES provincias(id_provincias)
 );
 
 -- --------------------------------------------------------
@@ -34,28 +47,16 @@ CREATE TABLE categoria (
 
 CREATE TABLE servicio (
   id_servicio int(3) AUTO_INCREMENT,
-  categoria String(50),
-  nombre varchar(50),
-  direccion VARCHAR(40) NOT NULL,
+  id_empresa int(3),
+  categoria int(3),
+  especialidad varchar(50),
+  centro VARCHAR(40) NOT NULL,
   PRIMARY KEY (id_servicio),
- CONSTRAINT FK_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
-);
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empresa_tiene_servicios`
---
-
-CREATE TABLE empresa_tiene_servicios (
-	id_empresa int(3),
-	id_servicio int(3),
-	PRIMARY KEY (id_empresa ,id_servicio),
-	CONSTRAINT FK_empresa_multi FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa),
-	CONSTRAINT FK_servicio_multi FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
+ CONSTRAINT FK_categoria FOREIGN KEY (categoria) REFERENCES categoria(id_categoria),
+ CONSTRAINT FK_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
 
 );
+--ALTER TABLE servicio ADD  CONSTRAINT FK_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa);
 -- --------------------------------------------------------
 
 --
@@ -68,7 +69,7 @@ CREATE TABLE interprete (
   apellido varchar(15)DEFAULT NULL,
   apellido2 varchar(15) DEFAULT NULL,
   dni varchar(9) NOT NULL,
-  direccion varchar(20)DEFAULT NULL,
+ direccion varchar(100)DEFAULT NULL,
   telefono varchar(9) DEFAULT NULL,
   email varchar(50) NOT NULL,
   contrasena varchar(20) NOT NULL,
@@ -93,18 +94,6 @@ CREATE TABLE disponibilidad (
 
 -- --------------------------------------------------------
 --
--- Estructura de tabla para la tabla `disponibilidad`
---
-CREATE TABLE interprete_tiene_disponibilidad (
-	id_disponibilidad int(2),
-	id_interprete int(3),
-	PRIMARY KEY(id_disponibilidad, id_interprete)
-	
-);
-
-
--- --------------------------------------------------------
---
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -114,7 +103,7 @@ CREATE TABLE usuario (
   apellido varchar(15)DEFAULT NULL,
   apellido2 varchar(15) DEFAULT NULL,
   dni varchar(9) NOT NULL,
-  direccion varchar(20)DEFAULT NULL,
+  direccion varchar(100)DEFAULT NULL,
   telefono varchar(9) DEFAULT NULL,
   email varchar(50) NOT NULL,
   contrasena varchar(20) NOT NULL,
@@ -142,14 +131,4 @@ CREATE TABLE cita (
   CONSTRAINT FK_servicio FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
   
 );
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `provincias`
---
-
-CREATE TABLE provincias (
-  id_provincias int(11) NOT NULL AUTO_INCREMENT,
-  nombre varchar(50),
-   PRIMARY KEY (id_provincias)
-);
