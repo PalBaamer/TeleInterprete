@@ -14,19 +14,25 @@ class LoginInterprete extends CI_Controller {
 		$this->load->helper('array');
 		$this->load->helper('url');
 		
-		$arrayData = array(
-			'inputEmail' => $this->input->post('inputEmail'), 
-			'inputPassword'=>$this->input->post('inputPassword'));
+		
 		$mail = $this->input->post('inputEmail');
 		$pswd = $this->input->post('inputPassword');
+
+
+
+
+		if($mail == null || $pswd==null){
+			$this->load->library('javascript');
+			$this->load->view('estilo');
+			$this->load->view('loginInterprete');
+			$this->load->view('campoNull');
+
+
+		}else{
 		$this->load->model('interprete_modelo');
-		
-		
 		
 		$interprete = $this->interprete_modelo->interprete_login($mail, $pswd);
 		if($interprete ==null){
-			$arrayData = array(
-				'error' => "El usuario no existe");
 			$this->load->view('estilo');
 			$this->load->view('loginInterprete');
 			$this->load->view('errorLogin');
@@ -52,15 +58,12 @@ class LoginInterprete extends CI_Controller {
 				$this->load->view('estilo');
 				$this->load->view('cabecera');
 				$this->load->view('menuInterprete',$interprete);
-				$this->load->controllers('menuInterprete',$interprete);
 				$this->load->helper('array');
 				$this->load->helper('url');
 
 			}
 
-			
-			
-
+		}
 		}
 	}
 }
