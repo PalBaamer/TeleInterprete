@@ -23,36 +23,53 @@ class Cita extends CI_Controller {
 
         $this->load->view('estilo');
         $this->load->view('cabecera');
-		$this->load->view('pedirCita' , $datos);
+        $this->load->view('pedirCita' , $datos);
+        
     }
-
 
 
     public function grabarCita(){
 
-        $categoria = $_POST['categoria'];
-        var_dump($categoria);
-        $servicio=$_POST['servicio'];
-        
-        $dia = $this->input->post('fecha');
-        $hora=$_POST['dia'];
+        $categoria = $this->input->post('categoria');
+        $centro = $this->input->post('centro');
+        $fecha = $this->input->post('fecha');
+        $hora = $this->input->post('hora');
+        $hora =$hora.":00:00";
+        $id=2;
+        var_dump($categoria." - ".$centro." - ".$hora." - ".$fecha);
 
         $listaInterpretes = array();
         $this->load->model('interprete_modelo');
-        $listaInterpretes = $this->interprete_modelo->interpretes_disponibles( $dia, $hora );
-        $datos['listaInterpretes'] = $listaInterpretes;
+        $listaInterpretes = $this->interprete_modelo->interpretes_disponibles($fecha , $hora);
+
+        if($listaInterpretes==null){
+            $arrayData = array(
+				'error' => "No hay interpretes disponibles");
+            $this->load->view('estilo');
+            $this->load->view('cabecera');
+            $this->load->view('menuUsuario', $arrayData);
+            
+
+
+
+        }else{
+            $data['interpretesDispo']=$listaInterpretes;
+            $this->load->view('estilo');
+            $this->load->view('cabecera');
+            $this->load->controllers->cita('insertCita', $data);
+        }
+
+
         
 
+    }
 
-        $arrayData = array(
-			'inputEmail' => $this->input->post('inputEmail'), 
-			'inputPassword'=>$this->input->post('inputPassword'));
-		$mail = $this->input->post('id_categoria');
-		$pswd = $this->input->post('id_servicio');
-
+    public function insertCita(){
         $this->load->view('estilo');
         $this->load->view('cabecera');
 		$this->load->view('menuUsuario');
+        $hora = $this->input->post('id_interprete');
+        var_dump($hora);die;
 
     }
 

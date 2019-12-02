@@ -11,16 +11,6 @@ class Login extends CI_Controller {
 		
 	}
 	public function validarUsuario(){
-	/*	$this->load->view('estilo');
-		$this->load->helper('cookie');
-		$this->load->helper('array');
-		$this->load->helper('url');
-		$this->load->view('login');*/
-		
-		/*$arrayData = array(
-			'inputEmail' => $this->input->post('inputEmail'), 
-			'inputPassword'=>$this->input->post('inputPassword'));
-		*/
 			$mail = $this->input->post('inputEmail');
 			$pswd = $this->input->post('inputPassword');
 
@@ -31,9 +21,10 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 		$this->load->view('campoNull');
 	}else{
-				$this->load->model('usuario_modelo');
-		
+		$this->load->model('usuario_modelo');
 		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
+		$datos['usuario'] = $usuario;
+
 		
 
 		if($usuario ==null){
@@ -52,9 +43,14 @@ class Login extends CI_Controller {
 				);
 				$this->input->set_cookie($cookie);
 			
+				$this->load->model('usuario_modelo');
+				$id=$usuario->id_usuario;
+				$historial= $this->usuario_modelo->hitorialCitas($id);
+				$datosHistorial['historial']=$historial;
+
 				$this->load->view('estilo');
-				$this->load->view('cabecera');
-				$this->load->view('menuUsuario');
+				$this->load->view('cabecera',$datos);
+				$this->load->view('menuUsuario',$datos,$datosHistorial);
 				$this->load->helper('array');
 				$this->load->helper('url');
 			

@@ -46,6 +46,33 @@
 		  border-top-left-radius: 0;
 		  border-top-right-radius: 0;
 		}
+		
+		.cabecera{
+  		display: grid;
+  		grid-template-columns: auto auto;
+  		grid-gap: 50px;
+  		background-color: #A5ABA5;
+  		padding: 10px;
+		}
+		.cabecera > div {
+  		background-color:white;
+  		text-align: center;
+  		padding: 20px 0;
+  		font-size: 18px;
+}
+
+		#historial{
+  		grid-row-start: 1;
+  		grid-row-end: 3;
+		margin-top: 2%; 
+		float: left;
+		 margin-left:57px; 
+		 width: 90%; 
+		 border: #E0E0E0 solid 1px; 
+		 height: 33%; 
+		background-color:#EEEEEE;}
+}
+		
 		</style>
 </head>
 <body>

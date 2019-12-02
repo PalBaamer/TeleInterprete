@@ -30,12 +30,12 @@ class LoginInterprete extends CI_Controller {
 
 		}else{
 		$this->load->model('interprete_modelo');
-		$interpreteI = array();
-		$interpreteI = $this->interprete_modelo->interprete_login($mail, $pswd);
-		$datos['interprete'] = $interpreteI;
+		$interprete = array();
+		$interprete = $this->interprete_modelo->interprete_login($mail, $pswd);
+		$datos['interprete'] = $interprete;
 
 
-		if($interpreteI ==null){
+		if($interprete ==null){
 			$this->load->view('estilo');
 			$this->load->view('loginInterprete');
 			$this->load->view('errorLogin');
@@ -50,17 +50,22 @@ class LoginInterprete extends CI_Controller {
 				);
 				$this->input->set_cookie($cookie);
 			
-			if($interpreteI->categoria==0){
+			if($interprete->categoria==0){
 				$this->load->view('estilo');
-				$this->load->view('cabecera');
-				$this->load->view('menuAdmin',$datos);
+				$this->load->view('cabecera',$datos);
+				$this->load->view('menuAdmin');
 				$this->load->helper('array');
 				$this->load->helper('url');
 
-			}else{			
+			}else{	
+				$this->load->model('interprete_modelo');
+				$id=$interprete->id_interprete;
+				$historial= $this->interprete_modelo->hitorialCitas($id);
+				$datosHistorial['historial']=$historial;
+
 				$this->load->view('estilo');
-				$this->load->view('cabecera');
-				$this->load->view('menuInterprete',$datos);
+				$this->load->view('cabecera',$datos);
+				$this->load->view('menuInterprete',$datos,$datosHistorial);
 				$this->load->helper('array');
 				$this->load->helper('url');
 

@@ -11,12 +11,13 @@ class MenuInterprete extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('helper');
 
-
+		
 
 	}
 
 
-	public function acceso(){
+
+	/*public function acceso(){
 
 	}
 
@@ -24,6 +25,6 @@ class MenuInterprete extends CI_Controller {
 	public function historial(){
 	
 
-	}
+	}*/
 }
 ?>

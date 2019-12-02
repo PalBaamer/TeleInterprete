@@ -40,14 +40,31 @@ function inserta_usuario($datos = array()){
 }
 
 function interpretes_disponibles($dia, $hora_inic){
-   $data = $this->db->query('select * from interprete where not in(select id_interprete from servicios where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'"');
-   echo 'select * from interprete where not in(select id_interprete from servicios where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'"';
+   $data = $this->db->query('SELECT * FROM interprete WHERE id_interprete NOT IN (SELECT id_interprete
+                        FROM cita where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'")');
    if ($data->num_rows() > 0){
-     var_dump($data);
-     die;
       return $data->result_array();
    }
    return null;
 }
+
+function hitorialCitas($id){
+   $data = $this->db->query('select distinct dia,hora_inicio,servicio.especialidad,servicio.centro,total from interprete,cita,servicio where cita.id_interprete =3 and cita.id_servicio= servicio.id_servicio');
+
+   if($data->num_rows()>0){
+      return $data->result_array();
+
+   }else{
+
+      return null;
+
+   }
+
+}
+
+
+
+
+
 }
 ?>

@@ -9,6 +9,7 @@
     <link href="navbar-top-fixed.css" rel="stylesheet">
 
 
+    <img class="mb-4" src="<?php echo base_url() ?>application/src/Comunicados.png" alt="" width="72" height="72">
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="<?php echo base_url()?>index.php/menuUsuario">Inicio</a>
@@ -26,3 +27,4 @@
         </ul>
       </div>
     </nav>
+    

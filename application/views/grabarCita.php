@@ -30,21 +30,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         
     <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita" method="POST">
-        <img class="mb-4" src="<?php echo base_url() ?>application/src/Comunicados.png" alt="" width="72" height="72">
-
- 
-    
-            <select >
+        
+        
                 <?php 
-                    foreach ($listaCategorias as $categoria => $valor) {
-                        echo '<option class="dropdown-item" value="'.$valor['id_categoria'].'">' . $valor['nombre'] . '</option>';
+                echo '<img src="..." class="card-img-top" alt="..." width= 50px>
+                <div class="card-body">';
+                    foreach ($interpretesDispo as $categoria => $valor) {
+                        echo '<h5 class="card-title">'.$valor['nombre'].'</h5> </br>
+                        <div class="card" style="width: 18rem;">
+                        <div id="interprete"><a href="<?php echo base_url()?>index.php/cita/insertCita"><button name="'.$valor['id_interprete'].'" class="btn btn-lg btn-success btn-block">Guardar cita</button></a></div>';
                     } 
+                    /*
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    
+  </div>
+*/
                 ?>
-            </select>
+        </div>
     
 
-       
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onchange="getval(this);>guardar cita</button>
+       <!-- onchange="getval(this);-->
+        
     </form>
 
 
