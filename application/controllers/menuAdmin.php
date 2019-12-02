@@ -26,7 +26,7 @@ class MenuAdmin extends CI_Controller {
          'nombre' =>$this->input->post('inputNombre'),
          'direccion' =>$this->input->post('inputDireccion'),
          'cp' =>$this->input->post('inputCP'),
-         'id_provincia' =>$this->input->post('inputProvincia'),
+         'provincia' =>$this->input->post('inputProvincia'),
          'ciudad' =>$this->input->post('inputCiudad'),
          'personal_contacto' =>$this->input->post('inputPersonal_contacto'),
          'telefono_contacto' =>$this->input->post('inputTelefono_contacto'));
