@@ -30,9 +30,12 @@ class LoginInterprete extends CI_Controller {
 
 		}else{
 		$this->load->model('interprete_modelo');
-		
-		$interprete = $this->interprete_modelo->interprete_login($mail, $pswd);
-		if($interprete ==null){
+		$interpreteI = array();
+		$interpreteI = $this->interprete_modelo->interprete_login($mail, $pswd);
+		$datos['interprete'] = $interpreteI;
+
+
+		if($interpreteI ==null){
 			$this->load->view('estilo');
 			$this->load->view('loginInterprete');
 			$this->load->view('errorLogin');
@@ -47,17 +50,17 @@ class LoginInterprete extends CI_Controller {
 				);
 				$this->input->set_cookie($cookie);
 			
-			if($interprete->categoria==0){
+			if($interpreteI->categoria==0){
 				$this->load->view('estilo');
 				$this->load->view('cabecera');
-				$this->load->view('menuAdmin', $interprete);
+				$this->load->view('menuAdmin',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
 
-			}else{				
+			}else{			
 				$this->load->view('estilo');
 				$this->load->view('cabecera');
-				$this->load->view('menuInterprete',$interprete);
+				$this->load->view('menuInterprete',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
 

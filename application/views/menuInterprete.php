@@ -25,12 +25,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </script>
   <body class="text-center">
+
   <?php
-  foreach ($interprete as $caracteres => $valor) {
-    echo '<h1>Bienvenido "'.$caracteres['nombre'].'"</h1>';
+  var_dump($datos);die;
+  foreach ($interpreteI as $interprete => $valor) {
+    echo '<h1>Bienvenid@ "'.$valor['dni'].'"</h1>';
   }
+    
   ?>
-    <a href="<?php echo base_url()?>index.php/cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Proximas citas</button></a>
-    <a href="<?php echo base_url()?>index.php/cita/urgencias"><button class="btn btn-lg btn-success btn-block">Historial</button></a>
+    <div>
+        <a href="<?php echo base_url()?>index.php/cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Mis citas</button></a>
+        <a href="<?php echo base_url()?>index.php/cita/urgencias"><button class="btn btn-lg btn-success btn-block">Llamar</button></a>
+    </div>
   </body>
 </html>
