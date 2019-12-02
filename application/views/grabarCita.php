@@ -29,7 +29,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body class="text-center">
 
         
-    <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita" method="POST">
+    <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita?datosInterpretes={$datos}" method="POST">
         
         
                 <?php 

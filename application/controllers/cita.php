@@ -57,6 +57,7 @@ class Cita extends CI_Controller {
             $this->load->view('estilo');
             $this->load->view('cabecera');
             $this->load->controllers->cita('insertCita', $data);
+            <?php  print_r(explode(',', $this->input->get("user_ids"));
         }
 
 
