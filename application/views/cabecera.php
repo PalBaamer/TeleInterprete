@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Mi perfil <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo base_url()?>index.php/miPerfil">Mi perfil <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>index.php/cerrarSesion">Cerrar Sesión</a>

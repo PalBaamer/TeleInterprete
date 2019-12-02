@@ -48,18 +48,16 @@ class LoginInterprete extends CI_Controller {
 				$this->load->helper('array');
 				$this->load->helper('url');
 
-			}else{				
+			}else{
+				//var_dump($interprete);		
+				$datos['interprete'] =$interprete;	
 				$this->load->view('estilo');
 				$this->load->view('cabecera');
-				$this->load->view('menuInterprete',$interprete);
-				$this->load->controllers('menuInterprete',$interprete);
+				$this->load->view('menuInterprete',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
 
 			}
-
-			
-			
 
 		}
 	}

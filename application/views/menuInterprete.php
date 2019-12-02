@@ -25,7 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </script>
   <body class="text-center">
-
+<?php
+var_dump($interprete->nombre);
+?>
     <a href="<?php echo base_url()?>index.php/cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Proximas citas</button></a>
     <a href="<?php echo base_url()?>index.php/cita/urgencias"><button class="btn btn-lg btn-success btn-block">Historial</button></a>
   </body>
