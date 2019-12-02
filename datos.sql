@@ -85,5 +85,8 @@ INSERT INTO interprete VALUES(1,'Paloma','Baameiro','Ruiz','05315823V','general 
 
 INSERT INTO interprete VALUES(2,'David','Monty','Python','03525668V','general romero',689456123,'david@gmail.com','interprete2',1,1,01234567891011234567);
 
+INSERT INTO interprete VALUES(3,'Milena','Cuba','Ruiz','31663180H','general romero',689456123,'milena@gmail.com','interprete3',1,1,01234567891011234567);
+
+
 INSERT INTO usuario VALUES(1,'Puri','Garcia','Ahumado','54786231G','Plaza Castilla3',64598712,'puri@gmail.com','usuario1');
 INSERT INTO usuario VALUES(2,'Esperanza','Petrov','Menendez','54786231G','Plaza Castilla3',64598712,'espe@gmail.com','usuario2');
