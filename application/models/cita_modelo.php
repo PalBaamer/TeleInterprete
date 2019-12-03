@@ -14,6 +14,20 @@ class Cita_modelo extends CI_Model {
        return null;
      }
 
-     
+     function insert ($data) {  
+
+      return $this->db->insert( 'cita' , $data );
+         }
+
+      function busca_empresa($id)
+         {
+             return $this->db->get_where('empresa', array('id_empresa' => $id))->row();
+         }
+
+
+         function borrar_empresa($id)
+         {
+             return $this->db->delete('empresa', array('id_empresa' => $id));
+         }
 }
 ?>

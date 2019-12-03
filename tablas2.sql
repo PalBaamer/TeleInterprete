@@ -82,14 +82,12 @@ CREATE TABLE interprete (
 -- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `disponibilidad`
---
-CREATE TABLE disponibilidad (
-	id_disponibilidad int(2)AUTO_INCREMENT,
-	horario String(5),
-	dias_semana String(3),
-	PRIMARY KEY(id_disponibilidad)
-	
-);
+
+--<CREATE TABLE disponibilidad (
+--	id_disponibilidad int(2)AUTO_INCREMENT,
+--	horario String(5),
+--	dias_semana String(3),
+--	PRIMARY KEY(id_disponibilidad));
 
 
 -- --------------------------------------------------------

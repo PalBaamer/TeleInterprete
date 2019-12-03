@@ -5,10 +5,6 @@ class Empresa_modelo extends CI_Model {
          $this->load->database();
       }
 
-public function __construct() {
-   parent::__construct();
-}
-
       //mysql:host=localhost;dbname=teleinterprete
       function mostrar_empresasDisponibles(){
             $data = $this->db->query("select * from empresa ");
@@ -48,7 +44,7 @@ public function __construct() {
 
 }
 
-
+/*
 public function calcHora($id_cita){
 
    $this->db->sql(update cita set total = ((hora_fin  - hora_inicio)/10000)*15 where $id_cita);
@@ -64,6 +60,6 @@ public function generarFactura($id_empresa,$fecha_inicio, $fecha_fin){
    }
    
 
-}
+}*/
 
 ?>

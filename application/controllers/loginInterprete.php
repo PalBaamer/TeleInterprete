@@ -52,7 +52,7 @@ class LoginInterprete extends CI_Controller {
 			
 			if($interprete->categoria==0){
 				$this->load->view('estilo');
-				$this->load->view('cabecera',$datos);
+				$this->load->view('cabecera');
 				$this->load->view('menuAdmin');
 				$this->load->helper('array');
 				$this->load->helper('url');
@@ -61,11 +61,11 @@ class LoginInterprete extends CI_Controller {
 				$this->load->model('interprete_modelo');
 				$id=$interprete->id_interprete;
 				$historial= $this->interprete_modelo->hitorialCitas($id);
-				$datosHistorial['historial']=$historial;
+				$datos['historial']=$historial;
 
 				$this->load->view('estilo');
-				$this->load->view('cabecera',$datos);
-				$this->load->view('menuInterprete',$datos,$datosHistorial);
+				$this->load->view('cabecera');
+				$this->load->view('menuInterprete',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
 

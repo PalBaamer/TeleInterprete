@@ -29,24 +29,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body class="text-center">
 
         
-    <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita?datosInterpretes={$datos}" method="POST">
+    <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/insertaCita" method="POST">
         
         
                 <?php 
-                echo '<img src="..." class="card-img-top" alt="..." width= 50px>
-                <div class="card-body">';
-                    foreach ($interpretesDispo as $categoria => $valor) {
-                        echo '<h5 class="card-title">'.$valor['nombre'].'</h5> </br>
-                        <div class="card" style="width: 18rem;">
-                        <div id="interprete"><a href="<?php echo base_url()?>index.php/cita/insertCita"><button name="'.$valor['id_interprete'].'" class="btn btn-lg btn-success btn-block">Guardar cita</button></a></div>';
-                    } 
+               // <input class="card-img-top" type="image" name="boton" src="../src/boton.jpg" align="middle">
+
+                //'<div class="card-body">';
+               // var_dump($interpretesDispo);die;
+                    foreach ($interpretesDispo as $nLinea =>$valor) {
+                       
+                        echo '<h5 class="card-title" >'.$valor['nombre'].'</h5> </br>
+                        <input type="hidden" name="id_interprete" value="'.$valor['id_interprete'].'">
+                        <div class="card" style="width: 18rem;"><input type="hidden"></input>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button> ';
+                    } die;
                     /*
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     
   </div>
 */
                 ?>
-        </div>
+                
     
 
        <!-- onchange="getval(this);-->

@@ -48,16 +48,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <th>No hay citas</th>
                 </tr>';
       }else{
+           if($historial==null){
+              echo '<tr>
+              <th>No hay citas</th>
+              </tr>';
+           }else{
 
-          foreach($historial as $Nlineas->$val){
+           
+          foreach($historial as $Nlineas){
                 echo '</br><tr>
                 
-                  <td>'.$Nlineas->$val['dia'].'  -  '.$Nlineas->$val['hora_inicio'].'</td>
-                  <td>'.$Nlineas->$val['centro'].'</td>
-                  <td>'.$Nlineas->$val['especialidad'].'</td>
-                  <td>'.$Nlineas->$val['total'].'</td>
+                  <td>'.$Nlineas['dia'].'  -  '.$Nlineas['hora_inicio'].'</td>
+                  <td>'.$Nlineas['centro'].'</td>
+                  <td>'.$Nlineas['especialidad'].'</td>
+                  <td>'.$Nlineas['total'].'</td>
                 </tr>';
           }
+        }
     }
         
         ?>

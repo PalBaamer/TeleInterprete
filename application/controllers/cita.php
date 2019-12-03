@@ -7,7 +7,10 @@ class Cita extends CI_Controller {
         $this->load->view('estilo');
         $this->load->view('cabecera');
 		$this->load->view('pidecita');
-	}
+    }
+    
+
+
 	public function pideCita(){
         $listaEmpresas = array();
 		$this->load->model('servicio_modelo');
@@ -24,23 +27,40 @@ class Cita extends CI_Controller {
         $this->load->view('estilo');
         $this->load->view('cabecera');
         $this->load->view('pedirCita' , $datos);
+
         
     }
 
+    /* 
+    --------
+    */
 
     public function grabarCita(){
+        $this->load->helper('cookie');
 
         $categoria = $this->input->post('categoria');
         $centro = $this->input->post('centro');
         $fecha = $this->input->post('fecha');
         $hora = $this->input->post('hora');
         $hora =$hora.":00:00";
-        $id=2;
-        var_dump($categoria." - ".$centro." - ".$hora." - ".$fecha);
+
+        $datosCita= array (
+            'id_usuario' =>0, 
+         'id_interprete' =>0,
+         'id_servicio' =>$this->input->post('categoria'),
+         'dia' =>$this->input->post('fecha'),
+         'hora_inicio' =>$hora,
+         'hora_fin' =>null,
+         'total' =>0);
 
         $listaInterpretes = array();
         $this->load->model('interprete_modelo');
         $listaInterpretes = $this->interprete_modelo->interpretes_disponibles($fecha , $hora);
+        
+        $datos['listaInterpretes'] = $listaInterpretes;
+        
+
+
 
         if($listaInterpretes==null){
             $arrayData = array(
@@ -48,29 +68,59 @@ class Cita extends CI_Controller {
             $this->load->view('estilo');
             $this->load->view('cabecera');
             $this->load->view('menuUsuario', $arrayData);
-            
-
 
 
         }else{
-            $data['interpretesDispo']=$listaInterpretes;
-            $this->load->view('estilo');
-            $this->load->view('cabecera');
-            $this->load->controllers->cita('insertCita', $data);
-            <?php  print_r(explode(',', $this->input->get("user_ids"));
+            $datos['interpretesDispo']=$listaInterpretes;
+    
+
+        
+            $cookie = array(
+                'name'   => 'datosCita',
+                'value'  => serialize($datosCita),                            
+                'expire' => '12000',                                                                                   
+                'secure' => FALSE
+                );
+                $this->input->set_cookie($cookie);
+              
+                $this->load->view('estilo');
+                $this->load->view('cabecera');
+                $this->load->view('grabarCita',$datos);
+
+               
+
         }
 
 
         
 
     }
+    
+    /*
+    -----INSERTA EN CITA LA CITA CON SUS DATOS CORRESPONDIENTES-----
+    
+    */
+    public function insertaCita(){
+        $this->load->helper('cookie');
 
-    public function insertCita(){
+        
+        $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
+        $datosCita = unserialize($this->input->cookie('datosCita', true));
+
+        $id_usuario=$sesionUsuario->id_usuario;
+        $datosCita['id_interprete']=$this->input->post('id_interprete');
+        $datosCita['id_usuario']=$id_usuario;
+
+        $this->load->model('cita_modelo');
+        $listaInterpretes = $this->cita_modelo->insert($datosCita);
+
+
+        $this->load->model('usuario_modelo');
+        $usuario = $this->usuario_modelo->busca_usuario($id_usuario);
+        
         $this->load->view('estilo');
         $this->load->view('cabecera');
-		$this->load->view('menuUsuario');
-        $hora = $this->input->post('id_interprete');
-        var_dump($hora);die;
+        $this->load->view('menuUsuario',$usuario);
 
     }
 

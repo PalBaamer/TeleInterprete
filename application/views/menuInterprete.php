@@ -49,15 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </tr>';
         }else{
 
-            foreach($historial as $Nlineas->$val){
-                  echo '</br><tr>
+            foreach($historial as $Nlineas ){
                   
-                    <td>'.$Nlineas->$val['dia'].'  -  '.$Nlineas->$val['hora_inicio'].'</td>
-                    <td>'.$Nlineas->$val['centro'].'</td>
-                    <td>'.$Nlineas->$val['especialidad'].'</td>
-                    <td>'.$Nlineas->$val['total'].'</td>
+              echo '</br><tr>
+                  
+                    <td>'.$Nlineas['dia'].'  -  '.$Nlineas['hora_inicio'].'</td>
+                    <td>'.$Nlineas['centro'].'</td>
+                    <td>'.$Nlineas['especialidad'].'</td>
+                    <td>'.$Nlineas['total'].'</td>
                   </tr>';
-            }
+                 
+                            }
       }
           
           ?>

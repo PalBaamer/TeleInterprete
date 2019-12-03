@@ -53,7 +53,7 @@ class Login extends CI_Controller {
 		
 		
 			}
- /*
+ 
 		if($usuario ==null){
 			$arrayData = array(
 				'error' => "El usuario no existe");
@@ -64,20 +64,20 @@ class Login extends CI_Controller {
 		}else{
 			$cookie = array(
 				'name'   => 'datosSesion',
-				'value'  =>0,                            
+				'value'  => serialize($usuario),                            
 				'expire' => '12000',                                                                                   
-				'secure' => TRUE
+				'secure' => FALSE
 				);
 				$this->input->set_cookie($cookie);
-			
+
 				$this->load->model('usuario_modelo');
 				$id=$usuario->id_usuario;
 				$historial= $this->usuario_modelo->hitorialCitas($id);
-				$datosHistorial['historial']=$historial;
+				$datos['historial']=$historial;
 
 				$this->load->view('estilo');
-				$this->load->view('cabecera',$datos);
-				$this->load->view('menuUsuario',$datos,$datosHistorial);
+				$this->load->view('cabecera');
+				$this->load->view('menuUsuario',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
 			
