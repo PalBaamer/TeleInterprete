@@ -29,7 +29,7 @@ function usuario_login($mail, $pswd){
   return null;
 }
 
-function inserta_usuario($datos = array()){
+/*function inserta_usuario($datos = array()){
    if(!$this->_required(array("email_usuario","clave"), $datos)){
       return FALSE;
    }
@@ -38,7 +38,7 @@ function inserta_usuario($datos = array()){
 
    $this->db->insert('usuario', $datos);
    return $this->db->insert_id();
-}
+}*/
 
 
 function hitorialCitas($id){
@@ -57,6 +57,7 @@ function hitorialCitas($id){
 function busca_usuario($id)
          {
              return $this->db->get_where('usuario', array('id_usuario' => $id))->row();
+             
          }
 
 

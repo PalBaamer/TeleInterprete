@@ -39,15 +39,15 @@ class Cita extends CI_Controller {
         $this->load->helper('cookie');
 
         $categoria = $this->input->post('categoria');
-        $centro = $this->input->post('centro');
+        $id_servicio = $this->input->post('centro');
         $fecha = $this->input->post('fecha');
         $hora = $this->input->post('hora');
         $hora =$hora.":00:00";
 
         $datosCita= array (
-            'id_usuario' =>0, 
+        'id_usuario' =>0, 
          'id_interprete' =>0,
-         'id_servicio' =>$this->input->post('categoria'),
+         'id_servicio' =>$this->input->post('centro'),
          'dia' =>$this->input->post('fecha'),
          'hora_inicio' =>$hora,
          'hora_fin' =>null,
@@ -114,13 +114,9 @@ class Cita extends CI_Controller {
         $this->load->model('cita_modelo');
         $listaInterpretes = $this->cita_modelo->insert($datosCita);
 
-
-        $this->load->model('usuario_modelo');
-        $usuario = $this->usuario_modelo->busca_usuario($id_usuario);
-        
         $this->load->view('estilo');
         $this->load->view('cabecera');
-        $this->load->view('menuUsuario',$usuario);
+        $this->load->view('menuUsuario',$sesionUsuario);
 
     }
 
