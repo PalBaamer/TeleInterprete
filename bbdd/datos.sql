@@ -87,23 +87,10 @@ INSERT INTO usuario VALUES(2,'Esperanza','Petrov','Menendez','54786231G','Plaza 
 
 INSERT INTO servicio VALUES(1,1,1,'Gran vía, 56','reclamacion');
 INSERT INTO servicio VALUES(2,3,4,'Hosp.12 Oct','oncologia');
-INSERT INTO servicio VALUES(3,3,'Gran vía, 56');
-INSERT INTO servicio VALUES(1,1,'Gran vía, 56');
-INSERT INTO servicio VALUES(1,1,'Gran vía, 56');
+
 
 INSERT INTO cita VALUES(1,1,3,1,"2018-11-21","19:00:00","21:00:00",2);
 INSERT INTO cita VALUES(2,2,3,1,"2018-11-22","11:00:00","15:00:00",4);
 
 
-
-select * from interprete, cita where cita.id_interprete  =interprete.id_interprete;
-select dia,hora_inicio,servicio.especialidad,total from interprete,cita,servicio where cita.id_interprete  =interprete.id_interprete and cita.id_servicio= servicio.id_servicio;
-select distinct dia,hora_inicio,servicio.especialidad,servicio.centro,total from interprete,cita,servicio where cita.id_interprete =3 and cita.id_servicio= servicio.id_servicio;
-SELECT *
-  FROM interprete
- WHERE id_interprete NOT IN (SELECT id_interprete
-                       FROM cita where dia="2018-11-21" and hora_inicio="19:00:00");
-
-select id_interprete from cita where dia="2018-11-21" and hora_inicio="19:00:00";
-select id_interprete from interprete where not exist(select id_interprete from cita where dia="2019-12-04" and hora_inicio="9:00:00");
 

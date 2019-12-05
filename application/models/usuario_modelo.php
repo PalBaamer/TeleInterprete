@@ -6,18 +6,14 @@ function __construct(){
 }
 
 
-/*mysql:host=localhost;dbname=teleinterprete
-function existe_email($email){
-      $data = $this->db->query("select * from usuario ");
-
-   $this->db->select('email');
-   $this->db->where('email', $email);
-   $query = $this->db->get('usuario');
-   if ($query->num_rows() > 0){
-      return 1;
+function listar_usuarios(){
+   $data = $this->db->query('SELECT * FROM usuario');
+   if ($data->num_rows() > 0){
+      return $data->result_array();
    }
-   return 0;
-}*/
+   return null;
+
+}
 
 function usuario_login($mail, $pswd){
    $data = $this->db->query('select * from usuario where email="'.$mail.'" and contrasena="'.$pswd .'"');

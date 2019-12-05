@@ -71,7 +71,51 @@
 		 border: #E0E0E0 solid 1px; 
 		 height: 33%; 
 		background-color:#EEEEEE;}
-}
+
+		#tablaAdmin{
+			width:100%;
+			
+		}
+
+		.custom-select{
+			background-color:#B0DFF7 ;
+
+		}
+		.table{
+			display: block;
+  			overflow-x: auto;
+		}		
+
+		.static {
+  			position: absolute;
+  			background-color: white;
+		}
+
+		.empresa{
+			margin: 50%;
+			padding:20px;
+			background-color:#B0DFF7 ;
+		}
+		.interprete{
+			background-color:#DAF7A6 ;
+		}
+		.usuario{
+			background-color:#F1F794 ;
+		}
+
+		.nombreDatos{
+			position: absolute;
+  			left: 100px;
+  			top: 80px;
+
+		}
+		.tablaVerEmpresa{
+			position: absolute;
+  			background-color: white;
+			left: 100px;
+  			top: 500px;
+		}
+
 		
 		</style>
 </head>

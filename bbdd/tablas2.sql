@@ -56,8 +56,6 @@ CREATE TABLE servicio (
  CONSTRAINT FK_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa)
 
 );
---ALTER TABLE servicio ADD  CONSTRAINT FK_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa);
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `interprete`
@@ -78,17 +76,6 @@ CREATE TABLE interprete (
   nCC int(20) DEFAULT NULL,
   PRIMARY KEY (id_interprete)
 );
-
--- --------------------------------------------------------
---
--- Estructura de tabla para la tabla `disponibilidad`
-
---<CREATE TABLE disponibilidad (
---	id_disponibilidad int(2)AUTO_INCREMENT,
---	horario String(5),
---	dias_semana String(3),
---	PRIMARY KEY(id_disponibilidad));
-
 
 -- --------------------------------------------------------
 --
@@ -129,4 +116,19 @@ CREATE TABLE cita (
   CONSTRAINT FK_servicio FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
   
 );
+
+--ALTER TABLE servicio ADD  CONSTRAINT FK_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(id_empresa);
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `disponibilidad`
+
+--<CREATE TABLE disponibilidad (
+--	id_disponibilidad int(2)AUTO_INCREMENT,
+--	horario String(5),
+--	dias_semana String(3),
+--	PRIMARY KEY(id_disponibilidad));
+
+
 

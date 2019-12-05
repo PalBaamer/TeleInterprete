@@ -117,6 +117,14 @@ class Cita extends CI_Controller {
         $this->load->view('estilo');
         $this->load->view('cabecera');
         $this->load->view('menuUsuario',$sesionUsuario);
+        
+        $cookie = array(
+            'name'   => 'datosSesion',
+            'value'  => serialize($sesionUsuario),                            
+            'expire' => '12000',                                                                                   
+            'secure' => FALSE
+            );
+            $this->input->set_cookie($cookie);
 
     }
 

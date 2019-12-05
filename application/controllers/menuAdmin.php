@@ -4,11 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MenuAdmin extends CI_Controller {
 
 	public function index(){
+        
         $this->load->view('estilo');
         $this->load->view('cabecera');
-		$this->load->view('menuAdmin');
 		$this->load->helper('array');
-		$this->load->helper('url');
+        $this->load->helper('url');
+		$this->load->view('menuAdmin');
     }
     
     
@@ -60,26 +61,26 @@ class MenuAdmin extends CI_Controller {
 }
 
     public function buscarEmpresa(){
-        $this->load->view('estilo');
-        $this->load->view('cabecera');
-		$this->load->helper('array');
-		$this->load->helper('url');
-        $this->load->view('menuAdmin');
-
-        $datos= array ( 'id_empresa'=>$this->input->post('empresa'));
+        $idEmpresa=$this->input->post('empresa');
+       
         $this->load->model('empresa_modelo');
-        $listaEmpresa= $this->empresa_modelo->busca_empresa($datos['id_empresa']);
-
-        if($listaEmpresa ==null){
-			$arrayData = array(
+        $datosEmpresa= $this->empresa_modelo->busca_empresa($idEmpresa);
+        
+        if($datosEmpresa ==null){
+			$errorArray = array(
 				'error' => "La empresa no existe");
 			$this->load->view('menuAdmin');
 			
 		}else{
+            $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
+
+            $datos['empresa']=$datosEmpresa;
+            //var_dump($datos);die;
+            //$datos['interprete']=$sesionUsuario;
             
             $this->load->view('estilo');
             $this->load->view('cabecera');
-            $this->load->view('verEmpresa');
+            $this->load->view('verEmpresa', $datos);
             $this->load->helper('array');
             $this->load->helper('url');
         }

@@ -32,7 +32,7 @@ class LoginInterprete extends CI_Controller {
 		$this->load->model('interprete_modelo');
 		$interprete = array();
 		$interprete = $this->interprete_modelo->interprete_login($mail, $pswd);
-		$datos['interprete'] = $interprete;
+		$datos['interpreteUsuario'] = $interprete;
 
 
 		if($interprete ==null){
@@ -42,20 +42,48 @@ class LoginInterprete extends CI_Controller {
 
 			
 		}else{
+			
 			$cookie = array(
 				'name'   => 'datosSesion',
-				'value'  =>0,                            
+				'value'  =>serialize($interprete),                            
 				'expire' => '12000',                                                                                   
 				'secure' => TRUE
 				);
 				$this->input->set_cookie($cookie);
-			
+				//var_dump($_COOKIE['datosSesion']);die;
 			if($interprete->categoria==0){
+				
+				$this->load->model('empresa_modelo');
+				$this->load->model('usuario_modelo');
+				$listaEmpresas = $this->empresa_modelo->mostrar_empresasDisponibles();
+				$listaInterpretes = $this->interprete_modelo->listar_interpretes();
+				$listaUsuarios = $this->usuario_modelo->listar_usuarios();
+				if($listaEmpresas==null ){
+					$listaEmpresas="No hay empresas";
+				
+					if($listaInterpretes==null){
+						$listaInterpretes="No hay interpretes";
+				
+						if($listaUsuarios==null){
+							$listaUsuarios="No hay usuarios";
+						}
+					}
+				}
+
+				
+					$datos['empresa']=$listaEmpresas;
+					$datos['interprete']=$listaInterpretes;
+					$datos['usuario']=$listaUsuarios;
+					$tipo['tipoUsuario']=0;
+
+				//var_dump($datos['empresa']);die;
+				$this->load->helper('cookie');
 				$this->load->view('estilo');
-				$this->load->view('cabecera');
-				$this->load->view('menuAdmin');
+				$this->load->view('cabecera', $tipo);
+				$this->load->view('menuAdmin',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
+				
 
 			}else{	
 				$this->load->model('interprete_modelo');

@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <meta name="author" content="">
   <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-  <title>Menu_Usuario</title>
+  <title>Teleinterprete</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
 
@@ -28,12 +28,54 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script>
 
 </script>
+<?php
+    //echo '<h1>Bienvenid@ "'.$interpreteUsuario->nombre.'"</h1>';
+      
+    //var_dump($empresa->id_empresa);die;
+  ?>
 
 <body class="text-center">
+
+<h1 class="nombreDatos"><?php echo $empresa->nombre ?></h1>
 <?php
-    foreach ($listaEmpresa as $empresa => $valor) {
-           echo $valor['id_empresa'] . '"<br>CIF:' . $valor['cif'] . '</br><br>Nombre , ' . $valor['nombre'] . '</br><br>';
-                    }
+    
+    echo '<table class="table table-bordered" id="tablaVerEmpresa"  >
+
+    <tr>
+            <th >CIF</th>
+            <td >'.$empresa->cif.'</td>
+            <th align="center">Servicios</th>
+    </tr>
+    <tr>
+        <th >DIRECCIÓN</th>
+            <td >'.$empresa->direccion.'</td>
+    </tr>
+    <tr>
+          <th >CP</th>
+            <td >'.$empresa->cp.'</td>
+    </tr>
+    <tr>
+          <th >CIUDAD</th>
+            <td >'.$empresa->direccion.'</td>
+    </tr>
+    <tr>
+          <th >PERSONA DE CONTACTO</th>
+            <td >'.$empresa->personal_contacto.'</td>
+    </tr>
+    <tr>
+          <th >PERSONA DE CONTACTO</th>
+            <td >'.$empresa->telefono_contacto.'</td>
+    </tr>
+
+    
+    '
+    
+    
+    
+    ;
+    
+    
+
 ?>
 
 

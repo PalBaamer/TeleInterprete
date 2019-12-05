@@ -27,7 +27,7 @@ function interprete_login($mail, $pswd){
    }
    return null;
 }
-
+/*
 function inserta_usuario($datos = array()){
    if(!$this->_required(array("email","clave"), $datos)){
       return FALSE;
@@ -37,6 +37,14 @@ function inserta_usuario($datos = array()){
 
    $this->db->insert('usuario', $datos);
    return $this->db->insert_id();
+}*/
+
+function listar_interpretes(){
+   $data = $this->db->query('SELECT * FROM interprete');
+   if ($data->num_rows() > 0){
+      return $data->result_array();
+   }
+   return null;
 }
 
 function interpretes_disponibles($dia, $hora_inic){

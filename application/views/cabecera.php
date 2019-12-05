@@ -9,12 +9,35 @@
     <link href="navbar-top-fixed.css" rel="stylesheet">
 
 
-    <img class="mb-4" src="<?php echo base_url() ?>application/src/Comunicados.png" alt="" width="72" height="72">
+    <img class="mb-4" src="application/src/Comunicados.png" alt="" width="72" height="72">
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="<?php echo base_url()?>index.php/menuUsuario">Inicio</a>
+    <?php
+    /*
+    $sesionUsuario = unserialize($_COOKIE['datosSesion']);
+      var_dump('hola'.$sesionUsuario);
+        
+      echo '<a class="navbar-brand" href="'.base_url().'index.php/menuAdmin">Inicio</a>';
+      die;
+       /* switch ($tipoUsuario){
+          case 0:
+          echo '<a class="navbar-brand" href="'.base_url().'index.php/menuAdmin">Inicio</a>';
+          break;
+        
+          case 1:
+          echo '<a class="navbar-brand" href="'.base_url().'index.php/menuInterprete">Inicio</a>';
+          break;
+
+          case 2:
+          echo '<a class="navbar-brand" href="'. base_url().'index.php/menuUsuario">Inicio</a>';
+          break;
+
+        }*/
+      ?>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <a class="navbar-brand" href="<?php echo base_url()?>index.php/menuAdmin">Inicio</a>'  
+      <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
