@@ -37,15 +37,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
     
   ?>
 
-<table class="table table-bordered" id="tablaAdmin" BORDER CELLPADDING=10 CELLSPACING=0 >
 
-    <tr class="static" scope="row">
+<table  id="tablaAdmin">
+
+    <tr>
             <th scope="col">Empresa</th>
             <th scope="col">Interprete</th>
             <th scope="col">Usuario</th>
     </tr>
-  </thead>
-  <tbody>
     <tr>
           <td class="empresa">Buscar empresa por nombre
                 <form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/buscarEmpresa" method="POST">
@@ -150,58 +149,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <td class="empresa"><a href ="#">Ver facturas</a></td>
             
     </tr>
-  </tbody>
 </table>
-<!-- 
-<form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/buscarEmpresa" method="POST">
-      <h1 class="h3 mb-3 font-weight-normal">Busca la empresa</h1>
-      <select class="custom-select" name='empresa'>
-                   /* <?php
-                    foreach ($datos as $empresa => $valor) {
-                        echo '<option class="dropdown-item" value="' . $valor['id_empresa'] . '">' . $valor['nombre'] . '</option>';
-                    }
-                    ?>*/
-      </select>
-
-
-
-      <button class="btn btn-lg btn-primary btn-block" type="submit" >buscar</button>
-     
-</form>
-
-
-<form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/menuAdmin/eliminar_empresa">
-      <img class="mb-4" src=/src/Comunicados.png" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">inserta la empresa </h1>
-      <label for="inputIDBorrar" class="sr-only">ID </label>
-      <input type="text" id="inputIDBorrar" class="form-control" name="inputIDBorrar" placeholder="ID"  >
-      
-      <button class="btn btn-lg btn-primary btn-block" type="submit" >eliminar</button>
-     
-    </form> -->
-
-
-<!-- 
-<form id="" class="form" action="<?php echo base_url() ?>index.php/cita/grabarCita" method="POST">
-<div class="dropdown-menu">
-  
-  <a class="dropdown-item" href="#">insertar</a>
-  <a class="dropdown-item" href="#">Something else here</a>
-</div>
-<div class="dropdown-menu">
-  <a class="dropdown-item" href="#">Action</a>
-  <a class="dropdown-item" href="#">Another action</a>
-  <a class="dropdown-item" href="#">Something else here</a>
-  <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">Separated link</a>
-</div>
-</form> -->
-<div class="dropdown-menu">
-  <span class="dropdown-item-text">Dropdown item text</span>
-  <a class="dropdown-item" href="#">Action</a>
-  <a class="dropdown-item" href="#">Another action</a>
-  <a class="dropdown-item" href="#">Something else here</a>
-</div>
-</body>
-
-</html>

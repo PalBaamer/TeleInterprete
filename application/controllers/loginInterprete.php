@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class LoginInterprete extends CI_Controller {
 
 	public function index(){
-		$this->load->view('estilo');
 		$this->load->view('loginInterprete');
 		
 	}
@@ -23,7 +22,6 @@ class LoginInterprete extends CI_Controller {
 
 		if($mail == null || $pswd==null){
 			$this->load->library('javascript');
-			$this->load->view('estilo');
 			$this->load->view('loginInterprete');
 			$this->load->view('campoNull');
 
@@ -36,7 +34,6 @@ class LoginInterprete extends CI_Controller {
 
 
 		if($interprete ==null){
-			$this->load->view('estilo');
 			$this->load->view('loginInterprete');
 			$this->load->view('errorLogin');
 
@@ -78,10 +75,10 @@ class LoginInterprete extends CI_Controller {
 
 				//var_dump($datos['empresa']);die;
 				$this->load->helper('cookie');
-				$this->load->view('estilo');
 				$this->load->view('cabecera', $tipo);
 				$this->load->view('menuAdmin',$datos);
 				$this->load->helper('array');
+				$this->load->helper('cookie_sesion_helper');
 				$this->load->helper('url');
 				
 
@@ -91,7 +88,6 @@ class LoginInterprete extends CI_Controller {
 				$historial= $this->interprete_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
 
-				$this->load->view('estilo');
 				$this->load->view('cabecera');
 				$this->load->view('menuInterprete',$datos);
 				$this->load->helper('array');

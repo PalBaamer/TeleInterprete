@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<style>html,
-		body {
-		  height: 100%;
+
+		html , body{
+
+			height: 100%;
 		}
-		
+
+
 		body {
+			height: 100%;
 		  display: -ms-flexbox;
 		  display: flex;
 		  -ms-flex-align: center;
@@ -16,8 +15,18 @@
 		  padding-bottom: 40px;
 		  background-color: #f5f5f5;
 		}
-		
-		.form-signin {
+/*-------------------------------LOGIN-----------------------------------*/	
+		.loginCampo{
+			width: 100%;
+			max-width: 330px;
+			padding: 15px;
+			margin-top: 20%;
+			margin-left: 25%;
+			text-align: center;
+
+		}
+
+.form-signin {
 		  width: 100%;
 		  max-width: 330px;
 		  padding: 15px;
@@ -52,7 +61,8 @@
   		grid-template-columns: auto auto;
   		grid-gap: 50px;
   		background-color: #A5ABA5;
-  		padding: 10px;
+		  padding: 10px;
+		  margin-bottom: 10%;
 		}
 		.cabecera > div {
   		background-color:white;
@@ -74,7 +84,8 @@
 
 		#tablaAdmin{
 			width:100%;
-			margin-top:15%;
+			margin-top:70%;
+			
 			
 		}
 
@@ -87,10 +98,6 @@
   			overflow-x: auto;
 		}		
 
-		.static {
-  			position: absolute;
-  			background-color: white;
-		}
 
 		.empresa{
 			margin: 50%;
@@ -110,19 +117,14 @@
   			top: 80px;
 
 		}
+
+		#verEmpresa{
+			margin-top:40%;
+
+		}
 		.tablaVerEmpresa{
 			position: absolute;
   			background-color: white;
 			left: 100px;
   			top: 500px;
 		}
-
-		
-		</style>
-</head>
-<body>
-
-<p></p>
-
-</body>
-</html>

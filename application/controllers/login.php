@@ -4,64 +4,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 
 	public function index(){
-		$this->load->view('estilo');
-		$this->load->view('login');
 		$this->load->helper('array');
 		$this->load->helper('url');
+		$this->load->view('login');
+		$this->load->view('pie');
 		
 	}
 	public function validarUsuario(){
+		$this->load->helper('cookie');
+
 			$mail = $this->input->post('inputEmail');
 			$pswd = $this->input->post('inputPassword');
 
 
 	if($mail == null || $pswd==null){
-		$this->load->library('javascript');
-		$this->load->view('estilo');
 		$this->load->view('login');
 		$this->load->view('campoNull');
+		$usuario=null;
+
 	}else{
 		$this->load->model('usuario_modelo');
 		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
-		$datos['usuario'] = $usuario;
-
 		
-
-	/*	$this->load->view('estilo');
-		$this->load->helper('cookie');
-		$this->load->helper('array');
-		$this->load->helper('url');
-		$this->load->view('login');*/
-		
-		/*$arrayData = array(
-			'inputEmail' => $this->input->post('inputEmail'), 
-			'inputPassword'=>$this->input->post('inputPassword'));
-		*/
-			$mail = $this->input->post('inputEmail');
-			$pswd = $this->input->post('inputPassword');
-
-		
-
-	if($mail == null || $pswd==null){
-		$this->load->view('estilo');
-				$this->load->view('login');
-				$this->load->view('campoNull');
-			}else{
-				$this->load->model('usuario_modelo');
-		
-		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
-		
-		
-			}
- 
 		if($usuario ==null){
-			$arrayData = array(
-				'error' => "El usuario no existe");
-			$this->load->view('estilo');
+
 			$this->load->view('login');
 			$this->load->view('errorLogin');
 			
 		}else{
+			$datos['usuario'] = $usuario;
+		
 			$cookie = array(
 				'name'   => 'datosSesion',
 				'value'  => serialize($usuario),                            
@@ -69,13 +41,12 @@ class Login extends CI_Controller {
 				'secure' => FALSE
 				);
 				$this->input->set_cookie($cookie);
-
+				
 				$this->load->model('usuario_modelo');
 				$id=$usuario->id_usuario;
 				$historial= $this->usuario_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
 
-				$this->load->view('estilo');
 				$this->load->view('cabecera');
 				$this->load->view('menuUsuario',$datos);
 				$this->load->helper('array');
@@ -87,7 +58,7 @@ class Login extends CI_Controller {
 
 		}
 	}
-			}
+}	
 	
 }
 ?>

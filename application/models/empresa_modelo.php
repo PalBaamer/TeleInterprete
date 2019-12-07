@@ -14,15 +14,6 @@ class Empresa_modelo extends CI_Model {
       return null;
       }
 
-      function usuario_login($email){
-         $this->db->where('email_usuario', $email);
-         //$this->db->where('clave', md5($clave));
-         $query = $this->db->get('usuario');
-         if ($query->num_rows() > 0){
-            return $query->row();
-         }
-         return 0;
-      }
 
 
       function insert_item ($data) {  
@@ -34,6 +25,19 @@ class Empresa_modelo extends CI_Model {
          {
              return $this->db->get_where('empresa', array('id_empresa' => $id))->row();
          }
+
+
+
+      function modificar_empresa($data , $id){
+
+
+         //var_dump($data['cif']);die;
+          $this->db->query('update empresa set cif="'.$data['cif'].'" , direccion="'.$data['direccion'].'", cp="'.$data['cp'].'",
+               provincia="'.$data['provincia'].'", ciudad="'.$data['ciudad'].'", personal_contacto="'.$data['personal_contacto'].'", telefono_contacto="'.$data['telefono_contacto'].'"  where  id_empresa="'.$id.'"');
+               
+               
+                    }
+
 
 
          function borrar_empresa($id)
@@ -59,6 +63,16 @@ public function generarFactura($id_empresa,$fecha_inicio, $fecha_fin){
       return "No hay servicios";
    }
    
+         function busca_empresa($id)
+         {
+             return $this->db->get_where('empresa', array('id_empresa' => $id))->row();
+         }
+
+
+         function borrar_empresa($id)
+         {
+             return $this->db->delete('empresa', array('id_empresa' => $id));
+         }
 
 }*/
 

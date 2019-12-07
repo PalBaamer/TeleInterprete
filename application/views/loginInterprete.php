@@ -10,14 +10,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-    <title>Login</title>
+    <title>Comunicados</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
 
     <!-- Bootstrap core CSS 
 	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+  <script src="<?php base_url()?>/js/funciones.js">
+  </script>
 
     <!-- Custom styles for this template -->
   </head>
@@ -41,7 +44,37 @@ function hideLogin() {
 }
 </script>
   <body class="text-center">
-  <div id="formUsuario"  class="form-signin d-block">
+  <header>
+    <!-- Custom styles for this template -->
+    <link href="<?php echo base_url('css/navbar-top-fixed.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/estilos.css') ?>" rel="stylesheet">
+
+
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+ 
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+          <a class="navbar-brand" href="<?php echo base_url()?>index.php/inicio">
+            <img class="mb-4" src="<?php echo base_url('img/Comunicados.png') ?>" alt="Icono de Inicio" width="72" height="72">
+          </a>  
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="<?php echo base_url()?>index.php/inicio">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+    <main role="main" class="container">
+    </header>
+
+<section class="loginCampo">
   <form id="" class="form-signin " method='POST' action="<?php echo base_url()?>index.php/loginInterprete/validarInterprete">
       <!--img class="mb-4" src=/src/Comunicados.png" alt="" width="72" height="72"-->
       <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
