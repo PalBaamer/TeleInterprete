@@ -57,7 +57,7 @@ CREATE TABLE servicio (
 
 );
 
---
+--ALTER TABLE `servicio` ADD `visible` TINYINT(1) NOT NULL DEFAULT '1' AFTER `centro`;
 -- Estructura de tabla para la tabla `interprete`
 --
 

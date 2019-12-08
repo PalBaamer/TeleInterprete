@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-<!doctype html>
+?><!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -25,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Custom styles for this template -->
   </head>
 <script>
+
 function hideLogin() {
   var usuario = document.getElementById("formUsuario");
   var interprete = document.getElementById("formInterprete");
@@ -43,7 +43,7 @@ function hideLogin() {
   }
 }
 </script>
-  <body class="text-center">
+<body >
   <header>
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('css/navbar-top-fixed.css') ?>" rel="stylesheet">
@@ -73,7 +73,6 @@ function hideLogin() {
     </nav>
     <main role="main" class="container">
     </header>
-
 <section class="loginCampo">
   <form id="" class="form-signin " method='POST' action="<?php echo base_url()?>index.php/loginInterprete/validarInterprete">
       <!--img class="mb-4" src=/src/Comunicados.png" alt="" width="72" height="72"-->

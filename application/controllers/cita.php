@@ -4,9 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Cita extends CI_Controller {
 
 	public function index(){
-        $this->load->view('estilo');
-        $this->load->view('cabecera');
-		$this->load->view('pidecita');
+        $datos['sesionUsuario']=-1;
+        $this->load->view('cabecera', $datos);
+        $this->load->view('pidecita');
+        $this->load->view('pie');
     }
     
 
@@ -22,13 +23,12 @@ class Cita extends CI_Controller {
 		$this->load->model('categoria_modelo');
         $listaCategorias= $this->categoria_modelo->listar_categoria();
         $datos['listaCategorias'] = $listaCategorias;
+        $datos['sesionUsuario']=-1;
 
-
-        $this->load->view('estilo');
-        $this->load->view('cabecera');
+        $this->load->view('cabecera', $datos);
         $this->load->view('pedirCita' , $datos);
-
         
+        $this->load->view('pie');        
     }
 
     /* 
@@ -57,24 +57,20 @@ class Cita extends CI_Controller {
         $this->load->model('interprete_modelo');
         $listaInterpretes = $this->interprete_modelo->interpretes_disponibles($fecha , $hora);
         
-        $datos['listaInterpretes'] = $listaInterpretes;
         
-
-
-
         if($listaInterpretes==null){
             $arrayData = array(
-				'error' => "No hay interpretes disponibles");
-            $this->load->view('estilo');
-            $this->load->view('cabecera');
+                'error' => "No hay interpretes disponibles");
+                
+                $datos['sesionUsuario']=-1;
+                $this->load->view('cabecera', $datos);
             $this->load->view('menuUsuario', $arrayData);
+            $this->load->view('pie');
 
 
         }else{
             $datos['interpretesDispo']=$listaInterpretes;
-    
 
-        
             $cookie = array(
                 'name'   => 'datosCita',
                 'value'  => serialize($datosCita),                            
@@ -82,11 +78,10 @@ class Cita extends CI_Controller {
                 'secure' => FALSE
                 );
                 $this->input->set_cookie($cookie);
-              
-                $this->load->view('estilo');
-                $this->load->view('cabecera');
+                $datos['sesionUsuario']=-1;
+                $this->load->view('cabecera', $datos);
                 $this->load->view('grabarCita',$datos);
-
+                $this->load->view('pie');
                
 
         }
@@ -113,10 +108,18 @@ class Cita extends CI_Controller {
 
         $this->load->model('cita_modelo');
         $listaInterpretes = $this->cita_modelo->insert($datosCita);
+        $this->load->model('usuario_modelo');
+        $id=$sesionUsuario->id_usuario;
+        $historial= $this->usuario_modelo->hitorialCitas($id);
+        $datos['usuario']=$sesionUsuario;
+        $datos['historial']=$historial;
+        
+        $datos['sesionUsuario']=-1;
 
-        $this->load->view('estilo');
-        $this->load->view('cabecera');
+        $this->load->view('cabecera', $datos);
         $this->load->view('menuUsuario',$sesionUsuario);
+        
+        $this->load->view('pie');
         
         $cookie = array(
             'name'   => 'datosSesion',
@@ -130,14 +133,17 @@ class Cita extends CI_Controller {
 
 
     public function urgencias(){
-        $this->load->view('estilo');
-        $this->load->view('cabecera');
+        $datos['sesionUsuario']=-1;
+
+        $this->load->view('cabecera', $datos);
 		$this->load->view('urgencias');
+        $this->load->view('pie');
     }
     public function misCitas(){
-        $this->load->view('estilo');
-        $this->load->view('cabecera');
+        $datos['sesionUsuario']=-1;
+        $this->load->view('cabecera', $datos);
 		$this->load->view('misCitas');
+        $this->load->view('pie');
 	}
 }
 ?>

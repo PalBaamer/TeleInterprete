@@ -21,7 +21,6 @@ class LoginInterprete extends CI_Controller {
 
 
 		if($mail == null || $pswd==null){
-			$this->load->library('javascript');
 			$this->load->view('loginInterprete');
 			$this->load->view('campoNull');
 
@@ -30,7 +29,6 @@ class LoginInterprete extends CI_Controller {
 		$this->load->model('interprete_modelo');
 		$interprete = array();
 		$interprete = $this->interprete_modelo->interprete_login($mail, $pswd);
-		$datos['interpreteUsuario'] = $interprete;
 
 
 		if($interprete ==null){
@@ -44,59 +42,63 @@ class LoginInterprete extends CI_Controller {
 				'name'   => 'datosSesion',
 				'value'  =>serialize($interprete),                            
 				'expire' => '12000',                                                                                   
-				'secure' => TRUE
+				'secure' => FALSE
 				);
+				
+				
 				$this->input->set_cookie($cookie);
+				$datos['sesionUsuario']=$interprete->categoria;
+				$datos['interpreteDatos']=$interprete;
+
 				//var_dump($_COOKIE['datosSesion']);die;
 			if($interprete->categoria==0){
-				
-				$this->load->model('empresa_modelo');
-				$this->load->model('usuario_modelo');
-				$listaEmpresas = $this->empresa_modelo->mostrar_empresasDisponibles();
-				$listaInterpretes = $this->interprete_modelo->listar_interpretes();
-				$listaUsuarios = $this->usuario_modelo->listar_usuarios();
-				if($listaEmpresas==null ){
-					$listaEmpresas="No hay empresas";
-				
-					if($listaInterpretes==null){
-						$listaInterpretes="No hay interpretes";
-				
-						if($listaUsuarios==null){
-							$listaUsuarios="No hay usuarios";
-						}
-					}
+//-------CARGAMOS DESDE AQUÍ LAS LISTAS DE EMPRESAS-INTERPRETE Y USUARIOS PARA LA VISTA DEL ADMIN
+					
+		$this->load->model('empresa_modelo');
+		$this->load->model('interprete_modelo');
+		$this->load->model('usuario_modelo');
+		$listaEmpresas= $this->empresa_modelo->listar_empresas();
+		$listaInterpretes= $this->interprete_modelo->listar_interpretes();
+		$listaUsuarios= $this->usuario_modelo->listar_usuarios();
+
+		if($listaEmpresas==null ){
+			$listaEmpresas="No hay empresas";
+		
+			if($listaInterpretes==null){
+				$listaInterpretes="No hay interpretes";
+		
+				if($listaUsuarios==null){
+					$listaUsuarios="No hay usuarios";
 				}
+			}
+		}else{
 
-				
-					$datos['empresa']=$listaEmpresas;
-					$datos['interprete']=$listaInterpretes;
-					$datos['usuario']=$listaUsuarios;
-					$tipo['tipoUsuario']=0;
+				$datos['empresa']=$listaEmpresas;
+				$datos['interprete']=$listaInterpretes;
+				$datos['usuario']=$listaUsuarios;
 
-				//var_dump($datos['empresa']);die;
 				$this->load->helper('cookie');
-				$this->load->view('cabecera', $tipo);
+				$this->load->view('cabecera', $datos);
 				$this->load->view('menuAdmin',$datos);
-				$this->load->helper('array');
-				$this->load->helper('cookie_sesion_helper');
-				$this->load->helper('url');
+				$this->load->view('pie');
 				
 
-			}else{	
+			}
+		}else{	
 				$this->load->model('interprete_modelo');
 				$id=$interprete->id_interprete;
 				$historial= $this->interprete_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
 
-				$this->load->view('cabecera');
+				$this->load->view('cabecera',$datos);
 				$this->load->view('menuInterprete',$datos);
-				$this->load->helper('array');
-				$this->load->helper('url');
+				$this->load->view('pie');
 
 			}
 
+			}
 		}
-		}
+	
 	}
 }
 ?>

@@ -46,16 +46,13 @@ class Login extends CI_Controller {
 				$id=$usuario->id_usuario;
 				$historial= $this->usuario_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
-
-				$this->load->view('cabecera');
+				$datos['sesionUsuario']=-1;
+				$this->load->view('cabecera',$datos);
 				$this->load->view('menuUsuario',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
-			
-
-			
-			
-
+				$this->load->view('pie');
+				
 		}
 	}
 }	

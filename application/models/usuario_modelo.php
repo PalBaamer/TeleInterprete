@@ -7,7 +7,7 @@ function __construct(){
 
 
 function listar_usuarios(){
-   $data = $this->db->query('SELECT * FROM usuario');
+   $data = $this->db->query('SELECT * FROM usuario where visible=1');
    if ($data->num_rows() > 0){
       return $data->result_array();
    }
@@ -50,12 +50,29 @@ function hitorialCitas($id){
    }
 }
 
-function busca_usuario($id)
-         {
+function busca_usuario($id){
+   
              return $this->db->get_where('usuario', array('id_usuario' => $id))->row();
              
          }
 
+
+function modificar_usuario($datos , $id){
+  return $this->db->query('update usuario set nombre="'.$datos['nombre'].'",apellido="'.$datos['apellido'].'",apellido2="'.$datos['apellido2'].'",dni="'.$datos['dni'].'",direccion="'.$datos['direccion'].'",provincia="'.$datos['provincia'].'",
+  telefono="'.$datos['telefono'].'",email="'.$datos['email'].'",urgencias="'.$datos['urgencias'].'",categoria="'.$datos['categoria'].'",nCC="'.$datos['nCC'].'" where id_interprete="'.$id.'"');
+}
+
+function insert_item ($data) {  
+
+  return $this->db->insert( 'usuario' , $data );
+     }
+
+
+function borrar_usuario($id){
+  return $this->db->query("update usuario set visible=0 where id_interprete=$id");
+  
+ //  return $this->db->delete('empresa', array('id_empresa' => $id));
+}
 
 }
 ?>

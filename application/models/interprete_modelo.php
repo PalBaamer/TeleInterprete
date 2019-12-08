@@ -40,7 +40,7 @@ function inserta_usuario($datos = array()){
 }*/
 
 function listar_interpretes(){
-   $data = $this->db->query('SELECT * FROM interprete');
+   $data = $this->db->query('SELECT * FROM interprete where visible = 1');
    if ($data->num_rows() > 0){
       return $data->result_array();
    }
@@ -70,9 +70,27 @@ function hitorialCitas($id){
 
 }
 
+function buscar_interprete($id){
+             return $this->db->get_where('interprete', array('id_interprete' => $id))->row();
+             
+         }
 
 
+function modificar_interprete($datos , $id){
+   return $this->db->query('update interprete set nombre="'.$datos['nombre'].'",apellido="'.$datos['apellido'].'",apellido2="'.$datos['apellido2'].'",dni="'.$datos['dni'].'",direccion="'.$datos['direccion'].'",provincia="'.$datos['provincia'].'",
+   telefono="'.$datos['telefono'].'",email="'.$datos['email'].'",urgencias="'.$datos['urgencias'].'",categoria="'.$datos['categoria'].'",nCC="'.$datos['nCC'].'" where id_interprete="'.$id.'"');
+}
+
+function insert_item ($data) {  
+
+   return $this->db->insert( 'interprete' , $data );
+      }
 
 
+function borrar_interprete($id){
+   return $this->db->query("update interprete set visible=0 where id_interprete=$id");
+   
+  //  return $this->db->delete('empresa', array('id_empresa' => $id));
+}
 }
 ?>

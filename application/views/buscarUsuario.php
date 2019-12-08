@@ -34,40 +34,44 @@ for (i = 0; i < x.length; i++) {
 <body class="text-center"  onload="onLoadBody()">
 <div id="verEmpresa">
 
-<h1 class="nombreDatos"><?php echo $empresa->nombre ?></h1>
+<h1 class="nombreDatos"><?php echo $usuario->nombre ?></h1>
 
 
 <button id="editarVisible" onclick="cambio();">Editar</button>
 
-<button class="btn btn-lg btn-danger"><a href="<?php echo base_url()?>index.php/menuAdmin/eliminar_empresa?id_empresa=<?= $empresa->id_empresa ?>" >Borrar Empresa</a></button>
-<form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/editarEmpresa" method="POST">          
+<button class="btn btn-lg btn-danger"><a href="<?php echo base_url()?>index.php/menuAdmin/eliminar_usuario?id_usuario=<?= $usuario->id_usuario ?>" >Borrar Usuario</a></button>
+
+<form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/modificarUsuario" method="POST">
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >
 
-    <input type="hidden" value="'.$empresa->id_empresa.'"  name="inputId_empresa">
+    <input type="hidden" value="'.$usuario->id_usuario.'"  name="inputId_usuario">
     <tr>
-            <th >CIF</th>
-            <td ><input class="editable" type="text" value="'.$empresa->cif.'" name="inputCif"></td>
-            <th align="center">Servicios</th>
+            <th >NOMBRE</th>
+            <td ><input class="editable" type="text" value="'.$usuario->nombre.'" name="inputNombre"></td>
     </tr>
     <tr>
-        <th >DIRECCIÓN</th>
-            <td ><input class="editable" type="text" value="'.$empresa->direccion.'" name="inputDireccion"></td>
+        <th >APELLIDO</th>
+            <td ><input class="editable" type="text" value="'.$usuario->apellido.'" name="inputApellido"></td>
     </tr>
     <tr>
-          <th >CP</th>
-            <td ><input class="editable" type="text" value="'.$empresa->cp.'" name="inputCP"></td>
+          <th >APELLIDO 2</th>
+            <td ><input class="editable" type="text" value="'.$usuario->apellido2.'" name="inputApellido2"></td>
     </tr>
     <tr>
-          <th >CIUDAD</th>
-            <td ><input class="editable" type="text" value="'.$empresa->ciudad.'" name="inputCiudad"></td>
+          <th >DNI</th>
+            <td ><input class="editable" type="text" value="'.$usuario->dni.'" name="inputDni"></td>
+    </tr>
+    <tr>
+          <th >DIRECCION</th>
+            <td ><input class="editable" type="text" value="'.$usuario->direccion.'" name="inputDireccion"></td>
     </tr>
     <tr>
           <th >PROVINCIA</th>
             <td ><select class="custom-select" name="inputProvincia">';
             
             foreach ($listaProvincia as $provincia => $valor) {
-              if( $valor['id_provincia']==$empresa->provincia){
+              if( $valor['id_provincia']==$usuario->provincia){
                 $selected='selected';
     
               }else{
@@ -80,13 +84,13 @@ for (i = 0; i < x.length; i++) {
 
     </tr>
     <tr>
-          <th >PERSONA DE CONTACTO</th>
-            <td ><input class="editable" type="text" value="'.$empresa->personal_contacto.'" name="inputPersonal_contacto"></td>
+          <th >TELÉFONO</th>
+            <td ><input class="editable" type="int" value="'.$usuario->telefono.'" name="inputTelefono"></td>
     </tr>
     <tr>
-          <th >PERSONA DE CONTACTO</th>
-            <td ><input class="editable" type="text" value="'.$empresa->telefono_contacto.'" name="inputTelefono_contacto"></td>
-    </tr>';
+          <th >EMAIL</th>
+            <td ><input class="editable" type="text" value="'.$usuario->email.'" name="inputEmail"></td>
+    </tr>'
     
 
 ?>

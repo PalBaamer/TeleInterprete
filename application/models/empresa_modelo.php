@@ -6,13 +6,14 @@ class Empresa_modelo extends CI_Model {
       }
 
       //mysql:host=localhost;dbname=teleinterprete
-      function mostrar_empresasDisponibles(){
-            $data = $this->db->query("select * from empresa ");
+      function listar_empresas(){
+            $data = $this->db->query("select * from empresa where visible=1");
             if ($data->num_rows() > 0){
          return $data->result_array();
       }
       return null;
       }
+
 
 
 
@@ -31,7 +32,7 @@ class Empresa_modelo extends CI_Model {
       function modificar_empresa($data , $id){
 
 
-         //var_dump($data['cif']);die;
+        // var_dump($data);die;
           $this->db->query('update empresa set cif="'.$data['cif'].'" , direccion="'.$data['direccion'].'", cp="'.$data['cp'].'",
                provincia="'.$data['provincia'].'", ciudad="'.$data['ciudad'].'", personal_contacto="'.$data['personal_contacto'].'", telefono_contacto="'.$data['telefono_contacto'].'"  where  id_empresa="'.$id.'"');
                
@@ -40,9 +41,10 @@ class Empresa_modelo extends CI_Model {
 
 
 
-         function borrar_empresa($id)
-         {
-             return $this->db->delete('empresa', array('id_empresa' => $id));
+         function borrar_empresa($id){
+            return $this->db->query("update empresa set visible=0 where id_empresa=$id");
+            
+           //  return $this->db->delete('empresa', array('id_empresa' => $id));
          }
 
 

@@ -13,5 +13,10 @@ class Servicio_modelo extends CI_Model {
        }
        return null;
      }
+
+     function borrar_servicioEmpresa($id_empresa){
+      return $this->db->query("update servicio set visible=0 where id_empresa=$id_empresa");
+
+     }
 }
 ?>
