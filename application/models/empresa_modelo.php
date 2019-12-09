@@ -14,7 +14,22 @@ class Empresa_modelo extends CI_Model {
       return null;
       }
 
+      function historial_citas_empresa(){
+         $data = $this->db->query("select cita.dia,cita.hora_inicio,servicio.centro,servicio.especialidad,cita.hora_fin, cita.total from servicio,cita where servicio.id_servicio=cita.id_servicio and servicio.id_empresa=1 and  hora_fin is not null");
+         if ($data->num_rows() > 0){
+            return $data->result_array();
+         }
+         return null;
+      }
 
+      function filtrar_citas_empresa($id, $fecha_inicio, $fecha_fin){
+         $data = $this->db->query("select cita.dia,cita.hora_inicio,servicio.centro,servicio.especialidad,cita.hora_fin, cita.total from servicio,cita where servicio.id_servicio=cita.id_servicio and servicio.id_empresa='".$id."' and  hora_fin is not null and cita.dia > '".$fecha_inicio."' and cita.dia < '".$fecha_fin."';
+         ");
+        if ($data->num_rows() > 0){
+            return $data->result_array();
+         }
+         return null;
+      }
 
 
       function insert_item ($data) {  

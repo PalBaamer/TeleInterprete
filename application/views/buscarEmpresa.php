@@ -32,9 +32,9 @@ for (i = 0; i < x.length; i++) {
 
 
 <body class="text-center"  onload="onLoadBody()">
+<section>
 <div id="verEmpresa">
 
-<h1 class="nombreDatos"><?php echo $empresa->nombre ?></h1>
 
 
 <button id="editarVisible" onclick="cambio();">Editar</button>
@@ -44,11 +44,14 @@ for (i = 0; i < x.length; i++) {
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >
 
+  
+      <h1 class="nombreDatos">'; echo $empresa->nombre ; echo ' </h1>
+      
     <input type="hidden" value="'.$empresa->id_empresa.'"  name="inputId_empresa">
     <tr>
             <th >CIF</th>
             <td ><input class="editable" type="text" value="'.$empresa->cif.'" name="inputCif"></td>
-            <th align="center">Servicios</th>
+          
     </tr>
     <tr>
         <th >DIRECCIÓN</th>
@@ -93,3 +96,47 @@ for (i = 0; i < x.length; i++) {
 <button class="btn btn-lg btn-primary btn-block" id="ocultar" type="submit" >Guardar Cambios</button>
 </form>
 </div>
+
+
+<div>
+
+<table class="table table-bordered" id="tablaVerEmpresa"  >
+
+    <tr><h1>SERVICIOS REALIZADOS</h1></tr>
+    
+    <tr>
+        <th> Desde</th>
+        <th> Hasta</th>
+        <form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/generarFactura" method="POST">
+        <input type="hidden" value="<?= $empresa->id_empresa ?>"  name="inputId_empresa">
+
+    <tr>
+        <th> <input type="date" name="fecha_inicio"></input></th>
+        <th> <input type="date" name="fecha_fin"></input></th>
+        <th><button class="btn btn-lg btn-primary btn-block" id="ocultar" type="submit" >Generar Factura</button></th>
+        </form>
+    <tr>
+            <th >Fecha</th>
+            <th >Hora de inicio</th>
+            <th >Servicio</th>
+            <th >Dirección</th>
+            <th >Total horas</th>
+          
+    </tr>
+    <tr><?php 
+              foreach($historial as $nLinea => $valor){
+                  echo '<tr><td>'.$valor['dia'].'</td>
+
+                        <td>'.$valor['hora_inicio'].'</td>
+                        <td>'.$valor['centro'].'</td>
+                        <td>'.$valor['especialidad'].'</td>
+                        <td>'.$valor['total'].'</td></tr>';
+
+              }
+            ?>
+    </tr>
+</div>
+
+
+</section>
+

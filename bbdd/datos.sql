@@ -78,19 +78,25 @@ INSERT INTO interprete VALUES(1,'Paloma','Baameiro','Ruiz','05315823V','general 
 
 INSERT INTO interprete VALUES(2,'David','Monty','Python','03525668V','general romero',689456123,'david@gmail.com','interprete2',1,1,01234567891011234567);
 
-INSERT INTO interprete VALUES(3,'Milena','Cuba','Ruiz','31663180H','general romero',689456123,'milena@gmail.com','interprete3',1,1,01234567891011234567);
+INSERT INTO interprete VALUES(3,'Milena','Cuba','Ruiz','31663180H','general romero',689456123,'milena@gmail.com','interprete3',1,1,01234567891011234567,1);
 
 
 INSERT INTO usuario VALUES(1,'Puri','Garcia','Ahumado','54786231G','Plaza Castilla3',64598712,'puri@gmail.com','usuario1');
 INSERT INTO usuario VALUES(2,'Esperanza','Petrov','Menendez','54786231G','Plaza Castilla3',64598712,'espe@gmail.com','usuario2');
+INSERT INTO usuario VALUES(4, 'Gema', 'Aranda', 'Cascón', '74658954Y', 'Antonio Nebrija, 6', 28, '658743204', 'gema@gmail.com', 'usuario4', 1);
 
 
-INSERT INTO servicio VALUES(1,1,1,'Gran vía, 56','reclamacion');
-INSERT INTO servicio VALUES(2,3,4,'Hosp.12 Oct','oncologia');
+INSERT INTO servicio VALUES(1,1,1,'reclamacion','Gran vía, 56',1);
+INSERT INTO servicio VALUES(2,3,4,'oncologia','Hosp.12 Oct',1);
+INSERT INTO servicio VALUES(3,1,2,'pago facturas','Gran vía, 56',1);
+INSERT INTO servicio VALUES(4,1,9,'exposición marte','Gran vía, 56',1);
 
 
 INSERT INTO cita VALUES(1,1,3,1,"2018-11-21","19:00:00","21:00:00",2);
 INSERT INTO cita VALUES(2,2,3,1,"2018-11-22","11:00:00","15:00:00",4);
 
+INSERT INTO cita VALUES(34,3,3,4,"2019-06-22","15:00:00","16:00:00",1);
+INSERT INTO cita VALUES(35,3,3,3,"2019-11-22","18:00:00","21:00:00",3);
 
+select cita.dia,cita.hora_inicio,servicio.centro,servicio.especialidad,cita.hora_fin from servicio,cita where servicio.id_servicio=cita.id_servicio and servicio.id_empresa=1 and  hora_fin is not null;
 

@@ -19,6 +19,6 @@ class Cita_modelo extends CI_Model {
       return $this->db->insert( 'cita' , $data );
          }
 
-
+      
 }
 ?>

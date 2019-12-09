@@ -58,10 +58,12 @@ class MenuAdmin extends CI_Controller {
        
         $this->load->model('empresa_modelo');
         $this->load->model('provincia_modelo');
-        $datosEmpresa= $this->empresa_modelo->buscar_interprete($idEmpresa);
+        $datosEmpresa= $this->empresa_modelo->busca_empresa($idEmpresa);
+        $historialEmpresa= $this->empresa_modelo->historial_citas_empresa($idEmpresa);
         $dataProvincia = $this->provincia_modelo->listar_provincia();
 
         $datos['listaProvincia']=$dataProvincia;
+        $datos['historial']=$historialEmpresa;
 
 
         if($datosEmpresa !=null){
@@ -95,7 +97,7 @@ class MenuAdmin extends CI_Controller {
             $id =$this->input->post('inputId_empresa');
             
         $this->load->model('empresa_modelo');
-        $listaEmpresa= $this->empresa_modelo->modificar_interprete($lista , $id);
+        $listaEmpresa= $this->empresa_modelo->modificar_empresa($lista , $id);
         $datos= $this->obtenerDatos();
         $this->load->view('cabecera', $datos);  
         $this->load->view('menuAdmin', $datos);
@@ -130,20 +132,33 @@ class MenuAdmin extends CI_Controller {
     }
 
 
+   
 
-//-------------------------GENERA LA FACTURA 
-    public function generar_factura(){
 
+    public function generarFactura(){
+        $this->load->helper('pdf_helper');
+
+
+         $datos= $this->obtenerDatos();
+        $id =$this->input->post('inputId_empresa');
+        $fecha_inicio =$this->input->post('fecha_inicio');
+        $fecha_fin =$this->input->post('fecha_fin');
+        $this->load->model('empresa_modelo');
+        $historialEmpresa = $this->empresa_modelo->filtrar_citas_empresa($id, $fecha_inicio, $fecha_fin);
+        $datosEmpresa = $this->empresa_modelo->busca_empresa($id);
+        $datos['empresa']=$datosEmpresa;
+       
+        $datos['historial']=$historialEmpresa;
         
-        $this->load->view('cabecera');
-        $this->load->view('generar_factura');
+        $this->load->view('cabecera',$datos);
+        $this->load->view('generarFactura',$datos);
         $this->load->view('pie');
     }
 
 
 
 
-//-------------------------ALTA INTERPRETE OPCIONES
+//------------------------------------------------------- INTERPRETE
     public function altaInterprete(){
         
         $this->load->model('provincia_modelo');
@@ -349,21 +364,23 @@ class MenuAdmin extends CI_Controller {
     }
 
 
-    public function editarUsuario(){
+    public function modificarUsuario(){
         $this->load->helper('cookie');
         $lista= array (
-            'cif' =>$this->input->post('inputCif'), 
+            'nombre' =>$this->input->post('inputNombre'), 
+            'apellido' =>$this->input->post('inputApellido'), 
+            'apellido2' =>$this->input->post('inputApellido2'),
+            'dni' =>$this->input->post('inputDni'), 
          'direccion' =>$this->input->post('inputDireccion'),
-         'cp' =>$this->input->post('inputCP'),
-         'ciudad' =>$this->input->post('inputCiudad'),
          'provincia' =>$this->input->post('inputProvincia'),
-         'personal_contacto' =>$this->input->post('inputPersonal_contacto'),
-         'telefono_contacto' =>$this->input->post('inputTelefono_contacto'));
+         'telefono' =>$this->input->post('inputTelefono'),
+         'email' =>$this->input->post('inputEmail')
+        );
 
-            $id =$this->input->post('inputId_empresa');
+            $id =$this->input->post('inputId_usuario');
             
-        $this->load->model('empresa_modelo');
-        $listaEmpresa= $this->empresa_modelo->modificar_interprete($lista , $id);
+        $this->load->model('usuario_modelo');
+        $listaUsuario= $this->usuario_modelo->modificar_usuario($lista , $id);
         $datos= $this->obtenerDatos();
         $this->load->view('cabecera', $datos);  
         $this->load->view('menuAdmin', $datos);
@@ -394,7 +411,7 @@ class MenuAdmin extends CI_Controller {
         $this->load->view('pie');
     }
 }
-
+//-----------------------OBTENER LOS DATOS QUE SIEMPRE SE VAN A PEDIR UNA VEZ VOLVAMOS A LA PANTALLA DE MENUADMIN
     private function obtenerDatos(){
         $this->load->helper('cookie');
         $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));

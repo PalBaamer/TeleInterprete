@@ -39,15 +39,18 @@
     <input type="password" class="form-control" name="inputContrasena" placeholder="Contrasena">
     
     <label for="inputUrgencias" class="sr-only">URGENCIAS </label>
-    <select class="custom-select" name="inputCategoria">';
-             <option class="dropdown-item" value="1" selected >SI</option>
-          <option class="dropdown-item" value="0" >NO</option>          
+    <select class="custom-select" name="inputCategoria">
+            
+            <option class="dropdown-item" selected >Quiere trabajar en urgencias</option>
+            <option class="dropdown-item" value="1"  >SI</option>
+            <option class="dropdown-item" value="0" >NO</option>          
         
     </select>
     
     <label for="Categoria" class="sr-only">CATEGORIA </label>
-    <select class="custom-select" name="inputCategoria">';
-             <option class="dropdown-item" value="1" selected >Interprete</option>
+    <select class="custom-select" name="inputCategoria">
+    <option class="dropdown-item" selected >Selecciona la categoria</option>
+             <option class="dropdown-item" value="1" >Interprete</option>
           <option class="dropdown-item" value="0" >Administrador</option>          
         
     </select>

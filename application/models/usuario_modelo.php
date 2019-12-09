@@ -50,8 +50,8 @@ function hitorialCitas($id){
    }
 }
 
-function busca_usuario($id){
-   
+function buscar_usuario($id){
+
              return $this->db->get_where('usuario', array('id_usuario' => $id))->row();
              
          }
@@ -59,7 +59,7 @@ function busca_usuario($id){
 
 function modificar_usuario($datos , $id){
   return $this->db->query('update usuario set nombre="'.$datos['nombre'].'",apellido="'.$datos['apellido'].'",apellido2="'.$datos['apellido2'].'",dni="'.$datos['dni'].'",direccion="'.$datos['direccion'].'",provincia="'.$datos['provincia'].'",
-  telefono="'.$datos['telefono'].'",email="'.$datos['email'].'",urgencias="'.$datos['urgencias'].'",categoria="'.$datos['categoria'].'",nCC="'.$datos['nCC'].'" where id_interprete="'.$id.'"');
+  telefono="'.$datos['telefono'].'",email="'.$datos['email'].'" where id_usuario="'.$id.'"');
 }
 
 function insert_item ($data) {  
@@ -69,7 +69,7 @@ function insert_item ($data) {
 
 
 function borrar_usuario($id){
-  return $this->db->query("update usuario set visible=0 where id_interprete=$id");
+  return $this->db->query("update usuario set visible=0 where id_usuario=$id");
   
  //  return $this->db->delete('empresa', array('id_empresa' => $id));
 }
