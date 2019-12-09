@@ -10,7 +10,30 @@ class MenuAdmin extends CI_Controller {
         $this->load->view('pie');
 }
     
+ 
+//-------------Registro Interprete-----------
+public function formularioInterprete(){
     
+    $this->load->model('provincia_modelo');
+    $dataProvincia = $this->provincia_modelo->listar_provincia();
+    $datos['listaProvincia']=$dataProvincia;
+    $datos['registroInterprete']=0;
+    $this->load->view('cabeceraBasica');
+    $this->load->view('altaInterprete',$datos);
+    $this->load->view('pie');
+}
+//-------------Registro Usuario-----------
+public function formularioUsuario(){
+    $this->load->model('provincia_modelo');
+    $dataProvincia = $this->provincia_modelo->listar_provincia();
+    $datos['listaProvincia']=$dataProvincia;
+    
+$datos['registroUsuario']=0;
+$this->load->view('cabeceraBasica');
+$this->load->view('altaUsuario',$datos);
+$this->load->view('pie');
+}
+
 //-------------INSERTAR EMPRESA-----------
 
 
@@ -360,6 +383,7 @@ $datos= $this->obtenerDatos();
         $this->load->model('provincia_modelo');
         $dataProvincia = $this->provincia_modelo->listar_provincia();
         $datos= $this->obtenerDatos();
+        $datos['registroInterprete']=1;
         $datos['listaProvincia']=$dataProvincia;
         $this->load->view('cabecera', $datos);
         $this->load->view('altaInterprete',$datos);
@@ -368,7 +392,6 @@ $datos= $this->obtenerDatos();
 
     public function insertarInterprete(){
 
-        $datos= $this->obtenerDatos();
         $lista= array (
             'nombre' =>$this->input->post('inputNombre'), 
             'apellido' =>$this->input->post('inputApellido'), 
@@ -383,7 +406,11 @@ $datos= $this->obtenerDatos();
          'categoria' =>$this->input->post('inputCategoria'),
          'nCC' =>$this->input->post('inputNCC')
         );
+        $registroInterprete=$this->input->post('registroInterprete');
 
+        if($registroInterprete==1){
+        
+            $datos= $this->obtenerDatos();
          $this->load->model('interprete_modelo');
          $listaEmpresas= $this->interprete_modelo->insert_item($lista);
          
@@ -396,6 +423,14 @@ $datos= $this->obtenerDatos();
             $this->load->view('pie');
 
         }
+    }else{
+        
+        $this->load->model('interprete_modelo');
+        $listaEmpresas= $this->interprete_modelo->insert_item($lista);
+        $this->load->view('cabeceraBasica');
+            $this->load->view('loginInterprete');
+            $this->load->view('pie');
+    }
     }
 
 
@@ -494,7 +529,7 @@ $datos= $this->obtenerDatos();
         $this->load->model('provincia_modelo');
         $dataProvincia = $this->provincia_modelo->listar_provincia();
         $datos= $this->obtenerDatos();
-
+        $datos['registroUsuario']=1;
         $datos['listaProvincia']=$dataProvincia;
         $this->load->view('cabecera', $datos);
         $this->load->view('altaUsuario',$datos);
@@ -503,7 +538,6 @@ $datos= $this->obtenerDatos();
 
     public function insertarUsuario(){
 
-        $datos= $this->obtenerDatos();
         $lista= array (
             'nombre' =>$this->input->post('inputNombre'), 
             'apellido' =>$this->input->post('inputApellido'), 
@@ -515,7 +549,11 @@ $datos= $this->obtenerDatos();
          'email' =>$this->input->post('inputEmail'),
          'contrasena'=>sha1($this->input->post('inputContrasena'))
         );
+        $registroUsuario=$this->input->post('registroUsuario');
+        
+        if($registroUsuario==1){
 
+        
          $this->load->model('usuario_modelo');
          $listaUsuario= $this->usuario_modelo->insert_item($lista);
          
@@ -528,6 +566,14 @@ $datos= $this->obtenerDatos();
             $this->load->view('pie');
 
         }
+    }else{
+        
+        $this->load->model('usuario_modelo');
+        $listaUsuario= $this->usuario_modelo->insert_item($lista);
+            $this->load->view('cabeceraBasica');
+            $this->load->view('login');
+            $this->load->view('pie');
+    }
     } 
 
     

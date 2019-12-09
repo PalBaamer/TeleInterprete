@@ -1,14 +1,49 @@
-
+<script src="<?php echo base_url('js/validaciones.js') ?>">
+  </script>
 <div id="formAlta"  class="form d-block">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
   <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/menuAdmin/insertarInterprete">
-     
-      <h1 class="h3 mb-3 font-weight-normal">Inserta el nuevo interprete</h1>
+
+  <input type="hidden" class="form-control" name="registroInterprete" value="<?php echo $registroInterprete ?>">
+ 
+      <h1 class="h3 mb-3 font-weight-normal">Inserta los datos del interprete</h1>
       
       <label for="inputNombre" class="sr-only">NOMBRE</label>
       <input type="text" class="form-control" name="inputNombre" placeholder="Nombre">
     
       <label for="inputApellido" class="sr-only">APELLIDO </label>
-    <input type="text" class="form-control" name="inputApellido" placeholder="Apellido">
+  <input type="text" class="form-control" name="inputApellido" placeholder="Apellido">
 
       <label for="inputApellido2" class="sr-only">APELLIDO2 </label>
     <input type="text" class="form-control" name="inputApellido2" placeholder="Apellido2">
@@ -31,7 +66,7 @@
             </select>
 
     <label for="inputTelefono" class="sr-only">TELÉFONO </label>
-    <input type="text" class="form-control" name="inputTelefono" placeholder="Telefono">
+    <input type="text" class="form-control" minlength="9" maxlength="9" name="inputTelefono" placeholder="Telefono">
     
     <label for="inputEmail" class="sr-only">EMAIL </label>
     <input type="email" class="form-control" name="inputEmail" placeholder="Email">
@@ -48,12 +83,19 @@
     </select>
     
     <label for="Categoria" class="sr-only">CATEGORIA </label>
-    <select class="custom-select" name="inputCategoria">
-    <option class="dropdown-item" selected >Selecciona la categoria</option>
-             <option class="dropdown-item" value="1" >Interprete</option>
-          <option class="dropdown-item" value="0" >Administrador</option>          
-        
-    </select>
+    <?php
+    if($registroInterprete==0){
+      echo ' <select class="custom-select" name="inputCategoria">
+      <option class="dropdown-item" value="1" selected >Interprete</option>';
+    }else{
+      echo '<select class="custom-select" name="inputCategoria">
+      <option class="dropdown-item" selected >Selecciona la categoria</option>
+               <option class="dropdown-item" value="1" >Interprete</option>
+            <option class="dropdown-item" value="0" >Administrador</option>          
+          
+      </select>';
+    } ?>
+    
 
    <label for="inputNCC" class="sr-only">Número cuenta bancaria </label>
     <input type="text" class="form-control" name="inputNCC" placeholder="Numero Cuenta Bancaria">

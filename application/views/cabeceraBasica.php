@@ -23,9 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="<?php base_url("/css/estilos.css")?>">
   
-    <link href="<?php echo base_url('css/estilos.css') ?>" rel="stylesheet">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
   </script>
   <script src="<?php base_url("/js/funciones.js")?>">
@@ -36,19 +35,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body class="text-center">
   <header>
+    <link href="<?php echo base_url('css/estilos.css') ?>" rel="stylesheet">
 
-    </header>
+    
 
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="<?php echo base_url()?>index.php/inicio">
             <img class="mb-4" src="<?php echo base_url('img/Comunicados.png') ?>" alt="Icono de Inicio" width="72" height="72">
-    </a> 
-          <a class="btn btn-primary" href="<?php echo base_url()?>index.php/login" role="button">Iniciar Sesion</a>
+          </a> 
+            <a class="nav-link" href="<?php echo base_url()?>index.php/login">Iniciar Sesion</a>
 
 
             <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REGISTRO</button>
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REGISTRO</button>
 			      	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			      		<a class="dropdown-item" href="<?php echo base_url('index.php/menuAdmin/formularioInterprete') ?>">Interprepete</a>
 		      			<a class="dropdown-item" href="<?php echo base_url('index.php/menuAdmin/formularioUsuario') ?>">Usuario</a>
@@ -56,30 +56,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
     </nav>
-    <section>      
-      <article>
-        <h2>CONTENIDO PRINCIPAL</h2>
-        <p>Este es el contenido principal de mi web</p>
-        <div>
-          <p>Aquí tenéis una imagen.</p>
-          <img src="http://dominio.com/imagen.jpg" alt="paisaje">          
-        </div>
-      </article>      
-    </section>
-    <aside>
-      <h3>Banner de publicidad</h3>
-      <a href="http://dominio-externo.com">
-        <img src="http://dominio.com/banner-publicidad.png" alt="banner de publicidad">
-      </a>
-      <h3>Testimonios</h3>
-      <p>Me gusta mucho esta página.</p>
-    </aside>
-    <footer>
-      <h4>Avisos legales</h4>
-      <a href="http://dominio.com/aviso-legal">Política de cookies</a>
-      <h4>Redes sociales</h4>
-      <a href="http://facebook.com/mi-pagina-de-facebook">Mi Facebook</a>
-    </footer>
-  </body>  
-</html>
-
+    </header>
