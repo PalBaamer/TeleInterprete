@@ -66,4 +66,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <td class="interprete"><button class="btn btn-lg btn-primary btn-block"><a href ="<?php echo base_url()?>index.php/menuAdmin/altaInterprete">Nuevo interprete</a></button></td>
           <td class="usuario"><button class="btn btn-lg btn-primary btn-block"><a href ="<?php echo base_url()?>index.php/menuAdmin/altaUsuario">Nuevo usuario</a></button></td>
     </tr>
+    <button class="btn btn-lg btn-primary btn-block"><a href ="<?php echo base_url()?>index.php/menuAdmin/hacerLlamada">hacerLlamada</a></button>
 </table>
+

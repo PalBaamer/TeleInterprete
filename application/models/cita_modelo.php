@@ -19,6 +19,18 @@ class Cita_modelo extends CI_Model {
       return $this->db->insert( 'cita' , $data );
          }
 
+
+         
+      function insertar_hora_fin($total, $id){
+         $this->db->query('update cita set hora_fin="'.date('Y-m-d').'" where id_citas='.$id.'');
+         $data = $this->db->query('update cita set total=total + '.$total.'  where id_citas='.$id.'');
+         if ($data){
+            return $data;
+         }
+         return null;
+
+
+      }
       
 }
 ?>

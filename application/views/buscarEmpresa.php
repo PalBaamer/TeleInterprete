@@ -107,7 +107,7 @@ for (i = 0; i < x.length; i++) {
     <tr>
         <th> Desde</th>
         <th> Hasta</th>
-        <form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/generarFactura" method="POST">
+        <form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/descargarFactura" method="POST" target= "_blank">
         <input type="hidden" value="<?= $empresa->id_empresa ?>"  name="inputId_empresa">
 
     <tr>

@@ -14,6 +14,7 @@ class MenuAdmin extends CI_Controller {
 //-------------INSERTAR EMPRESA-----------
 
 
+
 	public function alta_empresa(){
         $this->load->model('provincia_modelo');
         $dataProvincia = $this->provincia_modelo->listar_provincia();
@@ -104,6 +105,19 @@ class MenuAdmin extends CI_Controller {
         $this->load->view('pie');
     }
 
+    public function altaServicio(){
+            $id_empresa=$this->input->get('id_empresa');
+            $this->load->model('categoria_modelo');
+            $listaCategorias= $this->categoria_modelo->listar_categoria();
+
+            $datos['id_empresa']=$id_empresa;
+            $datos['listaCategorias']=$listaCategorias;
+        $datos= $this->obtenerDatos();
+        $this->load->view('cabecera', $datos);  
+        $this->load->view('altaServicios', $datos);
+        $this->load->view('pie');
+
+    }
 
 
     public function eliminar_empresa(){
@@ -136,14 +150,12 @@ class MenuAdmin extends CI_Controller {
 
 
     public function generarFactura(){
-        $this->load->helper('pdf_helper');
-
+        $this->load->model('empresa_modelo');
 
          $datos= $this->obtenerDatos();
         $id =$this->input->post('inputId_empresa');
         $fecha_inicio =$this->input->post('fecha_inicio');
         $fecha_fin =$this->input->post('fecha_fin');
-        $this->load->model('empresa_modelo');
         $historialEmpresa = $this->empresa_modelo->filtrar_citas_empresa($id, $fecha_inicio, $fecha_fin);
         $datosEmpresa = $this->empresa_modelo->busca_empresa($id);
         $datos['empresa']=$datosEmpresa;
@@ -151,9 +163,194 @@ class MenuAdmin extends CI_Controller {
         $datos['historial']=$historialEmpresa;
         
         $this->load->view('cabecera',$datos);
-        $this->load->view('generarFactura',$datos);
+        $this->load->view('generarFacturaEmpresa',$datos);
         $this->load->view('pie');
     }
+
+
+    public function descargarFactura(){
+        $this->load->model('empresa_modelo');
+        $this->load->library('pdf');
+
+        $datos= $this->obtenerDatos();
+        $id =$this->input->post('inputId_empresa');
+        $fecha_inicio =$this->input->post('fecha_inicio');
+        $fecha_fin =$this->input->post('fecha_fin');
+        //var_dump($this->input->post());die;
+      //  var_dump($id, $fecha_inicio, $fecha_fin);die;
+        $historialEmpresa = $this->empresa_modelo->filtrar_citas_empresa($id, $fecha_inicio, $fecha_fin);
+        $datosEmpresa = $this->empresa_modelo->busca_empresa($id);
+        $totalServicios=0;
+        foreach($historialEmpresa as $nLinea =>$valor){
+            $totalServicios = $valor['total'] + $totalServicios;
+
+        }
+        $totalServicios = $totalServicios * 35;
+        $totalIVA = $totalServicios * 0.21;
+        $totalFinal = $totalServicios + $totalIVA;
+
+       /// $html =$this->load->view('generarFacturaEmpresa',false,false);
+        $html = '<style>@page {
+            margin-top: 0.5cm;
+            margin-bottom: 0.5cm;
+            margin-left: 0.5cm;
+            margin-right: 0.5cm;
+        }
+        </style>
+    <body>
+    <table >
+    <tr>
+        <td><img class="mb-4" src="'.base_url("img/Comunicados.png" ).'" alt="Icono de Inicio" width="72" height="72"></td>
+        <td>Comunicados</td>
+        <td>28698456T</td>
+        <td>C\Antonio Nebrija,3</td>
+        <td>28013 Madrid Madrid</td>
+    </tr>
+    <tr>
+        <td></td>
+       <td>'.$datosEmpresa->nombre .'</td>
+       <td>'. $datosEmpresa->cif .'</td>
+       <td>'. $datosEmpresa->direccion .'</td>
+       <td>'. $datosEmpresa->cp."  ".$datosEmpresa->provincia."  ".$datosEmpresa->ciudad .'</td>
+    </tr>';
+
+    $html .= '<h1>SERVICIOS REALIZADOS</h1>';
+       $html .= '<tr>
+                <td >Fecha</td>
+                <td >Hora de inicio</td>
+                <td >Servicio</td>
+                <td >Direccion</td>
+                <td >Total horas</td>
+              
+        </tr>';
+     
+          //  var_dump($historialEmpresa);die;
+                  foreach($historialEmpresa as $nLinea =>$valor){
+                      $html .='<tr><td>'.$valor['dia'].'</td>
+    
+                            <td>'.$valor['hora_inicio'].'</td>
+                            <td>'.$valor['centro'].'</td>
+                            <td>'.$valor['especialidad'].'</td>
+                            <td>'.$valor['total'].'</td></tr>';
+    
+                  }
+                $html .= '<tr>
+                            <td >Total sin IVA</td>
+                            <td id="iva"></td>
+                            <td id="iva">'.$totalServicios.' €</td>
+                        </tr>
+                        <tr>
+                            <td >IVA</td>
+                            <td id="iva">21%</td>
+                            <td>'.$totalIVA.' €</td>
+                        </tr>
+                        <tr>
+                            <td >Total</td>
+                            <td id="iva"></td>
+                            <td id="iva">'.$totalFinal.' €</td>
+                        </tr>';
+
+        $html .='</table>';
+        $pdf= new pdf('P','cm','A4',true,'UTF-8',false);
+        $pdf->SetTitle('pdf');
+        $pdf->setHeaderMargin(15);
+        $pdf->setHeaderMargin(20);
+        $pdf->SetAuthor('PalomaBaameiro');
+
+        $pdf->AddPage('L',false,false);
+        //l = landscape P = portrait
+       // $html="<h1>hola</h1>";
+        $pdf->writeHTML($html);
+        $pdf->Output('pdf.pdf','I');
+        //I = enviar al navegador o F= guardar en el pc
+ 
+
+
+    }
+    public function generar(){
+
+		$data = [];
+
+		$hoy = date("my");
+
+        //load the view and saved it into $html variable
+        
+        // $html = $this->load->view('v_dpdf',$date,true);
+        $html =$this->input->post('fecha_inicio');
+        
+        /*
+        '<style>@page {
+			    margin-top: 0.5cm;
+			    margin-bottom: 0.5cm;
+			    margin-left: 0.5cm;
+			    margin-right: 0.5cm;
+			}
+			</style>
+        <body>
+        <table >
+        <tr>
+            <td><img class="mb-4" src="'.base_url("img/Comunicados.png" ).'" alt="Icono de Inicio" width="72" height="72"></td>
+            <td>Comunicados</td>
+            <td>28698456T</td>
+            <td>C\Antonio Nebrija,3</td>
+            <td>28013 Madrid Madrid</td>
+        </tr>
+        <tr>
+           <td>'.$datosEmpresa->nombre .'</td>
+           <td>'. $datosEmpresa->cif .'</td>
+           <td>'. $datosEmpresa->direccion .'</td>
+           <td>'. $datosEmpresa->cp."  ".$datosEmpresa->provincia."  ".$datosEmpresa->ciudad .'</td>
+        </tr>
+        </table>
+        
+        
+        <table class="table table-bordered" id="tablaVerEmpresa"  >
+        
+            <tr><h1>SERVICIOS REALIZADOS</h1></tr>
+            <tr>
+                    <th >Fecha</th>
+                    <th >Hora de inicio</th>
+                    <th >Servicio</th>
+                    <th >Dirección</th>
+                    <th >Total horas</th>
+                  
+            </tr>
+            <tr>';
+           
+                      foreach($historialEmpresa as $nLinea => $valor){
+                          $html .='<tr><td>'.$valor['dia'].'</td>
+        
+                                <td>'.$valor['hora_inicio'].'</td>
+                                <td>'.$valor['centro'].'</td>
+                                <td>'.$valor['especialidad'].'</td>
+                                <td>'.$valor['total'].'</td></tr>';
+        
+                      }
+                    $html .= '<th >IVA</th>
+                    <td id="iva">21%</td>
+            </tr>
+            </table>
+
+        </body>';*/
+
+        // $html = $this->load->view('v_dpdf',$date,true);
+ 		
+ 		//$html="asdf";
+        //this the the PDF filename that user will get to download
+        $pdfFilePath = $hoy.".pdf";
+ 
+        //load mPDF library
+        $this->load->library('M_pdf');
+        $mpdf = new mPDF('c', 'A4-L'); 
+ 		$mpdf->WriteHTML($html);
+		$mpdf->Output($pdfFilePath, "D");
+       // //generate the PDF from the given html
+        $this->m_pdf->pdf->WriteHTML($html);
+ 
+       //  //download it.
+         $this->m_pdf->pdf->Output($pdfFilePath, "D"); 
+	}
+    
 
 
 
