@@ -15,7 +15,7 @@ class LoginInterprete extends CI_Controller {
 		
 		
 		$mail = $this->input->post('inputEmail');
-		$pswd = $this->input->post('inputPassword');
+		$pswd = sha1($this->input->post('inputPassword'));
 
 
 

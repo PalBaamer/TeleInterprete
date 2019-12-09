@@ -39,7 +39,6 @@ for (i = 0; i < x.length; i++) {
 
 <button id="editarVisible" onclick="cambio();">Editar</button>
 
-<button class="btn btn-lg btn-danger"><a href="<?php echo base_url()?>index.php/menuAdmin/eliminar_empresa?id_empresa=<?= $empresa->id_empresa ?>" >Borrar Empresa</a></button>
 <form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/editarEmpresa" method="POST">          
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >
@@ -95,6 +94,22 @@ for (i = 0; i < x.length; i++) {
 ?>
 <button class="btn btn-lg btn-primary btn-block" id="ocultar" type="submit" >Guardar Cambios</button>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<button class="btn btn-lg btn-danger"><a href="<?php echo base_url("index.php/menuAdmin/eliminar_empresa?id_empresa=$empresa->id_empresa" )?>" >Borrar Empresa</a></button>
+<button class="btn btn-lg btn-danger"><a href="<?php echo base_url("index.php/menuAdmin/altaServicios?id_empresa=$empresa->id_empresa")?>" >Alta Servicios</a></button>
+
 </div>
 
 

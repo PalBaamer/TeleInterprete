@@ -105,18 +105,39 @@ class MenuAdmin extends CI_Controller {
         $this->load->view('pie');
     }
 
-    public function altaServicio(){
+    public function altaServicios(){
             $id_empresa=$this->input->get('id_empresa');
             $this->load->model('categoria_modelo');
             $listaCategorias= $this->categoria_modelo->listar_categoria();
 
+            $datos= $this->obtenerDatos();
             $datos['id_empresa']=$id_empresa;
             $datos['listaCategorias']=$listaCategorias;
-        $datos= $this->obtenerDatos();
+      
         $this->load->view('cabecera', $datos);  
         $this->load->view('altaServicios', $datos);
         $this->load->view('pie');
 
+    }
+
+    public function insertarServicio(){
+        
+$datos= $this->obtenerDatos();
+        $this->load->model('empresa_modelo');
+        $lista =array(
+        'id_empresa' => $this->input->post('inputId_empresa'),
+        'id_categoria' => $this->input->post('categoria'),
+        'especialidad' => $this->input->post('inputEspecialidad'),
+        'direccion'=> $this->input->post('inputDireccion')
+    
+    );
+    
+    $altaServicios= $this->empresa_modelo->insertar_servicios($lista);
+    
+    $this->load->view('cabecera', $datos);  
+    $this->load->view('menuAdmin', $datos);
+    $this->load->view('pie');
+        
     }
 
 
@@ -143,28 +164,6 @@ class MenuAdmin extends CI_Controller {
         $this->load->view('menuAdmin', $datos);
         $this->load->view('pie');
         }
-    }
-
-
-   
-
-
-    public function generarFactura(){
-        $this->load->model('empresa_modelo');
-
-         $datos= $this->obtenerDatos();
-        $id =$this->input->post('inputId_empresa');
-        $fecha_inicio =$this->input->post('fecha_inicio');
-        $fecha_fin =$this->input->post('fecha_fin');
-        $historialEmpresa = $this->empresa_modelo->filtrar_citas_empresa($id, $fecha_inicio, $fecha_fin);
-        $datosEmpresa = $this->empresa_modelo->busca_empresa($id);
-        $datos['empresa']=$datosEmpresa;
-       
-        $datos['historial']=$historialEmpresa;
-        
-        $this->load->view('cabecera',$datos);
-        $this->load->view('generarFacturaEmpresa',$datos);
-        $this->load->view('pie');
     }
 
 
@@ -379,7 +378,7 @@ class MenuAdmin extends CI_Controller {
          'provincia' =>$this->input->post('inputProvincia'),
          'telefono' =>$this->input->post('inputTelefono'),
          'email' =>$this->input->post('inputEmail'),
-         'contrasena'=>$this->input->post('inputContrasena'),
+         'contrasena'=> sha1($this->input->post('inputContrasena')),
          'urgencias' =>$this->input->post('inputUrgencias'),
          'categoria' =>$this->input->post('inputCategoria'),
          'nCC' =>$this->input->post('inputNCC')
@@ -514,7 +513,7 @@ class MenuAdmin extends CI_Controller {
          'provincia' =>$this->input->post('inputProvincia'),
          'telefono' =>$this->input->post('inputTelefono'),
          'email' =>$this->input->post('inputEmail'),
-         'contrasena'=>$this->input->post('inputContrasena')
+         'contrasena'=>sha1($this->input->post('inputContrasena'))
         );
 
          $this->load->model('usuario_modelo');

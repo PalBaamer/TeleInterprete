@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 		$this->load->helper('cookie');
 
 			$mail = $this->input->post('inputEmail');
-			$pswd = $this->input->post('inputPassword');
+			$pswd = sha1($this->input->post('inputPassword'));
 
 
 	if($mail == null || $pswd==null){

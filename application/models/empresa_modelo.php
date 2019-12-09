@@ -62,7 +62,9 @@ class Empresa_modelo extends CI_Model {
            //  return $this->db->delete('empresa', array('id_empresa' => $id));
          }
 
-
+         function insertar_servicios($lista){
+            return $this->db->query("insert into servicio (id_empresa, categoria, especialidad, centro) values(".$lista['id_empresa'].",".$lista['id_categoria'].",'".$lista['especialidad']."','".$lista['direccion']."')");
+         }
 }
 
 /*
