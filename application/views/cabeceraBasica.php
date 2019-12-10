@@ -44,14 +44,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <a class="navbar-brand" href="<?php echo base_url()?>index.php/inicio">
             <img class="mb-4" src="<?php echo base_url('img/Comunicados.png') ?>" alt="Icono de Inicio" width="72" height="72">
           </a> 
-            <a class="nav-link" href="<?php echo base_url()?>index.php/login">Iniciar Sesion</a>
+            <a class="nav-link" href="<?php echo base_url()?>index.php/Login">Iniciar Sesion</a>
 
 
             <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REGISTRO</button>
 			      	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			      		<a class="dropdown-item" href="<?php echo base_url('index.php/menuAdmin/formularioInterprete') ?>">Interprepete</a>
-		      			<a class="dropdown-item" href="<?php echo base_url('index.php/menuAdmin/formularioUsuario') ?>">Usuario</a>
+			      		<a class="dropdown-item" href="<?php echo base_url('index.php/MenuAdmin/formularioInterprete') ?>">Interprepete</a>
+		      			<a class="dropdown-item" href="<?php echo base_url('index.php/MenuAdmin/formularioUsuario') ?>">Usuario</a>
               </div>
             </div>
 

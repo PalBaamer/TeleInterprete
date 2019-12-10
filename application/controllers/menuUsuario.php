@@ -15,9 +15,9 @@ class MenuUsuario extends CI_Controller {
 			$datos['usuario']=$sesionUsuario;
 			$datos['historial']=$historial;
 			$datos['sesionUsuario']=-1;
-			$this->load->view('cabecera',$datos);
-			$this->load->view('menuUsuario',$datos);
-			$this->load->view('pie');
+			$this->load->view('Cabecera',$datos);
+			$this->load->view('MenuUsuario',$datos);
+			$this->load->view('Pie');
 
 	}
 	public function acceso(){

@@ -1,23 +1,7 @@
 
 
 
-function limpiar(){
-  var padre = document.getElementById("citas");
-  
-    document.body.style.backgroundImage="url('')";
-   
-  while(padre.firstChild){
-      padre.removeChild(padre.firstChild);
-  }
-}
-
-function uno(){
-	window.open("../vistas/registro.php","_self");
-}
-
-
-
-function cuatro(){
+function validarFormCompleto(){
 	
 	var email = document.b.email.value;
 	var contraseña = document.b.contraseña.value;
@@ -34,14 +18,14 @@ function cuatro(){
 			swal("Comprueba los datos", "Ningún campo se puede quedar vacío", "error");
 			return false;
 		}else{
-			var z = ValidarEmail(email); //alert(z);
-			var b = ValidarPass(contraseña); //alert(b);
-			var c = ValidarNombre(nombre); //alert(c);
-			var d = ValidarApellido(a1); //alert(d);
-			var e = ValidarApellido(a2); //alert(e);
-			var f = ValidarTelefono(telefono); //alert(f);
-			var g = ValidarDireccion(direccion); //alert(g);
-			var h = ValidarTarjeta(ncc); //alert(h);
+			var z = validarEmail(email); //alert(z);
+			var b = validarPass(contraseña); //alert(b);
+			var c = validarNombre(nombre); //alert(c);
+			var d = validarApellido(a1); //alert(d);
+			var e = validarApellido(a2); //alert(e);
+			var f = validarTelefono(telefono); //alert(f);
+			var g = validarDireccion(direccion); //alert(g);
+			var h = validarTarjeta(ncc); //alert(h);
 			
 			if(z==0 && b==0 && c==0 && d==0 && e==0 && f==0 && g==0 && h==0){
 				document.b.submit();
@@ -53,7 +37,7 @@ function cuatro(){
 }
 
 
-function ValidarEmail(email){
+function validarEmail(email){
 	//var email = document.a.email.value;
 	var valor=1;
 	var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
@@ -64,7 +48,8 @@ function ValidarEmail(email){
 	
 	return valor;
 }
-function nif(dni) {
+
+function validarDNI(dni) {
 	var numero
 	var letr
 	var letra
@@ -87,7 +72,9 @@ function nif(dni) {
 	   alert('Dni erroneo, formato no válido');
 	 }
   }
-function ValidarPass(pass){
+
+
+function validarContrasena(pass){
 	var valor=1;
 	var expresion = /^[A-Za-z0-9]{8,10}$/;
 	
@@ -98,19 +85,20 @@ function ValidarPass(pass){
 	return valor;
 }
 
-function ValidarNombre(variable){
+function validarNombre(variable){
 	var valor=1;
 	var expresion = /^[A-Za-zÁÉÍÓÚáéíóú]{3,20}$/;
-	var error="Ha de tener la primera en mayúsculas y mínimo 3 caracteres";
+	var error="No puede tener números";
 	if(variable.value.match(expresion) && campo.value!=''){
 		
 	}else{
 		alert(error);
 		campos.focus();
 }
+}
 
 /*
-function ValidarApellido(ap){
+function validarApellido(ap){
 	var valor=1;
 	var expresion = /^[A-Za-zÁÉÍÓÚáéíóú]{3,10}$/;
 	
@@ -121,7 +109,7 @@ function ValidarApellido(ap){
 	return valor;
 }*/
 
-function ValidarTelefono(tel){
+function validarTelefono(tel){
 	var valor=1;
 	var expresion = /^[0-9]{9}$/;
 	
@@ -132,9 +120,9 @@ function ValidarTelefono(tel){
 	return valor;
 }
 
-function ValidarDireccion(dir){
+function validarDireccion(dir){
 	var valor=1;
-	var expresion = /^[a-zA-Z0-9\s,.'-º]{3,}$/;
+	var expresion = /^[a-zA-Z0-9\s,]{3,}$/;
 	
 		if(expresion.test(dir)){
 			valor=0;
@@ -142,20 +130,7 @@ function ValidarDireccion(dir){
 	
 	return valor;
 }
-/*
-function ValidarTarjeta(ncc){
-	var valor=1;
-	var expresion= /^[0-9]{20}$/;
-	
-	if(expresion.test(ncc)){
-			valor=0;
-		}
-	
-	return valor;
-	
-}
-*/
-function fn_ValidateIBAN(IBAN) {
+function validarNCC(IBAN) {
 
     //Se pasa a Mayusculas
     IBAN = IBAN.toUpperCase();

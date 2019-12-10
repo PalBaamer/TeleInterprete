@@ -26,8 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
   <body class="text-center">
 
-    <a href="<?php echo base_url()?>index.php/cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Pide cita</button></a>
-    <a href="<?php echo base_url()?>index.php/cita/urgencias"><button class="btn btn-lg btn-danger btn-block">Urgencias</button></a>
-    <a href="<?php echo base_url()?>index.php/cita/misCitas"><button class="btn btn-lg btn-success btn-block">Mis citas</button></a>
+    <a href="<?php echo base_url()?>index.php/Cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Pide cita</button></a>
+    <a href="<?php echo base_url()?>index.php/Cita/urgencias"><button class="btn btn-lg btn-danger btn-block">Urgencias</button></a>
+    <a href="<?php echo base_url()?>index.php/Cita/misCitas"><button class="btn btn-lg btn-success btn-block">Mis citas</button></a>
   </body>
 </html>

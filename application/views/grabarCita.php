@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
         
-    <form id="" class="form" action="<?php echo base_url() ?>index.php/cita/insertaCita" method="POST">
+    <form id="" class="form" action="<?php echo base_url() ?>index.php/Cita/insertaCita" method="POST">
         
         
                 <?php 

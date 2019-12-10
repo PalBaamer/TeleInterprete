@@ -34,6 +34,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
   <body class="text-center">
 
-    <a href="<?php echo base_url()?>index.php/llamada/contador"><button class="btn btn-lg btn-success btn-block">Llamar</button></a>
+    <a href="<?php echo base_url()?>index.php/Llamada/contador"><button class="btn btn-lg btn-success btn-block">Llamar</button></a>
   </body>
 </html>

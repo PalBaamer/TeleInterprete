@@ -7,8 +7,7 @@ class CerrarSesion extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper('array');
 		$this->load->helper('url');
-		$this->load->view('estilo');
-		$this->load->view('login');
+		$this->load->view('Login');
 		delete_cookie('datosSesion');
 	}
 }

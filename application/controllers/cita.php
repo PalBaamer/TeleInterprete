@@ -64,7 +64,7 @@ class Cita extends CI_Controller {
                 
                 $datos['sesionUsuario']=-1;
                 $this->load->view('cabecera', $datos);
-            $this->load->view('menuUsuario', $arrayData);
+            $this->load->view('MenuUsuario', $arrayData);
             $this->load->view('pie');
 
 
@@ -117,7 +117,7 @@ class Cita extends CI_Controller {
         $datos['sesionUsuario']=-1;
 
         $this->load->view('cabecera', $datos);
-        $this->load->view('menuUsuario',$sesionUsuario);
+        $this->load->view('MenuUsuario',$sesionUsuario);
         
         $this->load->view('pie');
         

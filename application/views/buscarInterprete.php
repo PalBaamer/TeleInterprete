@@ -39,9 +39,9 @@ for (i = 0; i < x.length; i++) {
 
 <button id="editarVisible" onclick="cambio();">Editar</button>
 
-<button class="btn btn-lg btn-danger"><a href="<?php echo base_url()?>index.php/menuAdmin/eliminar_interprete?id_interprete=<?= $interprete->id_interprete ?>" >Borrar Interprete</a></button>
+<button class="btn btn-lg btn-danger"><a href="<?php echo base_url()?>index.php/MenuAdmin/eliminar_interprete?id_interprete=<?= $interprete->id_interprete ?>" >Borrar Interprete</a></button>
 
-<form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/modificarInterprete" method="POST">
+<form id="" class="form" action="<?php echo base_url() ?>index.php/MenuAdmin/modificarInterprete" method="POST">
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >
 

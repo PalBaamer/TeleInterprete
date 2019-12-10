@@ -74,22 +74,17 @@ function hideLogin() {
     <main role="main" class="container">
     </header>
 <section class="loginCampo">
-  <form id="" class="form-signin " method='POST' action="<?php echo base_url()?>index.php/loginInterprete/validarInterprete">
+  <form id="" class="form-signin " method='POST' action="<?php echo base_url()?>index.php/LoginInterprete/validarInterprete">
       <!--img class="mb-4" src=/src/Comunicados.png" alt="" width="72" height="72"-->
       <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
       <label for="inputEmail" class="sr-only">Email </label>
       <input type="email" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email"  >
       <label for="inputPassword" class="sr-only">Contraseña</label>
       <input type="password" id="inputPassword" class="form-control" name="inputPassword" placeholder="Contraseña" >
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recuerdame
-        </label>
-      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button>
      
     </form>
-    <a href="<?php echo base_url()?>index.php/login"><button class="btn btn-lg btn-primary btn-block">Soy Usuario</button></a>
+    <a href="<?php echo base_url()?>index.php/Login"><button class="btn btn-lg btn-primary btn-block">Soy Usuario</button></a>
 </div>
   </body>
 </html>

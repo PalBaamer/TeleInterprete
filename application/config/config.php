@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
-*/
+http://127.0.0.1/www/TeleInterprete/*/
 $config['base_url'] = 'http://127.0.0.1/www/TeleInterprete/';
 
 /*

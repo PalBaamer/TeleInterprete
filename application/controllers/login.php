@@ -6,8 +6,8 @@ class Login extends CI_Controller {
 	public function index(){
 		$this->load->helper('array');
 		$this->load->helper('url');
-		$this->load->view('login');
-		$this->load->view('pie');
+		$this->load->view('Login');
+		$this->load->view('Pie');
 		
 	}
 	public function validarUsuario(){
@@ -18,8 +18,8 @@ class Login extends CI_Controller {
 
 
 	if($mail == null || $pswd==null){
-		$this->load->view('login');
-		$this->load->view('campoNull');
+		$this->load->view('Login');
+		$this->load->view('CampoNull');
 		$usuario=null;
 
 	}else{
@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 		
 		if($usuario ==null){
 
-			$this->load->view('login');
+			$this->load->view('Login');
 			$this->load->view('errorLogin');
 			
 		}else{
@@ -47,11 +47,11 @@ class Login extends CI_Controller {
 				$historial= $this->usuario_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
 				$datos['sesionUsuario']=-1;
-				$this->load->view('cabecera',$datos);
-				$this->load->view('menuUsuario',$datos);
+				$this->load->view('Cabecera',$datos);
+				$this->load->view('MenuUsuario',$datos);
 				$this->load->helper('array');
 				$this->load->helper('url');
-				$this->load->view('pie');
+				$this->load->view('Pie');
 				
 		}
 	}

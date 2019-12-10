@@ -85,7 +85,7 @@
 <div class="crono_wrapper">
     <h2 id='crono'>00:00:00</h2>
     <input type="image" src="<?php echo base_url('img/llamar.png') ?>" width="72" height="72" value="Empezar" id="editarVisible" display="none" onclick="empezarDetener(this);">
-    <form class="form" action="<?php echo base_url() ?>index.php/menuInterprete/grabarMinutos " method="POST">
+    <form class="form" action="<?php echo base_url() ?>index.php/MenuInterprete/grabarMinutos " method="POST">
     <input type="hidden" value="<?php echo $nCita?>"  name="id_cita">
     <input type="text" value=""  id="tiempo" name="tiempo">
     <input type="image" src="<?php echo base_url('img/colgar.png') ?>" width="72" height="72" value="Detener"  id="ocultar"  display="block" onclick="empezarDetener(this);">
@@ -172,7 +172,7 @@ document.getElementById("editarVisible").style.display = "block";
 <div class="crono_wrapper">
     <h2 id='crono'>00:00:00</h2>
     <input type="image" src="<?php echo base_url('img/llamar.png') ?>" width="72" height="72" value="Empezar" id="editarVisible" display="none" onclick="empezarDetener(this);">
-    <form class="form" action="<?php echo base_url() ?>index.php/menuInterprete/grabarMinutos " method="POST">
+    <form class="form" action="<?php echo base_url() ?>index.php/MenuInterprete/grabarMinutos " method="POST">
     <input type="hidden" value="<?php echo $nCita?>"  name="id_cita">
     <input type="hidden" value="Empezar"  name="tiempo">
     <input type="image" src="<?php echo base_url('img/colgar.png') ?>" width="72" height="72" value="Detener"  id="ocultar"  display="block" onclick="empezarDetener(this);">

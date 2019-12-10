@@ -13,8 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   ?>
     <div class="cabecera">
 
-        <!--div id="historial"><a href="<--?php echo base_url()?>index.php/cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Mis citas</button></a><br /></div-->
-        <div id="llamada"><a href="<?php echo base_url()?>index.php/menuInterprete/llamada"><button class="btn btn-lg btn-success btn-block">Llamar</button></a></div>
+        <!--div id="historial"><a href="<--?php echo base_url()?>index.php/Cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Mis citas</button></a><br /></div-->
+        <div id="llamada"><a href="<?php echo base_url()?>index.php/MenuInterprete/llamada"><button class="btn btn-lg btn-success btn-block">Llamar</button></a></div>
         <div id="historial">Historial
         <table style="width:100%">
             <tr>
@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td>'.$Nlineas['total'].'</td>';
                     
                   if($Nlineas['dia'] > date('Y-m-d')){
-                    echo '<td><a href="'. base_url('index.php/menuInterprete/llamada?id_cita='.$Nlineas['id_citas'].'').'">llamar</a></td>';
+                    echo '<td><a href="'. base_url('index.php/MenuInterprete/llamada?id_cita='.$Nlineas['id_citas'].'').'">llamar</a></td>';
                   }
 
                   '</tr>';

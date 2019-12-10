@@ -47,15 +47,15 @@
     <?php
         switch ($sesionUsuario){
           case 0:
-          echo '<a class="navbar-brand" href="'.base_url().'index.php/menuAdmin">Inicio</a>';
+          echo '<a class="navbar-brand" href="'.base_url().'index.php/MenuAdmin">Inicio</a>';
           break;
         
           case 1:
-          echo '<a class="navbar-brand" href="'.base_url().'index.php/menuInterprete">Inicio</a>';
+          echo '<a class="navbar-brand" href="'.base_url().'index.php/MenuInterprete">Inicio</a>';
           break;
           case -1:
           default:
-          echo '<a class="navbar-brand" href="'. base_url().'index.php/menuUsuario">Inicio</a>';
+          echo '<a class="navbar-brand" href="'. base_url().'index.php/MenuUsuario">Inicio</a>';
           break;
 
         }
@@ -65,7 +65,7 @@
             <a class="nav-link" href="<?php echo base_url()?>index.php/miPerfil">Mi perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url()?>index.php/cerrarSesion">Cerrar Sesión</a>
+            <a class="nav-link" href="<?php echo base_url()?>index.php/CerrarSesion">Cerrar Sesión</a>
           </li>
         </ul>
       </div>

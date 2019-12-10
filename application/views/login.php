@@ -77,19 +77,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <section class="loginCampo">
  
-  <form class="form-signin " action="<?php echo base_url()?>index.php/login/validarUsuario" method="POST">
+  <form class="form-signin " action="<?php echo base_url()?>index.php/Login/validarUsuario" method="POST">
       <img class="mb-4" src="<?php echo base_url()?>application/src/Comunicados.png" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
       <label for="inputEmail" class="sr-only">Email </label>
       <input type="email" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email"  >
       <label for="inputPassword" class="sr-only">Contraseña</label>
       <input type="password" id="inputPassword" class="form-control" name="inputPassword" placeholder="Contraseña" >
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recuerdame
-        </label>
-      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" >Entrar</button>
     </form>
-    <a href="<?php echo base_url()?>index.php/loginInterprete"><button class="btn btn-lg btn-primary btn-block">Soy Interprete</button></a></div>
+    <a href="<?php echo base_url()?>index.php/LoginInterprete"><button class="btn btn-lg btn-primary btn-block">Soy Interprete</button></a></div>
     </section>

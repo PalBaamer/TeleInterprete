@@ -1,6 +1,6 @@
 
 <div id="formAlta"  class="form d-block">
-  <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/menuAdmin/insertarUsuario">
+  <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/MenuAdmin/insertarUsuario">
   <input type="hidden" class="form-control" name="registroUsuario" value="<?= $registroUsuario?>">
       <h1 class="h3 mb-3 font-weight-normal">Inserta el nuevo usuario</h1>
       

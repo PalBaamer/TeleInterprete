@@ -5,9 +5,9 @@ class MenuAdmin extends CI_Controller {
 
 	public function index(){
         $datos= $this->obtenerDatos();
-        $this->load->view('cabecera', $datos);
-        $this->load->view('menuAdmin',$datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('MenuAdmin',$datos);
+        $this->load->view('Pie');
 }
     
  
@@ -18,9 +18,9 @@ public function formularioInterprete(){
     $dataProvincia = $this->provincia_modelo->listar_provincia();
     $datos['listaProvincia']=$dataProvincia;
     $datos['registroInterprete']=0;
-    $this->load->view('cabeceraBasica');
-    $this->load->view('altaInterprete',$datos);
-    $this->load->view('pie');
+    $this->load->view('CabeceraBasica');
+    $this->load->view('AltaInterprete',$datos);
+    $this->load->view('Pie');
 }
 //-------------Registro Usuario-----------
 public function formularioUsuario(){
@@ -29,9 +29,9 @@ public function formularioUsuario(){
     $datos['listaProvincia']=$dataProvincia;
     
 $datos['registroUsuario']=0;
-$this->load->view('cabeceraBasica');
-$this->load->view('altaUsuario',$datos);
-$this->load->view('pie');
+$this->load->view('CabeceraBasica');
+$this->load->view('AltaUsuario',$datos);
+$this->load->view('Pie');
 }
 
 //-------------INSERTAR EMPRESA-----------
@@ -43,9 +43,9 @@ $this->load->view('pie');
         $dataProvincia = $this->provincia_modelo->listar_provincia();
         $datos= $this->obtenerDatos();
         $datos['listaProvincia']=$dataProvincia;
-        $this->load->view('cabecera', $datos);
-        $this->load->view('altaEmpresa',$datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('AltEmpresa',$datos);
+        $this->load->view('Pie');
     }
 
         public function insertarEmpresa(){
@@ -67,9 +67,9 @@ $this->load->view('pie');
          $datos= $this->obtenerDatos();
         if($listaEmpresas!=null){
           
-            $this->load->view('cabecera', $datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
 
         }
     }
@@ -92,15 +92,15 @@ $this->load->view('pie');
 
         if($datosEmpresa !=null){
             $datos['empresa']=$datosEmpresa;
-            $this->load->view('cabecera', $datos);
-            $this->load->view('buscarEmpresa',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('BuscarEmpresa',$datos);
+            $this->load->view('Pie');
 			
 		}else{           
             
-            $this->load->view('cabecera', $datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
         }
     }
 
@@ -123,9 +123,9 @@ $this->load->view('pie');
         $this->load->model('empresa_modelo');
         $listaEmpresa= $this->empresa_modelo->modificar_empresa($lista , $id);
         $datos= $this->obtenerDatos();
-        $this->load->view('cabecera', $datos);  
-        $this->load->view('menuAdmin', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);  
+        $this->load->view('MenuAdmin', $datos);
+        $this->load->view('Pie');
     }
 
     public function altaServicios(){
@@ -137,9 +137,9 @@ $this->load->view('pie');
             $datos['id_empresa']=$id_empresa;
             $datos['listaCategorias']=$listaCategorias;
       
-        $this->load->view('cabecera', $datos);  
-        $this->load->view('altaServicios', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);  
+        $this->load->view('AltServicios', $datos);
+        $this->load->view('Pie');
 
     }
 
@@ -157,9 +157,9 @@ $datos= $this->obtenerDatos();
     
     $altaServicios= $this->empresa_modelo->insertar_servicios($lista);
     
-    $this->load->view('cabecera', $datos);  
-    $this->load->view('menuAdmin', $datos);
-    $this->load->view('pie');
+    $this->load->view('Cabecera', $datos);  
+    $this->load->view('MenuAdmin', $datos);
+    $this->load->view('Pie');
         
     }
 
@@ -177,15 +177,15 @@ $datos= $this->obtenerDatos();
         $datos= $this->obtenerDatos();
         if($listaEmpresa ==true){
                 
-            $this->load->view('cabecera',$datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera',$datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
 			
 		}else{
             //false no se realiza la accion
-        $this->load->view('cabecera', $datos);
-        $this->load->view('menuAdmin', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('MenuAdmin', $datos);
+        $this->load->view('Pie');
         }
     }
 
@@ -289,91 +289,6 @@ $datos= $this->obtenerDatos();
 
 
     }
-    public function generar(){
-
-		$data = [];
-
-		$hoy = date("my");
-
-        //load the view and saved it into $html variable
-        
-        // $html = $this->load->view('v_dpdf',$date,true);
-        $html =$this->input->post('fecha_inicio');
-        
-        /*
-        '<style>@page {
-			    margin-top: 0.5cm;
-			    margin-bottom: 0.5cm;
-			    margin-left: 0.5cm;
-			    margin-right: 0.5cm;
-			}
-			</style>
-        <body>
-        <table >
-        <tr>
-            <td><img class="mb-4" src="'.base_url("img/Comunicados.png" ).'" alt="Icono de Inicio" width="72" height="72"></td>
-            <td>Comunicados</td>
-            <td>28698456T</td>
-            <td>C\Antonio Nebrija,3</td>
-            <td>28013 Madrid Madrid</td>
-        </tr>
-        <tr>
-           <td>'.$datosEmpresa->nombre .'</td>
-           <td>'. $datosEmpresa->cif .'</td>
-           <td>'. $datosEmpresa->direccion .'</td>
-           <td>'. $datosEmpresa->cp."  ".$datosEmpresa->provincia."  ".$datosEmpresa->ciudad .'</td>
-        </tr>
-        </table>
-        
-        
-        <table class="table table-bordered" id="tablaVerEmpresa"  >
-        
-            <tr><h1>SERVICIOS REALIZADOS</h1></tr>
-            <tr>
-                    <th >Fecha</th>
-                    <th >Hora de inicio</th>
-                    <th >Servicio</th>
-                    <th >Dirección</th>
-                    <th >Total horas</th>
-                  
-            </tr>
-            <tr>';
-           
-                      foreach($historialEmpresa as $nLinea => $valor){
-                          $html .='<tr><td>'.$valor['dia'].'</td>
-        
-                                <td>'.$valor['hora_inicio'].'</td>
-                                <td>'.$valor['centro'].'</td>
-                                <td>'.$valor['especialidad'].'</td>
-                                <td>'.$valor['total'].'</td></tr>';
-        
-                      }
-                    $html .= '<th >IVA</th>
-                    <td id="iva">21%</td>
-            </tr>
-            </table>
-
-        </body>';*/
-
-        // $html = $this->load->view('v_dpdf',$date,true);
- 		
- 		//$html="asdf";
-        //this the the PDF filename that user will get to download
-        $pdfFilePath = $hoy.".pdf";
- 
-        //load mPDF library
-        $this->load->library('M_pdf');
-        $mpdf = new mPDF('c', 'A4-L'); 
- 		$mpdf->WriteHTML($html);
-		$mpdf->Output($pdfFilePath, "D");
-       // //generate the PDF from the given html
-        $this->m_pdf->pdf->WriteHTML($html);
- 
-       //  //download it.
-         $this->m_pdf->pdf->Output($pdfFilePath, "D"); 
-	}
-    
-
 
 
 
@@ -385,9 +300,9 @@ $datos= $this->obtenerDatos();
         $datos= $this->obtenerDatos();
         $datos['registroInterprete']=1;
         $datos['listaProvincia']=$dataProvincia;
-        $this->load->view('cabecera', $datos);
-        $this->load->view('altaInterprete',$datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('AltInterprete',$datos);
+        $this->load->view('Pie');
     }
 
     public function insertarInterprete(){
@@ -418,18 +333,18 @@ $datos= $this->obtenerDatos();
          $datos= $this->obtenerDatos();
         if($listaEmpresas!=null){
           
-            $this->load->view('cabecera', $datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
 
         }
     }else{
         
         $this->load->model('interprete_modelo');
         $listaEmpresas= $this->interprete_modelo->insert_item($lista);
-        $this->load->view('cabeceraBasica');
-            $this->load->view('loginInterprete');
-            $this->load->view('pie');
+        $this->load->view('CabeceraBasica');
+            $this->load->view('LoginInterprete');
+            $this->load->view('Pie');
     }
     }
 
@@ -451,15 +366,15 @@ $datos= $this->obtenerDatos();
 
         if($datosInterprete !=null){
             $datos['interprete']=$datosInterprete;
-            $this->load->view('cabecera', $datos);
-            $this->load->view('buscarInterprete',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('BuscarInterprete',$datos);
+            $this->load->view('Pie');
 			
 		}else{           
             
-            $this->load->view('cabecera', $datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
         }
     }
 
@@ -473,15 +388,15 @@ $datos= $this->obtenerDatos();
         $datos= $this->obtenerDatos();
         if($listaInterprete ==true){
                 
-            $this->load->view('cabecera',$datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera',$datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
 			
 		}else{
             //false no se realiza la accion
-        $this->load->view('cabecera', $datos);
-        $this->load->view('menuAdmin', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('MenuAdmin', $datos);
+        $this->load->view('Pie');
         }
     }
 
@@ -507,9 +422,9 @@ $datos= $this->obtenerDatos();
         $this->load->model('interprete_modelo');
         $listaInterprete= $this->interprete_modelo->modificar_interprete($lista , $id);
         $datos= $this->obtenerDatos();
-        $this->load->view('cabecera', $datos);  
-        $this->load->view('menuAdmin', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);  
+        $this->load->view('MenuAdmin', $datos);
+        $this->load->view('Pie');
     }
 
 
@@ -519,9 +434,9 @@ $datos= $this->obtenerDatos();
     public function generar_pago_interprete(){
         $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
         $datos['sesionUsuario']=$sesionUsuario;
-        $this->load->view('cabecera', $datos);
-        $this->load->view('generar_factura');
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('Generar_factura');
+        $this->load->view('Pie');
     }
 
 //-----------------------------USUARIOS
@@ -531,9 +446,9 @@ $datos= $this->obtenerDatos();
         $datos= $this->obtenerDatos();
         $datos['registroUsuario']=1;
         $datos['listaProvincia']=$dataProvincia;
-        $this->load->view('cabecera', $datos);
-        $this->load->view('altaUsuario',$datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('AltUsuario',$datos);
+        $this->load->view('Pie');
     }
 
     public function insertarUsuario(){
@@ -561,18 +476,18 @@ $datos= $this->obtenerDatos();
          $datos= $this->obtenerDatos();
         if($listaUsuario!=null){
           
-            $this->load->view('cabecera', $datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
 
         }
     }else{
         
         $this->load->model('usuario_modelo');
         $listaUsuario= $this->usuario_modelo->insert_item($lista);
-            $this->load->view('cabeceraBasica');
-            $this->load->view('login');
-            $this->load->view('pie');
+            $this->load->view('CabeceraBasica');
+            $this->load->view('Login');
+            $this->load->view('Pie');
     }
     } 
 
@@ -593,15 +508,15 @@ $datos= $this->obtenerDatos();
 
         if($datosUsuario !=null){
             $datos['usuario']=$datosUsuario;
-            $this->load->view('cabecera', $datos);
-            $this->load->view('buscarUsuario',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('BuscarUsuario',$datos);
+            $this->load->view('Pie');
 			
 		}else{           
             
-            $this->load->view('cabecera', $datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
         }
     }
 
@@ -624,9 +539,9 @@ $datos= $this->obtenerDatos();
         $this->load->model('usuario_modelo');
         $listaUsuario= $this->usuario_modelo->modificar_usuario($lista , $id);
         $datos= $this->obtenerDatos();
-        $this->load->view('cabecera', $datos);  
-        $this->load->view('menuAdmin', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);  
+        $this->load->view('MenuAdmin', $datos);
+        $this->load->view('Pie');
     }
 
 
@@ -642,18 +557,18 @@ $datos= $this->obtenerDatos();
         $datos= $this->obtenerDatos();
         if($listaUsuario ==true){
                 
-            $this->load->view('cabecera',$datos);
-            $this->load->view('menuAdmin',$datos);
-            $this->load->view('pie');
+            $this->load->view('Cabecera',$datos);
+            $this->load->view('MenuAdmin',$datos);
+            $this->load->view('Pie');
 			
 		}else{
             //false no se realiza la accion
-        $this->load->view('cabecera', $datos);
-        $this->load->view('menuAdmin', $datos);
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('MenuAdmin', $datos);
+        $this->load->view('Pie');
     }
 }
-//-----------------------OBTENER LOS DATOS QUE SIEMPRE SE VAN A PEDIR UNA VEZ VOLVAMOS A LA PANTALLA DE MENUADMIN
+//-----------------------OBTENER LOS DATOS QUE SIEMPRE SE VAN A PEDIR UNA VEZ VOLVAMOS A LA PANTALLA DE MenuADMIN
     private function obtenerDatos(){
         $this->load->helper('cookie');
         $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));

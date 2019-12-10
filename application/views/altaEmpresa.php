@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
   <div id="formAlta"  class="form d-block">
-  <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/menuAdmin/insertarEmpresa">
+  <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/MenuAdmin/insertarEmpresa">
      
       <h1 class="h3 mb-3 font-weight-normal">Inserta la nueva empresa</h1>
       

@@ -6,7 +6,7 @@ class Inicio extends CI_Controller {
 	public function index(){
 		$this->load->helper('array');
         $this->load->helper('url');
-        $this->load->view('inicio');
+        $this->load->view('Inicio');
 		
     }
 }

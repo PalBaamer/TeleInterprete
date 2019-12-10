@@ -39,7 +39,7 @@ for (i = 0; i < x.length; i++) {
 
 <button id="editarVisible" onclick="cambio();">Editar</button>
 
-<form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/editarEmpresa" method="POST">          
+<form id="" class="form" action="<?php echo base_url() ?>index.php/MenuAdmin/editarEmpresa" method="POST">          
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >
 
@@ -107,8 +107,8 @@ for (i = 0; i < x.length; i++) {
 <br>
 <br>
 
-<button class="btn btn-lg btn-danger"><a href="<?php echo base_url("index.php/menuAdmin/eliminar_empresa?id_empresa=$empresa->id_empresa" )?>" >Borrar Empresa</a></button>
-<button class="btn btn-lg btn-danger"><a href="<?php echo base_url("index.php/menuAdmin/altaServicios?id_empresa=$empresa->id_empresa")?>" >Alta Servicios</a></button>
+<button class="btn btn-lg btn-danger"><a href="<?php echo base_url("index.php/MenuAdmin/eliminar_empresa?id_empresa=$empresa->id_empresa" )?>" >Borrar Empresa</a></button>
+<button class="btn btn-lg btn-danger"><a href="<?php echo base_url("index.php/MenuAdmin/altaServicios?id_empresa=$empresa->id_empresa")?>" >Alta Servicios</a></button>
 
 </div>
 
@@ -122,7 +122,7 @@ for (i = 0; i < x.length; i++) {
     <tr>
         <th> Desde</th>
         <th> Hasta</th>
-        <form id="" class="form" action="<?php echo base_url() ?>index.php/menuAdmin/descargarFactura" method="POST" target= "_blank">
+        <form id="" class="form" action="<?php echo base_url() ?>index.php/MenuAdmin/descargarFactura" method="POST" target= "_blank">
         <input type="hidden" value="<?= $empresa->id_empresa ?>"  name="inputId_empresa">
 
     <tr>
