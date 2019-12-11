@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
+    
     <title>Comunicados</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
-
-    <!-- Bootstrap core CSS 
-	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
-  <link href="<?php echo base_url('css/navbar-top-fixed.css') ?>" rel="stylesheet">
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="<?php echo base_url('css/navbar-top-fixed.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('css/estilos.css') ?>" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
@@ -30,6 +25,35 @@
 
 <body class="text-center">
   <header>
+  </header>
+  <!--div class="header-area ">
+            <div class="header-top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6 ">
+                            <div class="social_media_links">
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="short_contact_list">
+                                <ul>
+                                    <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                    <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
 
@@ -71,5 +95,5 @@
       </div>
     </nav>
     <main role="main" class="container">
-    </header>
+   
     

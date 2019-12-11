@@ -48,8 +48,15 @@ function listar_interpretes(){
 }
 
 function interpretes_disponibles($dia, $hora_inic){
-   $data = $this->db->query('SELECT * FROM interprete WHERE id_interprete NOT IN (SELECT id_interprete
-                        FROM cita where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'")');
+   $existe=$this->db->query('SELECT group_concat(id_interprete) FROM cita where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'"');
+   if($existe==null){
+      $data = $this->db->query('SELECT * FROM interprete WHERE id_interprete ');
+
+   }else{
+      $data = $this->db->query('SELECT * FROM interprete WHERE id_interprete NOT IN (SELECT id_interprete
+      FROM cita where dia="'.$dia.'" and hora_inicio="'.$hora_inic.'")');
+   }
+   
    if ($data->num_rows() > 0){
       return $data->result_array();
    }
@@ -80,6 +87,7 @@ function modificar_interprete($datos , $id){
    return $this->db->query('update interprete set nombre="'.$datos['nombre'].'",apellido="'.$datos['apellido'].'",apellido2="'.$datos['apellido2'].'",dni="'.$datos['dni'].'",direccion="'.$datos['direccion'].'",provincia="'.$datos['provincia'].'",
    telefono="'.$datos['telefono'].'",email="'.$datos['email'].'",urgencias="'.$datos['urgencias'].'",categoria="'.$datos['categoria'].'",nCC="'.$datos['nCC'].'" where id_interprete="'.$id.'"');
 }
+
 
 function insert_item ($data) {  
 

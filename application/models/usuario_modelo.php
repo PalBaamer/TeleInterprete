@@ -38,7 +38,7 @@ function usuario_login($mail, $pswd){
 
 
 function hitorialCitas($id){
-   $data = $this->db->query('select distinct dia,hora_inicio,servicio.especialidad,servicio.centro,total from usuario,cita,servicio where cita.id_usuario ='.$id.' and cita.id_servicio= servicio.id_servicio');
+   $data = $this->db->query('select distinct dia,hora_inicio,servicio.especialidad,servicio.centro,total from usuario,cita,servicio where cita.id_usuario ='.$id.' and cita.id_servicio= servicio.id_servicio order by dia desc,hora_inicio desc');
 
    if($data->num_rows()>0){
       return $data->result_array();

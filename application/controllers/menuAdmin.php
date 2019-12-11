@@ -44,7 +44,7 @@ $this->load->view('Pie');
         $datos= $this->obtenerDatos();
         $datos['listaProvincia']=$dataProvincia;
         $this->load->view('Cabecera', $datos);
-        $this->load->view('AltEmpresa',$datos);
+        $this->load->view('AltaEmpresa',$datos);
         $this->load->view('Pie');
     }
 
@@ -138,7 +138,7 @@ $this->load->view('Pie');
             $datos['listaCategorias']=$listaCategorias;
       
         $this->load->view('Cabecera', $datos);  
-        $this->load->view('AltServicios', $datos);
+        $this->load->view('AltaServicios', $datos);
         $this->load->view('Pie');
 
     }
@@ -301,7 +301,7 @@ $datos= $this->obtenerDatos();
         $datos['registroInterprete']=1;
         $datos['listaProvincia']=$dataProvincia;
         $this->load->view('Cabecera', $datos);
-        $this->load->view('AltInterprete',$datos);
+        $this->load->view('AltaInterprete',$datos);
         $this->load->view('Pie');
     }
 
@@ -370,7 +370,8 @@ $datos= $this->obtenerDatos();
             $this->load->view('BuscarInterprete',$datos);
             $this->load->view('Pie');
 			
-		}else{           
+        }else
+        {           
             
             $this->load->view('Cabecera', $datos);
             $this->load->view('MenuAdmin',$datos);
@@ -447,7 +448,7 @@ $datos= $this->obtenerDatos();
         $datos['registroUsuario']=1;
         $datos['listaProvincia']=$dataProvincia;
         $this->load->view('Cabecera', $datos);
-        $this->load->view('AltUsuario',$datos);
+        $this->load->view('AltaUsuario',$datos);
         $this->load->view('Pie');
     }
 

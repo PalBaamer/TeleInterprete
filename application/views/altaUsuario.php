@@ -1,5 +1,11 @@
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<div id="formAlta"  class="form d-block">
+<div id="formAlta"  class="form d-flex p-2 justify-content-center" style="max-width: 50%;">
+
   <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/MenuAdmin/insertarUsuario">
   <input type="hidden" class="form-control" name="registroUsuario" value="<?= $registroUsuario?>">
       <h1 class="h3 mb-3 font-weight-normal">Inserta el nuevo usuario</h1>

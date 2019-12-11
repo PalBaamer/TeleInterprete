@@ -82,10 +82,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'informataopal.mysql.db',
-	'username' => 'informataopal',
-	'password' => 'Lailameazul4',
-	'database' => 'informataopal',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'teleinterprete',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,

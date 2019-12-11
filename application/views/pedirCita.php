@@ -18,7 +18,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 }
                 ?>
             </select>
-
+            </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Centro</label>
@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     }
                     ?>
                 </select>
-
+                </div>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">siguiente</button>
     </form>

@@ -52,24 +52,20 @@ function hideLogin() {
 
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
- 
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          <a class="navbar-brand" href="<?php echo base_url()?>index.php/inicio">
+    <a class="navbar-brand" href="<?php echo base_url()?>index.php/inicio">
             <img class="mb-4" src="<?php echo base_url('img/Comunicados.png') ?>" alt="Icono de Inicio" width="72" height="72">
-          </a>  
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url()?>index.php/inicio">Inicio <span class="sr-only">(current)</span></a>
-          </li>
+          </a> 
+          <a href="<?php echo base_url()?>index.php/Login" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Iniciar Sesion</a>
 
-        </ul>
-      </div>
+
+            <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REGISTRO</button>
+			      	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			      		<a class="dropdown-item" href="<?php echo base_url('index.php/MenuAdmin/formularioInterprete') ?>">Interprepete</a>
+		      			<a class="dropdown-item" href="<?php echo base_url('index.php/MenuAdmin/formularioUsuario') ?>">Usuario</a>
+              </div>
+            </div>
+
     </nav>
     <main role="main" class="container">
     </header>

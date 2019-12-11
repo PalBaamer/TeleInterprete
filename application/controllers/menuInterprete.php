@@ -40,12 +40,6 @@ class MenuInterprete extends CI_Controller {
 	}
 
 
-	public function historial(){
-	
-
-	}
-
-
 
 
 

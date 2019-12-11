@@ -8,8 +8,6 @@ class Llamada extends CI_Controller {
         $this->load->view('Cabecera');
         $this->load->view('Llamada');
 	}
-	public function contador(){
-        
-    }
+    
 }
 ?>

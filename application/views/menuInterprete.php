@@ -11,12 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
     
   ?>
-    <div class="cabecera">
 
         <!--div id="historial"><a href="<--?php echo base_url()?>index.php/Cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Mis citas</button></a><br /></div-->
-        <div id="llamada"><a href="<?php echo base_url()?>index.php/MenuInterprete/llamada"><button class="btn btn-lg btn-success btn-block">Llamar</button></a></div>
         <div id="historial">Historial
-        <table style="width:100%">
+        <table class="table" style="width:100%">
             <tr>
               <th>Fecha/HORA</th>
               <th>tipo</th>
@@ -28,7 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             echo '<th>No hay citas</th>
                   </tr>';
         }else{
+          if(isset( $historial)){
 
+          
             foreach($historial as $Nlineas ){
                  //var_dump($historial);die;
               echo '</br><tr>
@@ -46,6 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   '</tr>';
                  
                             }
+                          }else{
+                            echo '<td>No hay citas</t>';
+                          }
       }
           
           ?>

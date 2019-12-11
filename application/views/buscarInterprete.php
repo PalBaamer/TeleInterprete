@@ -37,9 +37,7 @@ for (i = 0; i < x.length; i++) {
 <h1 class="nombreDatos"><?php echo $interprete->nombre ?></h1>
 
 
-<button id="editarVisible" onclick="cambio();">Editar</button>
-
-<button class="btn btn-lg btn-danger"><a href="<?php echo base_url()?>index.php/MenuAdmin/eliminar_interprete?id_interprete=<?= $interprete->id_interprete ?>" >Borrar Interprete</a></button>
+<a href="<?php echo base_url()?>index.php/MenuAdmin/eliminar_interprete?id_interprete=<?= $interprete->id_interprete ?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Borrar Interprete</a>
 
 <form id="" class="form" action="<?php echo base_url() ?>index.php/MenuAdmin/modificarInterprete" method="POST">
 <?php
@@ -129,10 +127,16 @@ for (i = 0; i < x.length; i++) {
             echo'   <td ><input class="editable" type="int" value="No hay cuenta" name="inputNCC"></td>';
           }
           echo'
+    </tr>
+    <tr>
+    <td ><a id="editarVisible" href="#" class="btn btn-warning btn-lg active" role="button" aria-pressed="true" onclick="cambio();">Editar</a></td>
+    
+
+    <td ><button class="btn btn-lg btn-success btn-block" id="ocultar" type="submit" >Guardar Cambios</button></td>
+    
     </tr>';
     
 
 ?>
-<button class="btn btn-lg btn-primary btn-block" id="ocultar" type="submit" >Guardar Cambios</button>
 </form>
 </div>

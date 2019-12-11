@@ -1,7 +1,41 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
+<style>#tablaAdmin{
+			width:100%;
+			
+			
+            }
+            
+            .empresa{
+			margin: 50%;
+			padding:20px;
+			background-color:#B0DFF7 ;
+		}
+		.interprete{
+			background-color:#DAF7A6 ;
+		}
+		.usuario{
+			background-color:#F1F794 ;
+		}
 
+		.nombreDatos{
+			position: absolute;
+  			left: 100px;
+  			top: 80px;
+
+		}
+
+		#verEmpresa{
+			margin-top:40%;
+
+		}
+		.tablaVerEmpresa{
+			position: absolute;
+  			background-color: white;
+			left: 100px;
+            }
+            </style>
 <?php
     echo '<h1>Bienvenid@ "'.$interpreteDatos->nombre.'"</h1>';
    
@@ -60,12 +94,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                       </form>
           </td>
     </tr>
-   
     </tr>
-          <td class="empresa"><button class="btn btn-lg btn-primary"><a href="<?php echo base_url()?>index.php/MenuAdmin/alta_empresa">Nueva empresa</a></button></td>
-          <td class="interprete"><button class="btn btn-lg btn-primary btn-block"><a href ="<?php echo base_url()?>index.php/MenuAdmin/altaInterprete">Nuevo interprete</a></button></td>
-          <td class="usuario"><button class="btn btn-lg btn-primary btn-block"><a href ="<?php echo base_url()?>index.php/MenuAdmin/altaUsuario">Nuevo usuario</a></button></td>
+            <td class="empresa"><a href="<?php echo base_url()?>index.php/MenuAdmin/altaEmpresa" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nueva empresa</a></td>
+            
+          <td class="interprete"><a href="<?php echo base_url()?>index.php/MenuAdmin/altaInterprete" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nuevo Usuario</a></td>
+          <td class="usuario"><a href="<?php echo base_url()?>index.php/MenuAdmin/altaUsuario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nuevo Usuario</a></td> 
     </tr>
-    <button class="btn btn-lg btn-primary btn-block"><a href ="<?php echo base_url()?>index.php/MenuAdmin/hacerLlamada">hacerLlamada</a></button>
 </table>
 

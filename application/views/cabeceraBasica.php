@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <a class="navbar-brand" href="<?php echo base_url()?>index.php/inicio">
             <img class="mb-4" src="<?php echo base_url('img/Comunicados.png') ?>" alt="Icono de Inicio" width="72" height="72">
           </a> 
-            <a class="nav-link" href="<?php echo base_url()?>index.php/Login">Iniciar Sesion</a>
+          <a href="<?php echo base_url()?>index.php/Login" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Iniciar Sesion</a>
 
 
             <div class="dropdown">

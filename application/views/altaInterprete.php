@@ -1,38 +1,11 @@
 <script src="<?php echo base_url('js/validaciones.js') ?>">
 
   </script>
-<div id="formAlta"  class="form d-block">
+  <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<div id="formAlta"  class="form d-flex p-2 justify-content-center" style="max-width: 50%;">
 
   <form id="" class="form " method='POST' action="<?php echo base_url()?>index.php/MenuAdmin/insertarInterprete">
 
