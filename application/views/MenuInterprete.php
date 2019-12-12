@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<link href="<?php echo base_url('css/menuInteprete.css') ?>" rel="stylesheet">
 
 <script>
 

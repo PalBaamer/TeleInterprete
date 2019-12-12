@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Comunicados</title>
+    <title>TeleInterprete</title>
     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,34 +26,7 @@
 <body class="text-center">
   <header>
   </header>
-  <!--div class="header-area ">
-            <div class="header-top_area d-none d-lg-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-md-6 ">
-                            <div class="social_media_links">
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="short_contact_list">
-                                <ul>
-                                    <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
-                                    <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div-->
+
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
 
