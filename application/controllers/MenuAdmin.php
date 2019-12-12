@@ -500,7 +500,6 @@ $datos= $this->obtenerDatos();
         $this->load->model('usuario_modelo');
         $listaUsuario= $this->usuario_modelo->insert_item($lista);
             $this->load->view('CabeceraBasica');
-            $this->load->view('NoInsert');
             $this->load->view('Inicio');
             $this->load->view('Pie');
     }

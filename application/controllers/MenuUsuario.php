@@ -29,7 +29,7 @@ class MenuUsuario extends CI_Controller {
 
 		$i=rand(1, $max);
 		$interprete=$listaInterpreteDisponibles[$i];
-		$datos['interprete']=$interprete['id_interprete'];
+		$datos['id_interprete']=$interprete['id_interprete'];
         $this->load->view('Cabecera', $datos);
 		$this->load->view('Llamada', $datos);
 

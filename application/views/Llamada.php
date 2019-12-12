@@ -96,7 +96,7 @@
     <input type="hidden" value="<?php echo $nCita?>"  name="id_cita">
 
     <?php }  ?>
-    <input type="hidden" value="<?php echo $interpreteDatos->id_interprete?>"  name="inputInterprete">
+    <input type="hidden" value="<?php echo $id_interprete?>"  name="inputInterprete">
     <input type="hidden" value="<?php echo date('Y-m-d')?>"  name="dia">
     <input type="hidden" value="<?php echo date('h:i:s')?>"  name="hora">
     <input type="text" value=""  id="tiempo" name="tiempo">

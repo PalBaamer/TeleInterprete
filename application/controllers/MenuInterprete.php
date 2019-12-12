@@ -20,6 +20,7 @@ class MenuInterprete extends CI_Controller {
 		$id_cita=$this->input->get('id_cita');
 		$datos['nCita']=$id_cita;
 		$datos['urgencias']=0;
+		$datos['id_interprete']=$datos['id'];
         $this->load->view('Cabecera', $datos);
 		$this->load->view('Llamada', $datos);
 	
