@@ -5,7 +5,8 @@ class MenuInterprete extends CI_Controller {
 
 	public function index(){
 		
-        $datos= $this->obtenerDatos();
+		$datos= $this->obtenerDatos();
+		
         $this->load->view('Cabecera', $datos);
         $this->load->view('MenuInterprete',$datos);
         $this->load->view('Pie');
@@ -51,7 +52,7 @@ class MenuInterprete extends CI_Controller {
 		$id=$sesionUsuario->id_interprete;
 		$this->load->model('interprete_modelo');
 		$historial= $this->interprete_modelo->hitorialCitas($id);
-
+		$datos['id']=$id;
 		$datos['historial']=$historial;
         $datos['sesionUsuario']=-1;
         $datos['interpreteDatos']=$sesionUsuario;
