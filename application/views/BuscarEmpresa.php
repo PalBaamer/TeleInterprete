@@ -131,14 +131,17 @@ for (i = 0; i < x.length; i++) {
           
     </tr>
     <tr><?php 
-              foreach($historial as $nLinea => $valor){
+              if (!isset($historial) ){
+                echo "No hay servicios prestados";
+              }else {
+                foreach($historial as $nLinea => $valor){
                   echo '<tr><td>'.$valor['dia'].'</td>
 
                         <td>'.$valor['hora_inicio'].'</td>
                         <td>'.$valor['centro'].'</td>
                         <td>'.$valor['especialidad'].'</td>
                         <td>'.$valor['total'].'</td></tr>';
-
+                }
               }
             ?>
     </tr>

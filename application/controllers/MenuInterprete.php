@@ -19,6 +19,7 @@ class MenuInterprete extends CI_Controller {
 		
 		$id_cita=$this->input->get('id_cita');
 		$datos['nCita']=$id_cita;
+		$datos['urgencias']=0;
         $this->load->view('Cabecera', $datos);
 		$this->load->view('Llamada', $datos);
 	
@@ -54,7 +55,7 @@ class MenuInterprete extends CI_Controller {
 		$historial= $this->interprete_modelo->hitorialCitas($id);
 		$datos['id']=$id;
 		$datos['historial']=$historial;
-        $datos['sesionUsuario']=-1;
+        $datos['sesionUsuario']=1;
         $datos['interpreteDatos']=$sesionUsuario;
     
     	return $datos;

@@ -14,8 +14,8 @@ class Empresa_modelo extends CI_Model {
       return null;
       }
 
-      function historial_citas_empresa(){
-         $data = $this->db->query("select cita.dia,cita.hora_inicio,servicio.centro,servicio.especialidad,cita.hora_fin, cita.total from servicio,cita where servicio.id_servicio=cita.id_servicio and servicio.id_empresa=1 and  hora_fin is not null");
+      function historial_citas_empresa($id){
+         $data = $this->db->query("select cita.dia,cita.hora_inicio,servicio.centro,servicio.especialidad,cita.hora_fin, cita.total from servicio,cita where servicio.id_servicio=cita.id_servicio and servicio.id_empresa='".$id."' and  hora_fin is not null order by dia asc ,hora_inicio");
          if ($data->num_rows() > 0){
             return $data->result_array();
          }
@@ -67,32 +67,6 @@ class Empresa_modelo extends CI_Model {
          }
 }
 
-/*
-public function calcHora($id_cita){
 
-   $this->db->sql(update cita set total = ((hora_fin  - hora_inicio)/10000)*15 where $id_cita);
-}
-
-public function generarFactura($id_empresa,$fecha_inicio, $fecha_fin){
-   $this->db->sql(select SUM(total) from citas,servicio,empresa where cita.id_servicio = servicio.id_servicio, servicio.id_empresa = empresa.id_empresa, dia between $fecha_inicio and $fecha_fin);
-   if(horas>0){
-
-      return horas;
-   }else{
-      return "No hay servicios";
-   }
-   
-         function busca_empresa($id)
-         {
-             return $this->db->get_where('empresa', array('id_empresa' => $id))->row();
-         }
-
-
-         function borrar_empresa($id)
-         {
-             return $this->db->delete('empresa', array('id_empresa' => $id));
-         }
-
-}*/
 
 ?>

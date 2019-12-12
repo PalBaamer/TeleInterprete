@@ -6,7 +6,7 @@ class Cita extends CI_Controller {
 	public function index(){
         $datos['sesionUsuario']=-1;
         $this->load->view('Cabecera', $datos);
-        $this->load->view('Pidecita');
+        $this->load->view('PideCita');
         $this->load->view('Pie');
     }
     

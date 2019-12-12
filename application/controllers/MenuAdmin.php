@@ -38,7 +38,7 @@ $this->load->view('Pie');
 
 
 
-	public function alta_empresa(){
+	public function altaEmpresa(){
         $this->load->model('provincia_modelo');
         $dataProvincia = $this->provincia_modelo->listar_provincia();
         $datos= $this->obtenerDatos();
@@ -350,7 +350,6 @@ $datos= $this->obtenerDatos();
         }else{
             
             $this->load->view('CabeceraBasica');
-            $this->load->view('NoInsert');
             $this->load->view('Inicio');
             $this->load->view('Pie');
         }
