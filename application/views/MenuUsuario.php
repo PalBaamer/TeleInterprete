@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
            
           foreach($historial as $Nlineas){
-                echo '</br><tr>
+                echo '<tr>
                 
                   <td>'.$Nlineas['dia'].'  -  '.$Nlineas['hora_inicio'].'</td>
                   <td>'.$Nlineas['centro'].'</td>

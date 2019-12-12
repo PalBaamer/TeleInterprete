@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </script>  
 
 
-    <form id="" class="form" action="<?php echo base_url() ?>index.php/Cita/grabarCita" method="POST">
+    <form id="tablaPideCita" class="form" action="<?php echo base_url() ?>index.php/Cita/grabarCita" method="POST">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">

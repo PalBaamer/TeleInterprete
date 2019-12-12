@@ -431,6 +431,7 @@ $datos= $this->obtenerDatos();
         $this->load->model('interprete_modelo');
         $listaInterprete= $this->interprete_modelo->modificar_interprete($lista , $id);
         $datos= $this->obtenerDatos();
+        
         $this->load->view('Cabecera', $datos);  
         $this->load->view('MenuAdmin', $datos);
         $this->load->view('Pie');
@@ -587,6 +588,7 @@ $datos= $this->obtenerDatos();
     private function obtenerDatos(){
         $this->load->helper('cookie');
         $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
+        $datos['id']=$sesionUsuario->id_interprete;
         if(!isset($sesionUsuario->categoria)){
             $datos['sesionUsuario']=-1;
 

@@ -73,7 +73,7 @@ class Cita extends CI_Controller {
         $dia = $this->input->post('fecha');
         $hora = $this->input->post('hora');
         $hora =$hora.":00:00";
-
+        $datos['id']=$id_usuario;
         if($dia < date('Y-m-d')){
 
             $this->load->view('Cabecera', $datos);
@@ -163,7 +163,7 @@ class Cita extends CI_Controller {
         $historial= $this->usuario_modelo->hitorialCitas($id);
         $datos['usuario']=$sesionUsuario;
         $datos['historial']=$historial;
-        
+        $datos['id']=$id;
         $datos['sesionUsuario']=-1;
 
         $this->load->view('Cabecera', $datos);
