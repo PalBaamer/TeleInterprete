@@ -8,8 +8,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
-    <title>Comunicados</title>
+    <header>
+    <link href="<?php echo base_url('css/navbar-top-fixed.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/estilos.css') ?>" rel="stylesheet">
+    <title>TeleInterprete</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
 
@@ -43,10 +45,7 @@ function hideLogin() {
   }
 }
 </script>
-<body >
-  <header>
-    <link href="<?php echo base_url('css/navbar-top-fixed.css') ?>" rel="stylesheet">
-    <link href="<?php echo base_url('css/estilos.css') ?>" rel="stylesheet">
+<body ><header></header>
 
 
 
