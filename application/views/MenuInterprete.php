@@ -12,9 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
     
   ?>
-
-        <!--div id="historial"><a href="<--?php echo base_url()?>index.php/Cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Mis citas</button></a><br /></div-->
-        <div id="historial">Historial
+        <div id="historial">
+          <h3>Historial</h3>
         <table class="table" style="width:100%">
             <tr>
               <th>Fecha/HORA</th>
@@ -32,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
             foreach($historial as $Nlineas ){
                  //var_dump($historial);die;
-              echo '</br><tr>
+              echo '<tr>
               <input type="hidden" value="'.$Nlineas['id_citas'].'"  name="id_cita">
               
                     <td>'.$Nlineas['dia'].'  -  '.$Nlineas['hora_inicio'].'</td>
