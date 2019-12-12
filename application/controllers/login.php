@@ -6,6 +6,7 @@ class Login extends CI_Controller {
 	public function index(){
 		$this->load->helper('array');
 		$this->load->helper('url');
+		$this->load->view('CabeceraBasica');
 		$this->load->view('Login');
 		$this->load->view('Pie');
 		
@@ -18,6 +19,7 @@ class Login extends CI_Controller {
 
 
 	if($mail == null || $pswd==null){
+		$this->load->view('CabeceraBasica');
 		$this->load->view('Login');
 		$this->load->view('CampoNull');
 		$usuario=null;
@@ -27,9 +29,9 @@ class Login extends CI_Controller {
 		$usuario = $this->usuario_modelo->usuario_login($mail, $pswd);
 		
 		if($usuario ==null){
-
+			$this->load->view('CabeceraBasica');
 			$this->load->view('Login');
-			$this->load->view('errorLogin');
+			$this->load->view('ErrorLogin');
 			
 		}else{
 			$datos['usuario'] = $usuario;
@@ -47,6 +49,9 @@ class Login extends CI_Controller {
 				$historial= $this->usuario_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
 				$datos['sesionUsuario']=-1;
+				$datos['id']=$id;
+					//var_dump($id);die;
+
 				$this->load->view('Cabecera',$datos);
 				$this->load->view('MenuUsuario',$datos);
 				$this->load->helper('array');

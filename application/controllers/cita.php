@@ -5,30 +5,42 @@ class Cita extends CI_Controller {
 
 	public function index(){
         $datos['sesionUsuario']=-1;
-        $this->load->view('cabecera', $datos);
-        $this->load->view('pidecita');
-        $this->load->view('pie');
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('Pidecita');
+        $this->load->view('Pie');
     }
     
+    public function categoria(){
+        $this->load->model('categoria_modelo');
+        $listaCategorias= $this->categoria_modelo->listar_categoria();
+        $datos['listaCategorias'] = $listaCategorias;
+    }
+    public function especialidad(){
+        $this->load->model('categoria_modelo');
+        $listaCategorias= $this->categoria_modelo->listar_categoria();
+        $datos['listaCategorias'] = $listaCategorias;
+    }
 
 
 	public function pideCita(){
-        $listaEmpresas = array();
-		$this->load->model('servicio_modelo');
+        $this->load->model('servicio_modelo');
+
         $listaServicios= $this->servicio_modelo->listar_servicio();
 
         $datos['listaServicios'] = $listaServicios;
 
-        $listaCategorias = array();
 		$this->load->model('categoria_modelo');
         $listaCategorias= $this->categoria_modelo->listar_categoria();
         $datos['listaCategorias'] = $listaCategorias;
         $datos['sesionUsuario']=-1;
+        $id_usuario=$this->input->get('id_usuario');
+        $datos['id_usuario']=$id_usuario;
+        $datos['id']=$id_usuario;
 
-        $this->load->view('cabecera', $datos);
-        $this->load->view('pedirCita' , $datos);
+        $this->load->view('Cabecera', $datos);
+        $this->load->view('PedirCita' , $datos);
         
-        $this->load->view('pie');        
+        $this->load->view('Pie');        
     }
 
     /* 
@@ -37,56 +49,94 @@ class Cita extends CI_Controller {
 
     public function grabarCita(){
         $this->load->helper('cookie');
+        $this->load->model('interprete_modelo');
+        $this->load->model('cita_modelo');
+        $this->load->model('servicio_modelo');
+		$this->load->model('categoria_modelo');
 
+        $listaServicios= $this->servicio_modelo->listar_servicio();
+
+        $datos['listaServicios'] = $listaServicios;
+
+        $listaCategorias= $this->categoria_modelo->listar_categoria();
+        $datos['listaCategorias'] = $listaCategorias;
+
+        
+        $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
+        $datos['usuario']=$sesionUsuario;
+        
+        $datos['sesionUsuario']=-1;
+
+        $id_usuario=$sesionUsuario->id_usuario;
         $categoria = $this->input->post('categoria');
         $id_servicio = $this->input->post('centro');
-        $fecha = $this->input->post('fecha');
+        $dia = $this->input->post('fecha');
         $hora = $this->input->post('hora');
         $hora =$hora.":00:00";
 
-        $datosCita= array (
-        'id_usuario' =>0, 
-         'id_interprete' =>0,
-         'id_servicio' =>$this->input->post('centro'),
-         'dia' =>$this->input->post('fecha'),
-         'hora_inicio' =>$hora,
-         'hora_fin' =>null,
-         'total' =>0);
+        if($dia < date('Y-m-d')){
 
-        $listaInterpretes = array();
-        $this->load->model('interprete_modelo');
-        $listaInterpretes = $this->interprete_modelo->interpretes_disponibles($fecha , $hora);
-        
-        
-        if($listaInterpretes==null){
-            $arrayData = array(
-                'error' => "No hay interpretes disponibles");
-                
-                $datos['sesionUsuario']=-1;
-                $this->load->view('cabecera', $datos);
-            $this->load->view('MenuUsuario', $arrayData);
-            $this->load->view('pie');
+            $this->load->view('Cabecera', $datos);
+            $this->load->view('SeleccionFechaValida');
+            $this->load->view('PedirCita', $datos);
+            $this->load->view('Pie');   
+
 
 
         }else{
-            $datos['interpretesDispo']=$listaInterpretes;
 
-            $cookie = array(
-                'name'   => 'datosCita',
-                'value'  => serialize($datosCita),                            
-                'expire' => '12000',                                                                                   
-                'secure' => FALSE
-                );
-                $this->input->set_cookie($cookie);
-                $datos['sesionUsuario']=-1;
-                $this->load->view('cabecera', $datos);
-                $this->load->view('grabarCita',$datos);
-                $this->load->view('pie');
-               
+            $existeCita= $this->cita_modelo->usuario_tiene_cita($id_usuario,$dia, $hora);
+            if($existeCita==1){
+                
+                $this->load->view('Cabecera', $datos);
+                $this->load->view('CitaYaexiste');
+                $this->load->view('PedirCita' , $datos);
+                $this->load->view('Pie');   
 
-        }
+            }else{
+                $listaInterpretes = $this->interprete_modelo->interpretes_disponibles($dia , $hora);
+        
+        
+                if($listaInterpretes==null){
+                        
+                    $this->load->view('Cabecera', $datos);
+                    $this->load->view('SinInterprete');
+                    $this->load->view('MenuUsuario', $datos);
+                    $this->load->view('Pie');
 
 
+                }else{
+                    
+                    $datos['interpretesDispo']=$listaInterpretes;
+
+                    $datosCita= array (
+                        'id_usuario' =>$id_usuario, 
+                        'id_interprete' =>0,
+                        'id_servicio' =>$this->input->post('centro'),
+                        'dia' =>$dia,
+                        'hora_inicio' =>$hora,
+                        'hora_fin' =>null,
+                        'total' =>0);
+                        
+
+                    $cookie = array(
+                        'name'   => 'datosCita',
+                        'value'  => serialize($datosCita),                            
+                        'expire' => '12000',                                                                                   
+                        'secure' => FALSE
+                        );
+                        $this->input->set_cookie($cookie);
+                        $datos['sesionUsuario']=-1;
+                        $this->load->view('Cabecera', $datos);
+                        $this->load->view('GrabarCita',$datos);
+                        $this->load->view('Pie');
+                    
+
+                }
+            }
+  
+
+    }
         
 
     }
@@ -116,10 +166,11 @@ class Cita extends CI_Controller {
         
         $datos['sesionUsuario']=-1;
 
-        $this->load->view('cabecera', $datos);
+        $this->load->view('Cabecera', $datos);
         $this->load->view('MenuUsuario',$sesionUsuario);
+        $this->load->view('DatoOK');
         
-        $this->load->view('pie');
+        $this->load->view('Pie');
         
         $cookie = array(
             'name'   => 'datosSesion',
@@ -131,19 +182,5 @@ class Cita extends CI_Controller {
 
     }
 
-
-    public function urgencias(){
-        $datos['sesionUsuario']=-1;
-
-        $this->load->view('cabecera', $datos);
-		$this->load->view('urgencias');
-        $this->load->view('pie');
-    }
-    public function misCitas(){
-        $datos['sesionUsuario']=-1;
-        $this->load->view('cabecera', $datos);
-		$this->load->view('misCitas');
-        $this->load->view('pie');
-	}
 }
 ?>

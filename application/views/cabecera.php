@@ -71,23 +71,29 @@
     <?php
         switch ($sesionUsuario){
           case 0:
-          echo '<a class="navbar-brand" href="'.base_url().'index.php/MenuAdmin">Inicio</a>';
+          echo '<a class="navbar-brand" href="'.base_url().'index.php/MenuAdmin">Inicio</a>  
+                  <li class="nav-item">
+                    <a class="nav-link" href="'.base_url().'index.php/MenuAdmin/buscarInterprete?id_interprete='.$id.'&sesionUsuario='.$sesionUsuario.'">Mi perfil</a>
+                  </li>';
           break;
         
           case 1:
-          echo '<a class="navbar-brand" href="'.base_url().'index.php/MenuInterprete">Inicio</a>';
+          echo '<a class="navbar-brand" href="'.base_url().'index.php/MenuInterprete">Inicio</a>  
+                  <li class="nav-item">
+                  <a class="nav-link" href="'.base_url().'index.php/MenuAdmin/buscarInterprete?id_interprete='.$id.'&sesionUsuario='.$sesionUsuario.'">Mi perfil</a>
+                  </li>';
           break;
           case -1:
           default:
-          echo '<a class="navbar-brand" href="'. base_url().'index.php/MenuUsuario">Inicio</a>';
+          echo '<a class="navbar-brand" href="'. base_url().'index.php/MenuUsuario">Inicio</a>  
+                  <li class="nav-item">
+                  <a class="nav-link" href="'.base_url().'index.php/MenuAdmin/buscarUsuario?id_usuario='.$id.'&sesionUsuario='.$sesionUsuario.'">Mi perfil</a>
+                  </li>';
           break;
 
         }
       ?>
         </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url()?>index.php/miPerfil">Mi perfil</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url()?>index.php/CerrarSesion">Cerrar Sesión</a>
           </li>

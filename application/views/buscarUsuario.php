@@ -36,9 +36,11 @@ for (i = 0; i < x.length; i++) {
 
 <h1 class="nombreDatos"><?php echo $usuario->nombre ?></h1>
 
-
-<a href="<?php echo base_url()?>index.php/MenuAdmin/eliminar_usuario?id_usuario=<?= $usuario->id_usuario ?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Borrar Usuario</a>
-
+<?php
+if($sesionUsuario==0){
+echo '<a href="'. base_url().'index.php/MenuAdmin/eliminar_usuario?id_usuario='. $usuario->id_usuario.'" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Borrar Usuario</a>';
+}
+?>
 <form id="" class="form" action="<?php echo base_url() ?>index.php/MenuAdmin/modificarUsuario" method="POST">
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >

@@ -14,16 +14,16 @@
       <h1 class="h3 mb-3 font-weight-normal">Inserta los datos del interprete</h1>
       
       <label for="inputNombre" class="sr-only">NOMBRE</label>
-      <input type="text" class="form-control" name="inputNombre" placeholder="Nombre"  onblur="validarNombre(this);">
+      <input type="text" class="form-control" name="inputNombre" placeholder="Nombre" required onblur="validarNombre(this);">
     
       <label for="inputApellido" class="sr-only">APELLIDO </label>
-  <input type="text" class="form-control" name="inputApellido" placeholder="Apellido" onblur="validarNombre(this);">
+  <input type="text" class="form-control" name="inputApellido" placeholder="Apellido" required onblur="validarNombre(this);">
 
       <label for="inputApellido2" class="sr-only">APELLIDO2 </label>
     <input type="text" class="form-control" name="inputApellido2" placeholder="Apellido2" onblur="validarNombre(this);">
 
     <label for="inputDni" class="sr-only">DNI </label>
-    <input type="text" class="form-control" name="inputDni" placeholder="DNI" onblur="validarDNI(this);">
+    <input type="text" class="form-control" name="inputDni" placeholder="DNI" maxlength="9" required onblur="validarDNI(this);">
 
     <label for="inputDireccion" class="sr-only">DIRECCION </label>
     <input type="text" class="form-control" name="inputDireccion" placeholder="Direccion">
@@ -40,12 +40,12 @@
             </select>
 
     <label for="inputTelefono" class="sr-only">TELÉFONO </label>
-    <input type="text" class="form-control" minlength="9" maxlength="9" name="inputTelefono" placeholder="Telefono" onblur="validarTelefono(this);">
+    <input type="text" class="form-control" minlength="8" maxlength="9" name="inputTelefono" placeholder="Telefono" required onblur="validarTelefono(this);">
     
     <label for="inputEmail" class="sr-only">EMAIL </label>
-    <input type="email" class="form-control" name="inputEmail" placeholder="Email" onblur="validarEmail(this);">
+    <input type="email" class="form-control" name="inputEmail" placeholder="Email" required onblur="validarEmail(this);">
     <label for="inputContrasena" class="sr-only">CONTRASEÑA </label>
-    <input type="password" class="form-control" minlength="8" name="inputContrasena" placeholder="Contrasena" onblur="validarContrasena(this);">
+    <input type="password" class="form-control" minlength="8" name="inputContrasena" placeholder="Contrasena" required onblur="validarContrasena(this);">
     
     <label for="inputUrgencias" class="sr-only">URGENCIAS </label>
     <select class="custom-select" name="inputCategoria">
@@ -72,9 +72,9 @@
     
 
    <label for="inputNCC" class="sr-only">Número cuenta bancaria </label>
-    <input type="text" class="form-control" name="inputNCC" placeholder="Numero Cuenta Bancaria" onblur="validarNCC(this);">
+    <input type="text" class="form-control" maxlength="24" name="inputNCC" placeholder="Numero Cuenta Bancaria" onblur="validarNCC(this);">
     
 
-<button class="btn btn-lg btn-primary btn-block" id="ocultar" type="submit" >Guardar Cambios</button>
+<button class="btn btn-lg btn-primary btn-block" id="ocultar" type="submit" >Crear interprete</button>
 </form>
 </div>

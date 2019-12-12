@@ -22,7 +22,7 @@ class LoginInterprete extends CI_Controller {
 
 		if($mail == null || $pswd==null){
 			$this->load->view('LoginInterprete');
-			$this->load->view('campoNull');
+			$this->load->view('CampoNull');
 
 
 		}else{
@@ -33,7 +33,7 @@ class LoginInterprete extends CI_Controller {
 
 		if($interprete ==null){
 			$this->load->view('LoginInterprete');
-			$this->load->view('errorLogin');
+			$this->load->view('ErrorLogin');
 
 			
 		}else{
@@ -76,6 +76,7 @@ class LoginInterprete extends CI_Controller {
 				$datos['empresa']=$listaEmpresas;
 				$datos['interprete']=$listaInterpretes;
 				$datos['usuario']=$listaUsuarios;
+				$datos['id']=$interprete->id_interprete;
 
 				$this->load->helper('cookie');
 				$this->load->view('Cabecera', $datos);
@@ -89,6 +90,7 @@ class LoginInterprete extends CI_Controller {
 				$id=$interprete->id_interprete;
 				$historial= $this->interprete_modelo->hitorialCitas($id);
 				$datos['historial']=$historial;
+				$datos['id']=$id;
 
 				$this->load->view('Cabecera',$datos);
 				$this->load->view('MenuInterprete',$datos);

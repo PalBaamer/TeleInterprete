@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   ?>
   <div class="cabecera">
   </br>
-      <div id="llamada"><a href="<?php echo base_url()?>index.php/Cita/pideCita"><button class="btn btn-lg btn-primary btn-block">Pide cita</button></a></div></br>
+      <div id="llamada"><a href="<?php echo base_url()?>index.php/Cita/pideCita?id_usuario=<?=$usuario->id_usuario?>"><button class="btn btn-lg btn-primary btn-block">Pide cita</button></a></div></br>
       
       <div id="emergencias"><a href="<?php echo base_url()?>index.php/menuUsuario/llamada"><button class="btn btn-lg btn-danger btn-block">Urgencias</button></a></div></br>
       <div id="historial">Historial

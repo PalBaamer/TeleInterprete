@@ -14,6 +14,19 @@ class Cita_modelo extends CI_Model {
        return null;
      }
 
+
+
+     function usuario_tiene_cita($id, $dia, $hora){
+      $data = $this->db->query("select id_usuario from cita where id_usuario=".$id." and dia='".$dia."' and hora_inicio='".$hora."'");
+         if ($data->num_rows() > 0){
+     
+            return 1;
+         }
+         return 0;
+     }
+
+
+
      function insert ($data) {  
 
       return $this->db->insert( 'cita' , $data );

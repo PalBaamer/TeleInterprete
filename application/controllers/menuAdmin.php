@@ -77,8 +77,10 @@ $this->load->view('Pie');
     public function buscarEmpresa(){
         $this->load->helper('cookie');
         $datos= $this->obtenerDatos();
+       
 
-        $idEmpresa=$this->input->post('empresa');
+            $idEmpresa=$this->input->post('empresa');
+           
        
         $this->load->model('empresa_modelo');
         $this->load->model('provincia_modelo');
@@ -192,7 +194,7 @@ $datos= $this->obtenerDatos();
 
     public function descargarFactura(){
         $this->load->model('empresa_modelo');
-        $this->load->library('pdf');
+        $this->load->library('PDF');
 
         $datos= $this->obtenerDatos();
         $id =$this->input->post('inputId_empresa');
@@ -322,30 +324,30 @@ $datos= $this->obtenerDatos();
          'nCC' =>$this->input->post('inputNCC')
         );
         $registroInterprete=$this->input->post('registroInterprete');
+        $this->load->model('interprete_modelo');
+        $listaInterpretes= $this->interprete_modelo->insert_item($lista);
 
         if($registroInterprete==1){
         
             $datos= $this->obtenerDatos();
-         $this->load->model('interprete_modelo');
-         $listaEmpresas= $this->interprete_modelo->insert_item($lista);
-         
 
-         $datos= $this->obtenerDatos();
-        if($listaEmpresas!=null){
-          
-            $this->load->view('Cabecera', $datos);
-            $this->load->view('MenuAdmin',$datos);
+            
+
+            if($listaInterpretes!=null){
+            
+                $this->load->view('Cabecera', $datos);
+                $this->load->view('MenuAdmin',$datos);
+                $this->load->view('DatoOK');
+                $this->load->view('Pie');
+
+            }
+        }else{
+            
+            $this->load->view('CabeceraBasica');
+            $this->load->view('NoInsert');
+            $this->load->view('Inicio');
             $this->load->view('Pie');
-
         }
-    }else{
-        
-        $this->load->model('interprete_modelo');
-        $listaEmpresas= $this->interprete_modelo->insert_item($lista);
-        $this->load->view('CabeceraBasica');
-            $this->load->view('LoginInterprete');
-            $this->load->view('Pie');
-    }
     }
 
 
@@ -354,15 +356,21 @@ $datos= $this->obtenerDatos();
         $this->load->helper('cookie');
         $datos= $this->obtenerDatos();
 
+        $sesionVariable=$this->input->get('sesionUsuario');
+        if($sesionVariable!=null){
+
+         $idInterprete=$this->input->get('id_interprete');
+        } else{
         $idInterprete=$this->input->post('interprete');
-       
+        }
+
         $this->load->model('interprete_modelo');
         $this->load->model('provincia_modelo');
         $datosInterprete= $this->interprete_modelo->buscar_interprete($idInterprete);
         $dataProvincia = $this->provincia_modelo->listar_provincia();
 
         $datos['listaProvincia']=$dataProvincia;
-
+        $datos['id']=$idInterprete;    
 
         if($datosInterprete !=null){
             $datos['interprete']=$datosInterprete;
@@ -487,7 +495,8 @@ $datos= $this->obtenerDatos();
         $this->load->model('usuario_modelo');
         $listaUsuario= $this->usuario_modelo->insert_item($lista);
             $this->load->view('CabeceraBasica');
-            $this->load->view('Login');
+            $this->load->view('NoInsert');
+            $this->load->view('Inicio');
             $this->load->view('Pie');
     }
     } 
@@ -496,12 +505,16 @@ $datos= $this->obtenerDatos();
     public function buscarUsuario(){
         $this->load->helper('cookie');
         $datos= $this->obtenerDatos();
+        $sesionVariable=$this->input->get('sesionUsuario');
+           if($sesionVariable!=null){
 
-        $idInterprete=$this->input->post('usuario');
-       
+            $idUsuario=$this->input->get('id_usuario');
+           } else{
+        $idUsuario=$this->input->post('usuario');
+           }
         $this->load->model('usuario_modelo');
         $this->load->model('provincia_modelo');
-        $datosUsuario= $this->usuario_modelo->buscar_usuario($idInterprete);
+        $datosUsuario= $this->usuario_modelo->buscar_usuario($idUsuario);
         $dataProvincia = $this->provincia_modelo->listar_provincia();
 
         $datos['listaProvincia']=$dataProvincia;
@@ -509,6 +522,7 @@ $datos= $this->obtenerDatos();
 
         if($datosUsuario !=null){
             $datos['usuario']=$datosUsuario;
+            $datos['id']=$idUsuario;
             $this->load->view('Cabecera', $datos);
             $this->load->view('BuscarUsuario',$datos);
             $this->load->view('Pie');
@@ -573,8 +587,13 @@ $datos= $this->obtenerDatos();
     private function obtenerDatos(){
         $this->load->helper('cookie');
         $sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
+        if(!isset($sesionUsuario->categoria)){
+            $datos['sesionUsuario']=-1;
 
-        $datos['sesionUsuario']=$sesionUsuario->categoria;
+        }else{
+      
+            $datos['sesionUsuario']=$sesionUsuario->categoria;
+        }
         $datos['interpreteDatos']=$sesionUsuario;
 
 //-------CARGAMOS DESDE AQUÍ LAS LISTAS DE EMPRESAS-INTERPRETE Y USUARIOS PARA LA VISTA DEL ADMIN

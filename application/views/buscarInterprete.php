@@ -35,10 +35,11 @@ for (i = 0; i < x.length; i++) {
 <div id="verEmpresa">
 
 <h1 class="nombreDatos"><?php echo $interprete->nombre ?></h1>
-
-
-<a href="<?php echo base_url()?>index.php/MenuAdmin/eliminar_interprete?id_interprete=<?= $interprete->id_interprete ?>" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Borrar Interprete</a>
-
+<?php
+if($sesionUsuario==0){
+echo '<a href="'. base_url().'index.php/MenuAdmin/eliminar_interprete?id_interprete=<'. $interprete->id_interprete .'" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Borrar Interprete</a>';
+}
+?>
 <form id="" class="form" action="<?php echo base_url() ?>index.php/MenuAdmin/modificarInterprete" method="POST">
 <?php
     echo '<table class="table table-bordered" id="tablaVerEmpresa"  >

@@ -6,15 +6,6 @@ body {
 	padding: 3rem 1.5rem;
 	text-align: center;
   }
-  .loginCampo{
-	width: 100%;
-	max-width: 330px;
-	padding: 15px;
-	margin-top: 20%;
-	margin-left: 25%;
-	text-align: center;
-
-}
 
 .form-signin {
   width: 100%;
@@ -55,10 +46,20 @@ body {
    border: #E0E0E0 solid 1px; 
    height: 33%; 
   background-color:#EEEEEE;}
-  
+  .loginCampo{
+	margin-top: 15%;
+  }
 /*-------------------------------LOGIN-----------------------------------
 		
 		
+  .loginCampo{
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin-top: 5%;
+	text-align: center;
+
+}
 		.cabecera{
   		display: grid;
   		grid-template-columns: auto auto;

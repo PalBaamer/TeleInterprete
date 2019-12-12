@@ -41,32 +41,29 @@ function validarEmail(email){
 	//var email = document.a.email.value;
 	var valor=1;
 	var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-	
-		if(expresion.test(email)){
-			valor=0;
+		if(!expresion.test(email.value)){
+			alert("El email no cumple el formato");
 		}
 	
 	return valor;
 }
 
-function validarDNI(dni) {
+function validarDNI(input) {
 	var numero
 	var letr
 	var letra
 	var expresion_regular_dni
-   
-	expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
-   
-	if(expresion_regular_dni.test (dni) == true){
+	var dni = input.value;
+	expresion_regular_dni = /^\d{8}[a-zA-Z]{1}$/;
+
+	if(expresion_regular_dni.test(dni) == true){
 	   numero = dni.substr(0,dni.length-1);
-	   letr = dni.substr(dni.length-1,1);
+	   letr = dni.substr(dni.length-1,9);
 	   numero = numero % 23;
 	   letra='TRWAGMYFPDXBNJZSQVHLCKET';
 	   letra=letra.substring(numero,numero+1);
 	  if (letra!=letr.toUpperCase()) {
 		 alert('Dni erroneo, la letra del NIF no se corresponde');
-	   }else{
-		 alert('Dni correcto');
 	   }
 	}else{
 	   alert('Dni erroneo, formato no válido');
@@ -88,7 +85,7 @@ function validarContrasena(pass){
 function validarNombre(variable){
 	var valor=1;
 	var expresion = /^[A-Za-zÁÉÍÓÚáéíóú]{3,20}$/;
-	var error="No puede tener números";
+	var error="No puede tener números y ha de tener un mínimo de 3 letras";
 	if(variable.value.match(expresion) && campo.value!=''){
 		
 	}else{
@@ -110,11 +107,11 @@ function validarApellido(ap){
 }*/
 
 function validarTelefono(tel){
+
 	var valor=1;
-	var expresion = /^[0-9]{9}$/;
-	
-		if(expresion.test(tel)){
-			valor=0;
+	var expresion = /^[6|9]{1}[0-9]{8}$/;
+		if(!expresion.test(tel.value)){
+			alert('El telefono no cumple el formato');
 		}
 	
 	return valor;
@@ -132,6 +129,9 @@ function validarDireccion(dir){
 }
 function validarNCC(IBAN) {
 
+
+	IBAN = IBAN.value;
+	console.log(IBAN);
     //Se pasa a Mayusculas
     IBAN = IBAN.toUpperCase();
     //Se quita los blancos de principio y final.
@@ -143,7 +143,7 @@ function validarNCC(IBAN) {
     var numeroSustitucion;
     //La longitud debe ser siempre de 24 caracteres
     if (IBAN.length != 24) {
-        return false;
+        alert('El NCC no cumple el formato, debe tener minimo 24 caracteres')
     }
 
     // Se coge las primeras dos letras y se pasan a números
@@ -161,7 +161,7 @@ function validarNCC(IBAN) {
     if (resto == 1){
         return true;
     }else{
-        return false;
+        alert('El NCC no cumple el formato')
     }
 }
 
@@ -180,4 +180,3 @@ function getnumIBAN(letra) {
     ls_letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return ls_letras.search(letra) + 10;
 }
-
