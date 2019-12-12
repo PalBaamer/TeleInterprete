@@ -10,6 +10,7 @@ class LoginInterprete extends CI_Controller {
 		
 	}
 
+	
 	public function validarInterprete(){
 		$this->load->helper('cookie');
 		$this->load->helper('array');
@@ -52,7 +53,6 @@ class LoginInterprete extends CI_Controller {
 				$datos['sesionUsuario']=$interprete->categoria;
 				$datos['interpreteDatos']=$interprete;
 
-				//var_dump($_COOKIE['datosSesion']);die;
 			if($interprete->categoria==0){
 //-------CARGAMOS DESDE AQUÍ LAS LISTAS DE EMPRESAS-INTERPRETE Y USUARIOS PARA LA VISTA DEL ADMIN
 					

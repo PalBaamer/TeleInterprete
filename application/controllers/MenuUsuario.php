@@ -82,6 +82,7 @@ class MenuUsuario extends CI_Controller {
 		$sesionUsuario = unserialize($this->input->cookie('datosSesion', true));
 			
 		$this->load->model('usuario_modelo');
+		
 		$id=$sesionUsuario->id_usuario;
 		$datos['id']=$id;
 		$historial= $this->usuario_modelo->hitorialCitas($id);

@@ -203,6 +203,9 @@ $datos= $this->obtenerDatos();
         //var_dump($this->input->post());die;
       //  var_dump($id, $fecha_inicio, $fecha_fin);die;
         $historialEmpresa = $this->empresa_modelo->filtrar_citas_empresa($id, $fecha_inicio, $fecha_fin);
+        if($historialEmpresa!=null){
+
+        
         $datosEmpresa = $this->empresa_modelo->busca_empresa($id);
         $totalServicios=0;
         foreach($historialEmpresa as $nLinea =>$valor){
@@ -287,8 +290,11 @@ $datos= $this->obtenerDatos();
         $pdf->writeHTML($html);
         $pdf->Output('pdf.pdf','I');
         //I = enviar al navegador o F= guardar en el pc
- 
-
+    }
+    $this->load->view('Cabecera', $datos);
+    $this->load->view('NoFactura');
+    $this->load->view('MenuAdmin',$datos);
+    $this->load->view('Pie');
 
     }
 
@@ -370,7 +376,6 @@ $datos= $this->obtenerDatos();
         $dataProvincia = $this->provincia_modelo->listar_provincia();
 
         $datos['listaProvincia']=$dataProvincia;
-        $datos['id']=$idInterprete;    
 
         if($datosInterprete !=null){
             $datos['interprete']=$datosInterprete;
@@ -523,7 +528,6 @@ $datos= $this->obtenerDatos();
 
         if($datosUsuario !=null){
             $datos['usuario']=$datosUsuario;
-            $datos['id']=$idUsuario;
             $this->load->view('Cabecera', $datos);
             $this->load->view('BuscarUsuario',$datos);
             $this->load->view('Pie');
